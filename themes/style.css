@@ -19,8 +19,9 @@ Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, feature
  * https://github.com/WordPress/gutenberg/issues/42319
  */
 a {
-	text-decoration-thickness: 1px !important;
+	text-decoration-thickness: 0.5px !important;
 	text-underline-offset: .1em;
+	text-decoration-color: inherit !important;
 }
 
 /* Focus styles */
@@ -48,7 +49,16 @@ a {
  * Progressive enhancement to reduce widows and orphans
  * https://github.com/WordPress/gutenberg/issues/55190
  */
-h1, h2, h3, h4, h5, h6, blockquote, caption, figcaption, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+blockquote,
+caption,
+figcaption,
+p {
 	text-wrap: pretty;
 }
 

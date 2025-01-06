@@ -3,10 +3,10 @@
   "apiVersion": 3,
   "name": "create-block/hero-section",
   "version": "0.1.0",
-  "title": "Hero Section",
+  "title": "Sekcja wstępna",
   "category": "widgets",
   "icon": "text-page",
-  "description": "Example block scaffolded with Create Block tool.",
+  "description": "Sekcja wstępna z mózgiem",
   "example": {},
   "supports": {
     "html": false
@@ -15,5 +15,66 @@
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",
-  "viewScript": "file:./view.js"
+  "viewScript": "file:./view.js",
+  "attributes": {
+    "HeaderType": {
+      "type": "string",
+      "default": "h2"
+    },
+    "header": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string"
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "isOverlapping": {
+            "type": "boolean"
+          },
+          "color": {
+            "type": "string",
+            "enum": [
+              "gray",
+              "blue-green"
+            ]
+          }
+        },
+        "required": [
+          "url",
+          "text"
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 4
+    },
+    "button": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "isSecondary": {
+          "type": "boolean",
+          "default": false
+        },
+        "svg": {
+          "type": "string",
+          "default": ""
+        }
+      }
+    }
+  }
 }

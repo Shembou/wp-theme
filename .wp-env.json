@@ -1,8 +1,5 @@
 {
     "themes": [
         "./themes"
-    ],
-    "config": {
-        "WP_DEBUG": true
-    }
+    ]
 }

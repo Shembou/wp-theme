@@ -4,9 +4,153 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
+section#hero-section {
+	display: grid;
+	justify-content: space-between;
+	align-items: center;
+	grid-template-columns: 1fr;
+	padding: 48px 32px;
+	border-radius: 32px;
+	border: 1px solid #EEE !important;
+	background: #FFF;
+	gap:80px !important;
+	@media (width >= 1000px) {
+		grid-template-columns: 1.5fr 1fr;
+	}
+	@media (width <= 600px) {
+		margin-left: 10px !important;
+		margin-right: 10px !important;
+	}
+}
+.header-wrapper {
+	display: grid;
+	gap:20px;
+}
+.header {
+	color: #1A4553;
+	margin:0px;
+}
+.paragraph {
+	margin:0px;
+}
+.wrapper {
+	gap:40px;
+	display: grid;
+}
+.custom-button {
+	width: fit-content;
+	display: flex;
+	padding: 8px 16px 8px 20px;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+	flex: 1 0 0;
+	align-self: stretch;
+	border-radius: 32px;
+	border: 1px solid #5D9AAF;
+	background: #164352;
+	color: #F9FDFF;
+	font-size: 16px;
+	text-decoration: none;
+	&:hover {
+		text-decoration: underline;
+	}
+	div {
+		align-self: center;
+		display: grid;
+		justify-self: center;
+	}
+}
+.animation-wrapper {
+	position: relative;
+	justify-self: center;
+	display:grid;
+	@media (width >= 1000px) {
+		justify-self: end;
+		width: 447px;
+	}
 
-.wp-block-create-block-hero-section {
-	background-color: #21759b;
-	color: #fff;
-	padding: 2px;
+	>svg {
+		@media (width <=600px) {
+			width: 100%;
+			height:100%;
+		}
+	}
+}
+
+.animation-inside-link {
+	position: absolute;
+	padding: 8px 20px;
+	justify-content: center;
+	align-items: center;
+	border-radius: 500px;
+	border: 1px solid #A4C8D4;
+	text-decoration: none;
+	background: #DDF6FE;
+	&:hover {
+		text-decoration: underline;
+		z-index: 3;
+	}
+	&.gray {
+		background: #E8EBEF;
+	}
+}
+
+.overlap {
+	z-index: 3;
+}
+
+.default {
+	z-index: 0;
+	@media(width<=600px) {
+		z-index: 3;
+	}
+}
+
+.link-0 {
+	left: 0px;
+	top: 120px;
+	transform: translate(-50%,-100%);
+	@media (width <=600px) {
+		transform: unset;
+		top: 10px;
+		left: -10px;
+	}
+}
+.link-1 {
+	right: -10px;
+	top: 22px;
+	transform: translate(50%,50%);
+	@media (width > 1000px) {
+		transform: translate(-25%, 50%);
+	}
+	@media (width <=600px) {
+		right: -10px;
+		transform: unset;
+		top: 22px;
+		transform: translateY(100%);
+	}
+}
+.link-2 {
+	left: 0px;
+	bottom: 22px;
+    transform: translate(-50%, -100%);
+	@media (width <=600px) {
+		transform: unset;
+		left: -10px;
+		bottom: 22px;
+	}
+}
+.link-3 {
+	right: -10px;
+	bottom: 22px;
+    transform: translate(42%, 0%);
+	@media (width <=600px) {
+		transform: unset;
+		transform: translateY(100%);
+		right: -16px;
+	}
+	@media (width > 1000px) {
+		transform: translate(0%, -50%);
+	}
 }

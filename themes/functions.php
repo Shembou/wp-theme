@@ -163,3 +163,11 @@ function register_custom_blocks()
 	register_block_type( dirname(__FILE__) . '/blocks/hero-section/build/hero-section/block.json');
 }
 add_action('init', 'register_custom_blocks');
+
+//Allow adding svg to site
+function allow_svg_upload($mimes) 
+{
+	$mimes['svg'] = 'image/svg+xml';
+	return $mimes;	
+}
+add_filter('upload_mimes', 'allow_svg_upload');
