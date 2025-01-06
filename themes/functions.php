@@ -157,12 +157,6 @@ if ( ! function_exists( 'twentytwentyfive_format_binding' ) ) :
 	}
 endif;
 
-//Registers custom blocks
-function register_custom_blocks()
-{
-	register_block_type( dirname(__FILE__) . '/blocks/hero-section/build/hero-section/block.json');
-}
-add_action('init', 'register_custom_blocks');
 
 //Allow adding svg to site
 function allow_svg_upload($mimes) 
@@ -171,3 +165,11 @@ function allow_svg_upload($mimes)
 	return $mimes;	
 }
 add_filter('upload_mimes', 'allow_svg_upload');
+
+//Registers custom blocks
+function register_custom_blocks()
+{
+	register_block_type( dirname(__FILE__) . '/blocks/hero-section/build/hero-section/block.json');
+	register_block_type( dirname(__FILE__) . '/blocks/cards-section/build/cards-section/block.json');
+}
+add_action('init', 'register_custom_blocks');

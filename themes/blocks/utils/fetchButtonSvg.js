@@ -1,4 +1,4 @@
-export default async function fetchSvg(media, setAttributes, button) {
+export default async function fetchButtonSvg(media, setAttributes, button) {
     if (media && media.url) {
         try {
             const response = await fetch(media.url);

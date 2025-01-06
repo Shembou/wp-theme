@@ -22,7 +22,7 @@ import { TextControl, PanelBody, SelectControl, ToggleControl, Button, TextareaC
  */
 import './editor.scss';
 import CustomButton from '../../../common/CustomButton';
-import fetchSvg from '../../../utils/fetchSvg';
+import fetchButtonSvg from '../../../utils/fetchButtonSvg';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -75,7 +75,7 @@ export default function Edit({ attributes, setAttributes }) {
 	};
 
 	const onSelectSVG = (media) => {
-		fetchSvg(media, setAttributes, button);
+		fetchButtonSvg(media, setAttributes, button);
 	};
 
 	const removeSVG = () => {
