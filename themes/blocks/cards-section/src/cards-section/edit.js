@@ -64,6 +64,7 @@ export default function Edit({ attributes, setAttributes }) {
 				...cards,
 				{
 					heading: '',
+					HeaderType: 'H1',
 					color: 'gray',
 					cornerImage: '',
 					button: {
@@ -143,6 +144,19 @@ export default function Edit({ attributes, setAttributes }) {
 					label={__('Heading', 'cards-section')}
 					value={card.heading || ''}
 					onChange={(value) => updateCard(cardIndex, 'heading', value)}
+				/>
+				<SelectControl
+					label={__('Header Type', 'cards-section')}
+					value={card.HeaderType}
+					options={[
+						{ label: 'H1', value: 'h1' },
+						{ label: 'H2', value: 'h2' },
+						{ label: 'H3', value: 'h3' },
+						{ label: 'H4', value: 'h4' },
+						{ label: 'H5', value: 'h5' },
+						{ label: 'H6', value: 'h6' },
+					]}
+					onChange={(value) => updateCard(cardIndex, 'HeaderType', value)}
 				/>
 				{renderPinsControls(cardIndex)}
 				<Button
@@ -238,7 +252,6 @@ export default function Edit({ attributes, setAttributes }) {
 				</Button>
 			</div>
 		));
-
 	return (
 		<>
 			<InspectorControls>
@@ -250,7 +263,20 @@ export default function Edit({ attributes, setAttributes }) {
 				</PanelBody>
 			</InspectorControls>
 			<section {...useBlockProps()} id="cards-section">
-				{__('Cards Section – hello from the editor!', 'cards-section')}
+				{cards.map((card, index) => {
+					const HeaderTag = card.HeaderType;
+					return (
+						<div key={index}>
+							<HeaderTag>{card.heading}</HeaderTag>
+							{card.pins.map((pin, pinIndex) => (
+								<p className="pin" key={pinIndex}>
+									{pin}
+								</p>
+							))}
+						</div>
+					);
+				})}
+
 			</section>
 		</>
 	);

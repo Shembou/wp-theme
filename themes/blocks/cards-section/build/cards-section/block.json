@@ -25,6 +25,10 @@
           "heading": {
             "type": "string"
           },
+          "HeaderType": {
+            "type": "string",
+            "default": "h1"
+          },
           "pins": {
             "type": "array",
             "items": {
