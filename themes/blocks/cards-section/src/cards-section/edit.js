@@ -272,13 +272,17 @@ export default function Edit({ attributes, setAttributes }) {
 				{cards.map((card, index) => {
 					const HeaderTag = card.HeaderType;
 					return (
-						<div key={index}>
-							<HeaderTag>{card.heading}</HeaderTag>
-							{card.pins.map((pin, pinIndex) => (
-								<p className="pin" key={pinIndex}>
-									{pin}
-								</p>
-							))}
+						<div key={index} className={`card ${card.color == 'gray' ? 'gray' : 'blue-green'}`}>
+							<div className='wrapper'>
+								<HeaderTag>{card.heading}</HeaderTag>
+								<div className='pinsWrapper'>
+									{card.pins.map((pin, pinIndex) => (
+										<p className="pin" key={pinIndex}>
+											{pin}
+										</p>
+									))}
+								</div>
+							</div>
 							<CustomButton {...card.button}>
 								<>
 									{card.button.text}

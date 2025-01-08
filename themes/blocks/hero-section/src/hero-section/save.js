@@ -29,24 +29,27 @@ export default function save({ attributes }) {
 
 	return (
 		<section {...blockProps} id="hero-section">
-			<div className='wrapper'>
-				<header className='header-wrapper'>
-					<HeaderType className="wp-blocks wp-header header">{header}</HeaderType>
-					<p className="paragraph">{text}</p>
-					<CustomButton {...button}>
-						<>
-							{button.text}
-							<div
-								dangerouslySetInnerHTML={{ __html: button.svg }}
-							/>
-						</></CustomButton>
-				</header>
-			</div>
-			<div className='animation-wrapper'>
-				{BrainIcon()}
-				{links.map((link, index) => (
-					<a key={index} href={link.url} className={`animation-inside-link link-${index} ${link.isOverlapping ? "overlap" : "default"} ${link.color == "gray" && 'gray'}`}>{link.text}</a>
-				))}
+			<div className='section-wrapper'>
+				<div className='wrapper'>
+					<header className='header-wrapper'>
+						<HeaderType className="wp-blocks wp-header header">{header}</HeaderType>
+						<p className="paragraph">{text}</p>
+						<CustomButton {...button}>
+							<>
+								{button.text}
+								<div
+									dangerouslySetInnerHTML={{ __html: button.svg }}
+								/>
+							</>
+						</CustomButton>
+					</header>
+				</div>
+				<div className='animation-wrapper'>
+					{BrainIcon()}
+					{links.map((link, index) => (
+						<a key={index} href={link.url} className={`animation-inside-link link-${index} ${link.isOverlapping ? "overlap" : "default"} ${link.color == "gray" && 'gray'}`}>{link.text}</a>
+					))}
+				</div>
 			</div>
 		</section >
 	);
