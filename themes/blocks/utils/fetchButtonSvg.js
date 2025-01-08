@@ -4,6 +4,10 @@ export default async function fetchButtonSvg(media, setAttributes, button) {
             const response = await fetch(media.url);
             const svgContent = await response.text();
 
+            if (!setAttributes) {
+                return svgContent
+            }
+
             setAttributes({
                 button: {
                     ...button,

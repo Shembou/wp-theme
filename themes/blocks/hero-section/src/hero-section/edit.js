@@ -218,7 +218,8 @@ export default function Edit({ attributes, setAttributes }) {
 								<div
 									dangerouslySetInnerHTML={{ __html: button.svg }}
 								/>
-							</></CustomButton>
+							</>
+						</CustomButton>
 					</header>
 				</div>
 				<div className='animation-wrapper'>

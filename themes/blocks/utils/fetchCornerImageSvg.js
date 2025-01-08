@@ -4,6 +4,10 @@ export default async function fetchCornerImageSvg(media, setAttributes, card) {
             const response = await fetch(media.url);
             const svgContent = await response.text();
 
+            if (!setAttributes) {
+                return svgContent
+            }
+
             setAttributes({
                 ...card,
                 cornerImage: svgContent

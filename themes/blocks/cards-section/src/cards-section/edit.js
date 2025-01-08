@@ -35,6 +35,7 @@ import './editor.scss';
 
 import fetchButtonSvg from '../../../utils/fetchButtonSvg';
 import fetchCornerImageSvg from '../../../utils/fetchCornerImageSvg'
+import CustomButton from '../../../common/CustomButton';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -109,12 +110,17 @@ export default function Edit({ attributes, setAttributes }) {
 		setAttributes({ cards: newCards });
 	};
 
-	const onSelectSVG = (media, card) => {
-		fetchButtonSvg(media, setAttributes, card.button);
+	const onSelectSVG = async (media, cardIndex, card) => {
+		const svgContent = await fetchButtonSvg(media)
+		updateCard(cardIndex, 'button', {
+			...card.button,
+			svg: svgContent,
+		})
 	};
 
-	const onCornerImageSelectSvg = (media, card) => {
-		fetchCornerImageSvg(media, setAttributes, card)
+	const onCornerImageSelectSvg = async (media, cardIndex, card) => {
+		const svgContent = await fetchCornerImageSvg(media)
+		updateCard(cardIndex, 'cornerImage', svgContent)
 	}
 
 	// Render controls for pins
@@ -177,7 +183,7 @@ export default function Edit({ attributes, setAttributes }) {
 					onChange={(value) => updateCard(cardIndex, 'color', value)}
 				/>
 				<MediaUpload
-					onSelect={(media) => onCornerImageSelectSvg(media, card)}
+					onSelect={(media) => onCornerImageSelectSvg(media, cardIndex, card)}
 					allowedTypes={['image/svg+xml']}
 					render={({ open }) => (
 						<Button
@@ -212,7 +218,7 @@ export default function Edit({ attributes, setAttributes }) {
 					}
 				/>
 				<MediaUpload
-					onSelect={(media) => onSelectSVG(media, card)}
+					onSelect={(media) => onSelectSVG(media, cardIndex, card)}
 					allowedTypes={['image/svg+xml']}
 					render={({ open }) => (
 						<Button
@@ -273,6 +279,15 @@ export default function Edit({ attributes, setAttributes }) {
 									{pin}
 								</p>
 							))}
+							<CustomButton {...card.button}>
+								<>
+									{card.button.text}
+									<div
+										dangerouslySetInnerHTML={{ __html: card.button.svg }}
+									/>
+								</>
+							</CustomButton>
+							<div dangerouslySetInnerHTML={{ __html: card.cornerImage }} />
 						</div>
 					);
 				})}
