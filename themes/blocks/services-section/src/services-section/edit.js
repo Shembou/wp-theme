@@ -22,6 +22,7 @@ import { PanelBody, TextareaControl, TextControl, Button } from '@wordpress/comp
  */
 import './editor.scss';
 import fetchButtonSvg from '../../../utils/fetchButtonSvg';
+import CustomButton from '../../../common/CustomButton';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -68,8 +69,50 @@ export default function Edit({ attributes, setAttributes }) {
 		})
 	}
 
+	const updateButton = (cardIndex, index, field, value) => {
+		const newCards = [...cards];
+		const newButtons = [...(newCards[cardIndex].buttons || [])];
+		newButtons[index] = {
+			...newButtons[index],
+			[field]: value
+		};
+		setAttributes({ cards: newCards });
+	}
+
+	const removeButton = (cardIndex, buttonIndex) => {
+		const newCards = [...cards];
+		const newButtons = newCards[cardIndex].buttons.filter((_, i) => i !== buttonIndex);
+		newCards[cardIndex].buttons = newButtons;
+		setAttributes({ cards: newCards });
+	}
+
 	const renderButtonControls = (cardIndex) => {
-		
+		(cards[cardIndex].buttons || []).map((button, index) => (
+			<div key={index} style={{ marginBottom: '10px' }}>
+				<TextControl
+					label={__('Button Url', 'services-section')}
+					value={button.url || ''}
+					onChange={(value) => updateButton(cardIndex, index, 'url', value)}
+				/>
+				<TextControl
+					label={__('Button text', 'services-section')}
+					value={button.text || ''}
+					onChange={(value) => updateButton(cardIndex, index, 'text', value)}
+				/>
+				<TextControl
+					label={__('Button svg', 'services-section')}
+					value={button.svg || ''}
+					onChange={(value) => updateButton(cardIndex, index, 'svg', value)}
+				/>
+				<Button
+					isDestructive
+					isSmall
+					onClick={() => removeButton(cardIndex, index)}
+				>
+					{__('Remove Button', 'services-section')}
+				</Button>
+			</div>
+		));
 	}
 
 	const renderCardControls = () =>
@@ -172,11 +215,34 @@ export default function Edit({ attributes, setAttributes }) {
 					</Button>
 				</PanelBody>
 			</InspectorControls>
-			<section {...useBlockProps()}>
-				{__(
-					'Services Section – hello from the editor!',
-					'services-section'
-				)}
+			<section id="services-section" {...useBlockProps()}>
+				<header>
+					<p>{tag}</p>
+					<h2>{heading}</h2>
+					<p>{paragraph}</p>
+				</header>
+				<div className='cards-wrapper'>
+					{cards && cards.map((card, index) => (
+						<div className='card-wrapper' key={index}>
+							<div className='text-wrapper'>
+								<h3>{card.heading}</h3>
+								<p>{card.paragraph}</p>
+								{cards.buttons && cards.buttons.map((button, buttonIndex) => (
+									<div className='buttons-wrapper' key={buttonIndex}>
+										<CustomButton url={button.url}>
+											<>
+												{button.text}
+												<img src={button.svg} />
+											</>
+										</CustomButton>
+									</div>
+								))}
+							</div>
+							<img src={card.icon} />
+							<img scr={card.image} />
+						</div>
+					))}
+				</div>
 			</section>
 		</>
 	);
