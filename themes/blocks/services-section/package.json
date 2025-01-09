@@ -1,5 +1,5 @@
 {
-	"name": "cards-section",
+	"name": "services-section",
 	"version": "0.1.0",
 	"description": "Example block scaffolded with Create Block tool.",
 	"author": "The WordPress Contributors",
@@ -16,8 +16,5 @@
 	},
 	"devDependencies": {
 		"@wordpress/scripts": "^30.8.1"
-	},
-	"dependencies": {
-		"@wordpress/components": "^29.1.1"
 	}
 }
