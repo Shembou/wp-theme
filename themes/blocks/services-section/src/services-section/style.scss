@@ -5,8 +5,167 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.wp-block-create-block-services-section {
-	background-color: #21759b;
-	color: #fff;
-	padding: 2px;
+section#services-section {
+	display: grid;
+	gap: 64px;
+
+	@media (width < 999px) {
+		margin-left: 10px !important;
+		margin-right: 10px !important;
+	}
+
+	header {
+		display: grid;
+		gap: 8px;
+		text-align: center;
+
+		.tag {
+			border-radius: 6px;
+			border-right: 1px solid #1A4553;
+			border-left: 1px solid #1A4553;
+			padding: 4px 12px;
+			justify-content: center;
+			align-items: center;
+			width: min-content;
+			justify-self: center;
+		}
+
+		h2 {
+			margin-bottom: 8px;
+			color: #1A4553;
+			font-size: 32px;
+			font-weight: 500;
+
+		}
+	}
+
+	.cards-wrapper {
+		display: grid;
+		gap: 24px;
+
+		.card-wrapper {
+			display: flex;
+			gap: 12px;
+			border-radius: 24px;
+			border: 1px solid #EEE;
+			background: #FFF;
+
+			@media (width <=778px) {
+				flex-direction: column;
+			}
+
+
+			.text-wrapper {
+				padding: 24px;
+				display: grid;
+				gap: 16px;
+				position: relative;
+
+				.card-heading {
+					color: #1A4553;
+					font-size: 24px;
+					font-weight: 400;
+				}
+
+				.buttons-wrapper {
+					margin-top: 16px;
+					display: flex;
+					gap: 24px;
+
+					@media (width <=778px) {
+						flex-direction: column;
+						justify-items: center;
+					}
+				}
+
+				.icon {
+					position: absolute;
+					top: 50%;
+					right: 0px;
+					transform: translate(50%, -50%);
+					border-radius: 500px;
+					padding: 16px;
+					background: #DDF6FE;
+					border: 6px solid #FFF;
+
+					@media (width <=778px) {
+						top: unset;
+						left: 50%;
+						bottom: 0px;
+						transform: translate(-50%, 75%);
+					}
+				}
+			}
+
+			.image {
+				width: 317px;
+				aspect-ratio: 16/9;
+				object-fit: cover;
+				border-radius: 24px;
+
+				@media (width <=778px) {
+					width: 100%;
+				}
+			}
+
+			&.additional-wrapper-styles {
+
+				.image {
+					order: -1;
+				}
+
+				.text-wrapper {
+					.icon {
+						left: 0px;
+						transform: translate(-50%, -50%);
+
+						@media (width <=778px) {
+							top: 0px;
+							left: 50%;
+							transform: translate(-50%, -75%);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	h3,
+	p {
+		margin: unset !important;
+	}
+}
+
+
+.custom-button {
+	width: fit-content;
+	display: flex;
+	padding: 8px 16px 8px 20px;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+	flex: 1 0 0;
+	align-self: stretch;
+	border-radius: 8px;
+	border: 1px solid #5D9AAF;
+	background: #164352;
+	color: #F9FDFF;
+	font-size: 16px;
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+
+	div {
+		align-self: center;
+		display: grid;
+		justify-self: center;
+	}
+
+	&.secondary {
+		background: #FFF;
+		border: 1px solid #A4C8D4;
+		color: #1A4553;
+	}
 }

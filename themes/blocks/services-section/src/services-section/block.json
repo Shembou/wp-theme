@@ -40,7 +40,8 @@
 							"properties": {
 								"url": { "type": "string"},
 								"text": { "type": "string"},
-								"svg": {"type": "string", "default": ""}
+								"svg": {"type": "string", "default": ""},
+								"buttonType": {"type": "string", "emum": ["primary", "secondary"]}
 							}
 						}
 					},

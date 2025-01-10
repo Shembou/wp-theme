@@ -12,7 +12,7 @@ import { __ } from '@wordpress/i18n';
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 import { InspectorControls, useBlockProps, MediaUpload } from '@wordpress/block-editor';
-import { PanelBody, TextareaControl, TextControl, Button } from '@wordpress/components'
+import { PanelBody, TextareaControl, TextControl, Button, SelectControl } from '@wordpress/components'
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -76,44 +76,96 @@ export default function Edit({ attributes, setAttributes }) {
 			...newButtons[index],
 			[field]: value
 		};
+		newCards[cardIndex].buttons = newButtons; // Update buttons in the card
 		setAttributes({ cards: newCards });
-	}
+	};
 
 	const removeButton = (cardIndex, buttonIndex) => {
 		const newCards = [...cards];
 		const newButtons = newCards[cardIndex].buttons.filter((_, i) => i !== buttonIndex);
 		newCards[cardIndex].buttons = newButtons;
 		setAttributes({ cards: newCards });
-	}
+	};
 
-	const renderButtonControls = (cardIndex) => {
-		(cards[cardIndex].buttons || []).map((button, index) => (
-			<div key={index} style={{ marginBottom: '10px' }}>
-				<TextControl
-					label={__('Button Url', 'services-section')}
-					value={button.url || ''}
-					onChange={(value) => updateButton(cardIndex, index, 'url', value)}
-				/>
-				<TextControl
-					label={__('Button text', 'services-section')}
-					value={button.text || ''}
-					onChange={(value) => updateButton(cardIndex, index, 'text', value)}
-				/>
-				<TextControl
-					label={__('Button svg', 'services-section')}
-					value={button.svg || ''}
-					onChange={(value) => updateButton(cardIndex, index, 'svg', value)}
-				/>
-				<Button
-					isDestructive
-					isSmall
-					onClick={() => removeButton(cardIndex, index)}
-				>
-					{__('Remove Button', 'services-section')}
-				</Button>
-			</div>
-		));
-	}
+	const addButton = (cardIndex) => {
+		const newCards = [...cards];
+		const newButtons = [...(newCards[cardIndex].buttons || [])];
+		const buttonToAdd = { url: '', text: '', svg: '', buttonType: '' }; // Define default button values
+		newButtons.push(buttonToAdd); // Add the new button
+		newCards[cardIndex].buttons = newButtons; // Update the buttons array in the card
+		setAttributes({ cards: newCards }); // Update the state
+	};
+
+	const renderButtonControls = (cardIndex) => (
+		<div>
+			{(cards[cardIndex].buttons || []).map((button, index) => (
+				<div key={index} style={{ marginBottom: '10px' }}>
+					<TextControl
+						label={__('Button Url', 'services-section')}
+						value={button.url || ''}
+						onChange={(value) => updateButton(cardIndex, index, 'url', value)}
+					/>
+					<TextControl
+						label={__('Button text', 'services-section')}
+						value={button.text || ''}
+						onChange={(value) => updateButton(cardIndex, index, 'text', value)}
+					/>
+					<SelectControl
+						label={__('Button type', 'services-section')}
+						value={button.buttonType || ''}
+						options={[
+							{ label: 'Primary', value: 'primary' },
+							{ label: 'Secondary', value: 'secondary' },
+						]}
+						onChange={(value) => updateButton(cardIndex, index, 'buttonType', value)}
+					/>
+					<MediaUpload
+						onSelect={(media) => updateButton(cardIndex, index, 'svg', media.url)}
+						allowedTypes={['image']}
+						render={({ open }) => (
+							<div>
+								<Button onClick={open} variant="secondary">
+									{button.svg
+										? __('Replace Svg', 'services-section')
+										: __('Upload Svg', 'services-section')}
+								</Button>
+								{button.svg && (
+									<div style={{ marginTop: '10px', alignItems: 'center', display: 'grid' }}>
+										<img
+											src={button.svg}
+											alt={__('Card Svg', 'services-section')}
+											style={{ maxWidth: '100%', border: '1px', padding: '10px' }}
+										/>
+										<Button
+											onSelect={(media) => updateButton(cardIndex, index, 'svg', '')}
+											variant="link"
+											isDestructive
+										>
+											{__('Remove Image', 'services-section')}
+										</Button>
+									</div>
+								)}
+							</div>
+						)}
+					/>
+					<Button
+						isDestructive
+						isSmall
+						onClick={() => removeButton(cardIndex, index)}
+					>
+						{__('Remove Button', 'services-section')}
+					</Button>
+				</div>
+			))}
+			<Button
+				isPrimary
+				onClick={() => addButton(cardIndex)}
+				style={{ marginTop: '10px' }}
+			>
+				{__('Add Button', 'services-section')}
+			</Button>
+		</div>
+	);
 
 	const renderCardControls = () =>
 		cards.map((card, cardIndex) => (
@@ -168,7 +220,7 @@ export default function Edit({ attributes, setAttributes }) {
 									: __('Upload Image', 'services-section')}
 							</Button>
 							{card.image && (
-								<div style={{ marginTop: '10px', alignItems: 'center', display: 'flex' }}>
+								<div style={{ marginTop: '10px', alignItems: 'center', display: 'grid' }}>
 									<img
 										src={card.image}
 										alt={__('Card Image', 'services-section')}
@@ -215,35 +267,37 @@ export default function Edit({ attributes, setAttributes }) {
 					</Button>
 				</PanelBody>
 			</InspectorControls>
-			<section id="services-section" {...useBlockProps()}>
+			<section {...useBlockProps()} id="services-section">
 				<header>
-					<p>{tag}</p>
+					<p className="tag">{tag}</p>
 					<h2>{heading}</h2>
 					<p>{paragraph}</p>
 				</header>
 				<div className='cards-wrapper'>
 					{cards && cards.map((card, index) => (
-						<div className='card-wrapper' key={index}>
+						<div className={`card-wrapper ${index % 2 == 1 && `additional-wrapper-styles`}`} key={index}>
 							<div className='text-wrapper'>
-								<h3>{card.heading}</h3>
+								<h3 className='card-heading'>{card.heading}</h3>
 								<p>{card.paragraph}</p>
-								{cards.buttons && cards.buttons.map((button, buttonIndex) => (
-									<div className='buttons-wrapper' key={buttonIndex}>
-										<CustomButton url={button.url}>
-											<>
-												{button.text}
-												<img src={button.svg} />
-											</>
-										</CustomButton>
-									</div>
-								))}
+								<div className={"buttons-wrapper"}>
+									{card.buttons && card.buttons.map((button, buttonIndex) => (
+										<div className='button-wrapper' key={buttonIndex}>
+											<CustomButton url={button.url} className={`${button.buttonType}`}>
+												<>
+													{button.text}
+													<img src={button.svg} />
+												</>
+											</CustomButton>
+										</div>
+									))}
+								</div>
+								<img className={'icon'} src={card.icon} />
 							</div>
-							<img src={card.icon} />
-							<img scr={card.image} />
+							<img src={card.image} className='image' />
 						</div>
 					))}
 				</div>
-			</section>
+			</section >
 		</>
 	);
 }
