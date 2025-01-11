@@ -1,0 +1,61 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+div#tiles-section {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 16px;
+
+	@media (width < 999px) {
+		grid-template-columns: 1fr 1fr;
+		margin-left: 10px !important;
+		margin-right: 10px !important;
+	}
+
+	@media (width < 778px) {
+		grid-template-columns: 1fr;
+	}
+
+	header {
+		display: grid;
+		gap: 16px;
+	}
+
+	div {
+		display: grid;
+		gap: 16px;
+		padding: 24px;
+		border-radius: 24px;
+		border: 1px solid #B9DAE5;
+		background: #DDF6FE;
+	}
+
+	img {
+		width: 100%;
+		height: auto;
+		object-fit: cover;
+		border-radius: 24px;
+		border: 1px solid #EEE;
+		max-height: 200px;
+	}
+
+	h3,
+	h2 {
+		color: #1A4553;
+	}
+
+	h3,
+	h2,
+	p {
+		margin: unset !important;
+	}
+
+	p {
+		font-size: 16px;
+		font-weight: 400;
+	}
+}

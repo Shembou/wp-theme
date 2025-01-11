@@ -21,7 +21,6 @@ import { PanelBody, TextareaControl, TextControl, Button, SelectControl } from '
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss';
-import fetchButtonSvg from '../../../utils/fetchButtonSvg';
 import CustomButton from '../../../common/CustomButton';
 
 /**
