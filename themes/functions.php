@@ -176,5 +176,6 @@ function register_custom_blocks()
 	register_block_type( dirname(__FILE__) . '/blocks/tiles-section/build/tiles-section/block.json');
 	register_block_type( dirname(__FILE__) . '/blocks/simple-cta-section/build/simple-cta-section/block.json');
 	register_block_type( dirname(__FILE__) . '/blocks/employees-section/build/employees-section/block.json');
+	register_block_type( dirname(__FILE__) . '/blocks/values-section/build/values-section/block.json');
 }
 add_action('init', 'register_custom_blocks');

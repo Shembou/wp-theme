@@ -219,7 +219,6 @@ export default function Edit({ attributes, setAttributes }) {
 						<img src={button.svg} />
 					</CustomButton>
 				</div>
-
 			</section>
 		</>
 	);

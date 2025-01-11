@@ -1,0 +1,88 @@
+section#values-section {
+	text-align: center;
+	width: 100% !important;
+	min-width: 100% !important;
+	overflow: hidden !important;
+	margin: unset !important;
+	max-width: unset !important;
+
+	.heading {
+		font-size: 1.8rem;
+		color: #345678;
+	}
+
+	.scrolling-container {
+		overflow: hidden; // Hide content that overflows the container
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+
+		.scrolling-row {
+			display: flex;
+			gap: 16px;
+			animation: scroll-left 10s ease-in-out infinite; // Left-to-right scrolling animation
+
+			&.reverse {
+				animation: scroll-right 10s ease-in-out infinite; // Right-to-left scrolling animation
+			}
+		}
+
+		.value-item {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-color: #fff;
+			border: 1px solid #EEE;
+			border-radius: 24px;
+			padding: 12px 20px;
+			font-size: 20px;
+			color: #345678;
+			white-space: nowrap; // Prevent text wrappin
+			cursor: default;
+			gap: 16px;
+
+			.value-icon {
+				width: 32px;
+				height: 32px;
+			}
+
+			.value-text {
+				font-weight: 500;
+			}
+
+			&.green {
+				border: 1px solid #B9DAE5;
+				background-color: #DDF6FE;
+			}
+		}
+	}
+}
+
+/* Animation keyframes for scrolling effect */
+@keyframes scroll-left {
+	0% {
+		transform: translateX(25%); // Start from the right
+	}
+
+	50% {
+		transform: translateX(-25%); // End at the left
+	}
+
+	100% {
+		transform: translateX(25%); // End at the left
+	}
+}
+
+@keyframes scroll-right {
+	0% {
+		transform: translateX(-25%); // Start from the right
+	}
+
+	50% {
+		transform: translateX(25%); // End at the left
+	}
+
+	100% {
+		transform: translateX(-25%); // End at the left
+	}
+}
