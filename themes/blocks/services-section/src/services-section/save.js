@@ -6,7 +6,7 @@
  */
 import { useBlockProps } from '@wordpress/block-editor';
 
-import { CustomButton } from '../../../common/CustomButton'
+import CustomButton from '../../../common/CustomButton'
 
 /**
  * The save function defines the way in which the different attributes should

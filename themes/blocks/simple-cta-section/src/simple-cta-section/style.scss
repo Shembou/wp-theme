@@ -1,0 +1,37 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+div#simple-cta-section {
+	display: grid;
+	flex-direction: column;
+	justify-content: center;
+
+	@media (width < 999px) {
+		margin-left: 10px !important;
+		margin-right: 10px !important;
+	}
+
+	h2 {
+		text-align: center;
+	}
+
+	.buttons-wrapper {
+		display: flex;
+		gap: 24px;
+		width: min-content;
+		justify-self: center;
+		@media (width < 600px) {
+			gap: 12px;
+			flex-direction: column;
+		}
+
+		.custom-button {
+			border-radius: 32px;
+			width: fit-content;
+		}
+	}
+}
