@@ -1,0 +1,71 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+section#stacked-images-section {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+
+	header {
+		max-width: 619px;
+	}
+
+	@media (width < 999px) {
+		margin-left: 10px !important;
+		margin-right: 10px !important;
+	}
+
+	.tag {
+		font-size: 14px;
+		font-weight: 500;
+		color: #1A4553;
+		padding: 4px 12px;
+		justify-content: center;
+		align-items: center;
+		border-radius: 32px;
+		border-right: 1px solid #1A4553;
+		border-left: 1px solid #1A4553;
+	}
+
+	h2 {
+		color: #1A4553;
+		font-size: 32px;
+		font-weight: 500;
+	}
+
+	div {
+		width: 588px;
+		position: relative;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 16px;
+		justify-items: center;
+
+		@media (width <=600px) {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	img {
+		width: 100%;
+		height: auto;
+		border-radius: 24px;
+		object-fit: cover;
+		aspect-ratio: 324/260;
+	}
+
+	.image-left {
+		margin-top: 110px;
+		margin-left: 76px;
+
+		@media (width <=600px) {
+			margin-top: unset;
+			margin-left: unset;
+		}
+	}
+}
