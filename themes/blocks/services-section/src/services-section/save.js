@@ -28,7 +28,7 @@ export default function save({ attributes }) {
 	} = attributes
 
 	return (
-		<section {...useBlockProps.save()} id="service-section">
+		<section {...useBlockProps.save()} id="services-section">
 			<header>
 				<p className="tag">{tag}</p>
 				<h2>{heading}</h2>
@@ -58,6 +58,6 @@ export default function save({ attributes }) {
 					</div>
 				))}
 			</div>
-		</section>
+		</section >
 	);
 }
