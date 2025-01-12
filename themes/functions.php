@@ -178,5 +178,6 @@ function register_custom_blocks()
 	register_block_type( dirname(__FILE__) . '/blocks/employees-section/build/employees-section/block.json');
 	register_block_type( dirname(__FILE__) . '/blocks/values-section/build/values-section/block.json');
 	register_block_type( dirname(__FILE__) . '/blocks/cta-with-bg/build/cta-with-bg/block.json');
+	register_block_type( dirname(__FILE__) . '/blocks/faq-section/build/faq-section/block.json');
 }
 add_action('init', 'register_custom_blocks');
