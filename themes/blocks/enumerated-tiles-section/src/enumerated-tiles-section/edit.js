@@ -12,7 +12,7 @@ import { __ } from '@wordpress/i18n';
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 import { useBlockProps, InspectorControls, MediaUpload } from '@wordpress/block-editor';
-import { PanelBody, PanelRow, Button, TextControl, IconButton } from '@wordpress/components';
+import { PanelBody, PanelRow, Button, TextControl, IconButton, TextareaControl } from '@wordpress/components';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -159,7 +159,7 @@ export default function Edit({ attributes, setAttributes }) {
 								/>
 							</PanelRow>
 							<PanelRow>
-								<TextControl
+								<TextareaControl
 									label={`Tile ${index + 1} Description`}
 									value={tile.paragraph}
 									onChange={(value) => updateTile(index, 'paragraph', value)}
@@ -190,10 +190,14 @@ export default function Edit({ attributes, setAttributes }) {
 				</header>
 				<div className='tiles-wrapper'>
 					{tiles.map(({ heading, paragraph }, index) => (
-						<div className={`tile ${index % 2 == 0 ? 'green' : 'white'}`} key={index}>
-							<h2>0{index + 1} {heading}</h2>
-							<p>{paragraph}</p>
-						</div>
+						<>
+							<div className={
+								`tile ${index % 2 == 0 ? 'green' : 'white'} ${index <= 2 ? 'top' : 'bottom'} ${(index + 2) % 3 != 0 ? 'additional-space' : ''}`} key={index}>
+								<h2>0{index + 1} {heading}</h2>
+								<p>{paragraph}</p>
+							</div>
+							{index == 2 && <BrainIcon />}
+						</>
 					))}
 				</div>
 			</section>
@@ -208,6 +212,7 @@ const BrainIcon = (props) => (
 		height="134"
 		fill="none"
 		viewBox="0 0 148 134"
+		className='brain-icon'
 	>
 		<path
 			fill="#E8EBEF"
