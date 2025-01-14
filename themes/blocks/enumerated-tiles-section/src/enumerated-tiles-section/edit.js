@@ -13,7 +13,7 @@ import { __ } from '@wordpress/i18n';
  */
 import { useBlockProps, InspectorControls, MediaUpload } from '@wordpress/block-editor';
 import { PanelBody, PanelRow, Button, TextControl, IconButton, TextareaControl } from '@wordpress/components';
-
+import CustomButton from '../../../common/CustomButton'
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * Those files can contain any CSS code that gets applied to the editor.
@@ -200,6 +200,12 @@ export default function Edit({ attributes, setAttributes }) {
 						</>
 					))}
 				</div>
+				<CustomButton {...button}>
+					<>
+						{button.text}
+						<img src={button.svg} />
+					</>
+				</CustomButton>
 			</section>
 		</>
 	);
