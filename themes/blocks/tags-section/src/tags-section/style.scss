@@ -1,0 +1,47 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+section#tags-section {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 12px;
+	flex-wrap: wrap;
+
+	.tag {
+		color: #1A4553;
+		font-size: 16px;
+		font-weight: 400;
+		position: relative;
+		padding: 8px 16px 8px 14px;
+		border-radius: 500px;
+		border: 1px solid #B9DAE5;
+		background: #F1FCFF;
+		gap: 6px;
+		align-items: center;
+		display: flex;
+		margin: unset !important;
+		text-decoration: none;
+		transition: text-decoration 0.2s ease-in-out, background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+
+		&::before {
+			content: '';
+			display: inline-block;
+			width: 9px;
+			height: 9px;
+			background: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9" fill="none"><g filter="url(%23filter0_f_5625_2698)"><circle cx="4.5" cy="4.5" r="3" fill="white"/><circle cx="4.5" cy="4.5" r="2.76827" stroke="%2300D9FF" stroke-width="0.463468"/></g><circle cx="4.49891" cy="4.49891" r="2.69902" fill="%237CD6D9" stroke="%235091A7" stroke-width="0.599782"/></svg>') no-repeat center;
+			background-size: contain;
+		}
+
+		&:hover {
+			text-decoration: underline;
+			background: #1A4553;
+			color: #F1FCFF;
+		}
+	}
+
+}
