@@ -1,0 +1,76 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+section#enumerated-tiles-section {
+	display: grid;
+	gap: 48px;
+	justify-content: center;
+	justify-items: center;
+
+	h2,
+	p {
+		color: #1A4553;
+		margin: unset !important;
+	}
+
+	header {
+		display: grid;
+		max-width: 620px;
+		gap: 8px;
+		align-items: center;
+		text-align: center;
+
+		h2 {
+			margin-bottom: 8px;
+		}
+
+		.tag {
+			font-size: 14px;
+			padding: 4px 12px;
+			justify-content: center;
+			border-radius: 32px;
+			border-right: 1px solid #1A4553;
+			border-left: 1px solid #1A4553;
+			width: fit-content;
+			display: grid;
+			justify-self: center;
+		}
+	}
+
+	.tiles-wrapper {
+		display: grid;
+		gap: 32px;
+		grid-template-columns: 1fr 1fr 1fr;
+		justify-items: center;
+
+		.tile {
+			display: grid;
+			gap: 15px;
+			padding: 24px;
+			border-radius: 24px;
+
+			h2 {
+				font-size: 24px;
+			}
+
+			p {
+				font-size: 16px;
+			}
+
+			&.green {
+				border: 1px solid #B9DAE5;
+				background: #DDF6FE;
+			}
+
+			&.white {
+				border: 1px solid #B9DAE5;
+				background: #FFF;
+			}
+		}
+
+	}
+}

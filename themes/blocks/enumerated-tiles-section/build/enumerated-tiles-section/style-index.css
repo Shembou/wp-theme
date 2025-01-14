@@ -1,0 +1,70 @@
+/*!****************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/enumerated-tiles-section/style.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************/
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+section#enumerated-tiles-section {
+  display: grid;
+  gap: 48px;
+  justify-content: center;
+  justify-items: center;
+}
+section#enumerated-tiles-section h2,
+section#enumerated-tiles-section p {
+  color: #1A4553;
+  margin: unset !important;
+}
+section#enumerated-tiles-section header {
+  display: grid;
+  max-width: 620px;
+  gap: 8px;
+  align-items: center;
+  text-align: center;
+}
+section#enumerated-tiles-section header h2 {
+  margin-bottom: 8px;
+}
+section#enumerated-tiles-section header .tag {
+  font-size: 14px;
+  padding: 4px 12px;
+  justify-content: center;
+  border-radius: 32px;
+  border-right: 1px solid #1A4553;
+  border-left: 1px solid #1A4553;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: grid;
+  justify-self: center;
+}
+section#enumerated-tiles-section .tiles-wrapper {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+}
+section#enumerated-tiles-section .tiles-wrapper .tile {
+  display: grid;
+  gap: 15px;
+  padding: 24px;
+  border-radius: 24px;
+}
+section#enumerated-tiles-section .tiles-wrapper .tile h2 {
+  font-size: 24px;
+}
+section#enumerated-tiles-section .tiles-wrapper .tile p {
+  font-size: 16px;
+}
+section#enumerated-tiles-section .tiles-wrapper .tile.green {
+  border: 1px solid #B9DAE5;
+  background: #DDF6FE;
+}
+section#enumerated-tiles-section .tiles-wrapper .tile.white {
+  border: 1px solid #B9DAE5;
+  background: #FFF;
+}
+
+/*# sourceMappingURL=style-index.css.map*/
