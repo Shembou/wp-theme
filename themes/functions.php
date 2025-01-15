@@ -185,5 +185,6 @@ function register_custom_blocks()
 	register_block_type( dirname(__FILE__) . '/blocks/enumerated-tiles-section/build/enumerated-tiles-section/block.json');
 	register_block_type( dirname(__FILE__) . '/blocks/minimalistic-hero-section/build/minimalistic-hero-section/block.json');
 	register_block_type( dirname(__FILE__) . '/blocks/tags-section/build/tags-section/block.json');
+	register_block_type( dirname(__FILE__) . '/blocks/detailed-employees-section/build/detailed-employees-section/block.json');
 }
 add_action('init', 'register_custom_blocks');
