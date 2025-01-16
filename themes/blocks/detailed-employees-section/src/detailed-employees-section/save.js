@@ -5,7 +5,6 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 import { useBlockProps } from '@wordpress/block-editor';
-import { useState } from 'react';
 
 /**
  * The save function defines the way in which the different attributes should
@@ -17,18 +16,18 @@ import { useState } from 'react';
  * @return {Element} Element to render.
  */
 export default function save({ attributes }) {
-
 	const {
-		employees = [],
-		limit = '2'
+		employees,
+		limit
 	} = attributes;
-
-	const [currentLimit, setCurrentLimit] = useState(parseInt(limit));
 
 	return (
 		<section {...useBlockProps.save()} id="detailed-employees-section">
-			{employees.slice(0, currentLimit).map(({ image, heading, tags, paragraph, link }, index) => (
-				<div className={`employee-wrapper ${index % 2 ? 'odd' : 'even'}`} key={index}>
+			{employees.map(({ image, heading, tags, paragraph, link }, index) => (
+				<div
+					className={`employee-wrapper ${index % 2 ? 'odd' : 'even'}`}
+					key={index}
+					style={{ display: (index + 1) > limit ? 'none' : '' }}>
 					<img src={image} />
 					<div className="description-wrapper">
 						<h2>{heading}</h2>
@@ -44,22 +43,17 @@ export default function save({ attributes }) {
 					</div>
 				</div>
 			))}
-
-			{currentLimit < employees.length && (
-				<div
-					className={`tooltip-wrapper`}
-					style={{ '--currentPercentile': `${parseInt((currentLimit / employees.length) * 100)}%` }}
-				>
+			{limit < employees.length && (
+				<div className="tooltip-wrapper"
+					style={{ '--currentPercentile': `${parseInt((limit / employees.length) * 100)}%` }}>
 					<div className="tooltip">
-						<p>{currentLimit} / {employees.length}</p>
+						<p>{limit} / {employees.length}</p>
 					</div>
-
 					<div className="progress-bar-wrapper">
-						<div />
+						<div></div>
 					</div>
-
 					<div className="text">
-						<button className="load-more" onClick={() => setCurrentLimit(currentLimit + parseInt(limit))}>Zobacz innych specjalistów <ArrowDown /></button>
+						<button className="load-more">Zobacz innych specjalistów <ArrowDown /></button>
 					</div>
 				</div>
 			)}

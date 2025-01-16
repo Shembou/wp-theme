@@ -15,7 +15,7 @@
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",
-  "render": "file:./render.php",
+  "viewScript": "file:./view.js",
   "attributes": {
     "employees": {
       "type": "array",
@@ -41,10 +41,10 @@
             "type": "string"
           }
         }
-      },
-      "limit": {
-        "type": "string"
       }
+    },
+    "limit": {
+      "type": "string"
     }
   }
 }

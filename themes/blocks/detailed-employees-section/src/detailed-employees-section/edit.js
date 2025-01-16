@@ -35,12 +35,14 @@ import './editor.scss';
 
 export default function Edit({ attributes, setAttributes }) {
 
+
 	const {
 		employees = [],
 		limit = '2'
 	} = attributes;
 
-	const [currentLimit, setCurrentLimit] = useState(parseInt(limit));
+	const [currentLimit, setCurrentLimit] = React.useState(parseInt(limit));
+
 
 	const updateEmployee = (index, key, value) => {
 		const updatedEmployees = [...employees];
@@ -201,12 +203,10 @@ export default function Edit({ attributes, setAttributes }) {
 							label="Card Limit"
 							value={limit}
 							onChange={(value) => {
-								setAttributes({
-									limit: value
-								});
-								setCurrentLimit(parseInt(value))
-							}
-							}
+								const parsedLimit = parseInt(value, 10) || 0;
+								setAttributes({ limit: value });
+								setCurrentLimit(parsedLimit)
+							}}
 						/>
 					</PanelRow>
 				</PanelBody>
