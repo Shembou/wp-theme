@@ -7,10 +7,170 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
-.wp-block-create-block-detailed-employees-section {
-  background-color: #21759b;
-  color: #fff;
-  padding: 2px;
+section#detailed-employees-section {
+  display: grid;
+  gap: 64px;
+  align-items: center;
+}
+@media (width < 1000px) {
+  section#detailed-employees-section {
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+  }
+}
+section#detailed-employees-section h2,
+section#detailed-employees-section p,
+section#detailed-employees-section a {
+  margin: unset !important;
+  color: #1A4553;
+}
+section#detailed-employees-section h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+section#detailed-employees-section .employee-wrapper {
+  display: flex;
+  gap: 48px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+section#detailed-employees-section .employee-wrapper.odd {
+  flex-direction: row-reverse;
+}
+section#detailed-employees-section .employee-wrapper img {
+  max-width: 280px;
+  height: auto;
+  width: 100%;
+  border-radius: 32px;
+  border: 2px solid #DDF6FE;
+  max-height: 320px;
+}
+section#detailed-employees-section .employee-wrapper .description-wrapper {
+  display: grid;
+  gap: 16px;
+  align-items: center;
+}
+section#detailed-employees-section .employee-wrapper .description-wrapper .paragraph {
+  display: grid;
+  font-size: 16px;
+  color: #1A4553;
+  font-weight: 400;
+}
+section#detailed-employees-section .employee-wrapper .description-wrapper .tags-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+section#detailed-employees-section .employee-wrapper .description-wrapper .tags-wrapper .tag {
+  color: #1A4553;
+  font-size: 16px;
+  font-weight: 400;
+  position: relative;
+  padding: 8px 16px 8px 14px;
+  border-radius: 500px;
+  border: 1px solid #B9DAE5;
+  background: #F1FCFF;
+  gap: 6px;
+  align-items: center;
+  display: flex;
+  margin: unset !important;
+  text-decoration: none;
+}
+section#detailed-employees-section .employee-wrapper .description-wrapper .tags-wrapper .tag::before {
+  content: "";
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  background: url("data:image/svg+xml;charset=utf-8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"9\" height=\"9\" viewBox=\"0 0 9 9\" fill=\"none\"><g filter=\"url%28%23filter0_f_5625_2698%29\"><circle cx=\"4.5\" cy=\"4.5\" r=\"3\" fill=\"white\"/><circle cx=\"4.5\" cy=\"4.5\" r=\"2.76827\" stroke=\"%2300D9FF\" stroke-width=\"0.463468\"/></g><circle cx=\"4.49891\" cy=\"4.49891\" r=\"2.69902\" fill=\"%237CD6D9\" stroke=\"%235091A7\" stroke-width=\"0.599782\"/></svg>") no-repeat center;
+  background-size: contain;
+}
+section#detailed-employees-section .employee-wrapper .description-wrapper .button {
+  margin-top: 16px;
+  padding: 8px 16px 8px 0px;
+  display: flex;
+  gap: 8px;
+  color: #00A6E0;
+  align-items: center;
+  text-decoration: none;
+  font-size: 16px;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+section#detailed-employees-section .employee-wrapper .description-wrapper .button:hover {
+  text-decoration: underline;
+}
+section#detailed-employees-section .tooltip-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px;
+  border-radius: 8px;
+  max-width: 223px;
+  justify-self: center;
+}
+section#detailed-employees-section .tooltip-wrapper .tooltip {
+  width: -moz-fit-content;
+  width: fit-content;
+  left: var(--currentPercentile);
+  background-color: #1A4553;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 6px;
+  position: relative;
+  align-self: start;
+  transform: translateX(-50%);
+}
+section#detailed-employees-section .tooltip-wrapper .tooltip p {
+  margin: 0;
+  color: #F9FDFF;
+}
+section#detailed-employees-section .tooltip-wrapper .tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: rotate(-45deg) translateX(-50%);
+  border-radius: 2px;
+  width: 6px;
+  height: 6px;
+  background: #1A4553;
+}
+section#detailed-employees-section .tooltip-wrapper .progress-bar-wrapper {
+  width: 100%;
+  height: 4px;
+  background-color: #87C2DF;
+  border-radius: 4px;
+  overflow: hidden;
+}
+section#detailed-employees-section .tooltip-wrapper .progress-bar-wrapper div {
+  height: 100%;
+  background-color: #1A4553;
+  transition: width 0.3s ease;
+  width: var(--currentPercentile);
+}
+section#detailed-employees-section .tooltip-wrapper .text {
+  text-align: center;
+}
+section#detailed-employees-section .tooltip-wrapper .text .load-more {
+  display: inline-flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 400;
+  color: #1A4553;
+  cursor: pointer;
+  padding: 5px;
+  background: unset;
+  border: unset;
+}
+section#detailed-employees-section .tooltip-wrapper .text .load-more:hover {
+  text-decoration: underline;
+}
+section#detailed-employees-section .tooltip-wrapper .text .load-more svg {
+  margin-left: 4px;
+  font-size: 12px;
 }
 
 /*# sourceMappingURL=style-index.css.map*/

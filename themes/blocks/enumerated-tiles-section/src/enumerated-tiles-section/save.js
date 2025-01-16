@@ -37,14 +37,14 @@ export default function save({ attributes }) {
 			</header>
 			<div className='tiles-wrapper'>
 				{tiles.map(({ heading, paragraph }, index) => (
-					<>
+					<React.Fragment key={index}>
 						<div className={
-							`tile ${index % 2 == 0 ? 'green' : 'white'} ${index <= 2 ? 'top' : 'bottom'} ${(index + 2) % 3 != 0 ? 'additional-space' : ''}`} key={index}>
+							`tile ${index % 2 == 0 ? 'green' : 'white'} ${index <= 2 ? 'top' : 'bottom'} ${(index + 2) % 3 != 0 ? 'additional-space' : ''}`}>
 							<h2>0{index + 1} {heading}</h2>
 							<p>{paragraph}</p>
 						</div>
 						{index == 2 && <BrainIcon />}
-					</>
+					</React.Fragment>
 				))}
 			</div>
 			<CustomButton {...button}>

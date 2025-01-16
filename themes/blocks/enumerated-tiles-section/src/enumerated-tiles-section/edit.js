@@ -190,16 +190,16 @@ export default function Edit({ attributes, setAttributes }) {
 				</header>
 				<div className='tiles-wrapper'>
 					{tiles.map(({ heading, paragraph }, index) => (
-						<>
+						<React.Fragment key={index}>
 							<div className={
-								`tile ${index % 2 == 0 ? 'green' : 'white'} ${index <= 2 ? 'top' : 'bottom'} ${(index + 2) % 3 != 0 ? 'additional-space' : ''}`} key={index}>
+								`tile ${index % 2 == 0 ? 'green' : 'white'} ${index <= 2 ? 'top' : 'bottom'} ${(index + 2) % 3 != 0 ? 'additional-space' : ''}`}>
 								<h2>0{index + 1} {heading}</h2>
 								<p>{paragraph}</p>
 							</div>
 							{index == 2 && <BrainIcon />}
-						</>
+						</React.Fragment>
 					))}
-				</div>
+				</div >
 				<CustomButton {...button}>
 					<>
 						{button.text}
@@ -240,5 +240,5 @@ const BrainIcon = (props) => (
 			fill="#515A6A"
 			d="M101.994 63.672c-.705.139-1.16.822-1.021 1.526.547 2.745-.678 5.779-2.98 7.38s-5.58 1.696-7.972.231c-2.39-1.461-3.789-4.422-3.399-7.192a1.3 1.3 0 0 0-1.107-1.465 1.3 1.3 0 0 0-1.469 1.104c-.528 3.764 1.37 7.776 4.614 9.764 3.002 1.84 7.043 1.865 10.104.135q.368-.207.716-.448c3.123-2.173 4.788-6.29 4.044-10.017a1.3 1.3 0 0 0-1.53-1.018"
 		></path>
-	</svg>
+	</svg >
 );
