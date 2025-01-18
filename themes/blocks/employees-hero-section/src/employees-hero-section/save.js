@@ -15,7 +15,7 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @return {Element} Element to render.
  */
-export default function save({attributes}) {
+export default function save({ attributes }) {
 	const {
 		tag,
 		heading,
@@ -26,25 +26,27 @@ export default function save({attributes}) {
 
 	return (
 		<section {...useBlockProps.save()} id="employees-hero-section">
-		<div className='wrapper'>
-			<p className='tag'>{tag}</p>
-			<div>
-				<h2>{heading}</h2>
-				<p>{paragraph}</p>
+			<div className='section-wrapper'>
+				<div className='wrapper'>
+					<p className='tag'>{tag}</p>
+					<div>
+						<h2>{heading}</h2>
+						<p>{paragraph}</p>
+					</div>
+				</div>
+				<div className="elipses">
+					<span className='circle-left' />
+					<span className='circle-top' />
+					<span className='circle-right' />
+					<span className='circle-bottom' />
+					<img src={logo} className="logo" alt="Central Logo" />
+					<div className="employee-container">
+						{employees.map((employee, index) => (
+							<img src={employee} key={index} className="employee-image" alt={`Employee ${index + 1}`} />
+						))}
+					</div>
+				</div>
 			</div>
-		</div>
-		<div className="elipses">
-			<span className='circle-left' />
-			<span className='circle-top' />
-			<span className='circle-right' />
-			<span className='circle-bottom' />
-			<img src={logo} className="logo" alt="Central Logo" />
-			<div className="employee-container">
-				{employees.map((employee, index) => (
-					<img src={employee} key={index} className="employee-image" alt={`Employee ${index + 1}`} />
-				))}
-			</div>
-		</div>
-	</section>
+		</section>
 	);
 }

@@ -29,7 +29,7 @@ import './editor.scss';
  *
  * @return {Element} Element to render.
  */
-export default function Edit({attributes,setAttributes}) {
+export default function Edit({ attributes, setAttributes }) {
 	const {
 		tag = '',
 		heading = '',
@@ -148,23 +148,25 @@ export default function Edit({attributes,setAttributes}) {
 				</PanelBody>
 			</InspectorControls>
 			<section {...useBlockProps()} id="employees-hero-section">
-				<div className='wrapper'>
-					<p className='tag'>{tag}</p>
-					<div>
-						<h2>{heading}</h2>
-						<p>{paragraph}</p>
+				<div className='section-wrapper'>
+					<div className='wrapper'>
+						<p className='tag'>{tag}</p>
+						<div>
+							<h2>{heading}</h2>
+							<p>{paragraph}</p>
+						</div>
 					</div>
-				</div>
-				<div className="elipses">
-					<span className='circle-left' />
-					<span className='circle-top' />
-					<span className='circle-right' />
-					<span className='circle-bottom' />
-					<img src={logo} className="logo" alt="Central Logo" />
-					<div className="employee-container">
-						{employees.map((employee, index) => (
-							<img src={employee} key={index} className="employee-image" alt={`Employee ${index + 1}`} />
-						))}
+					<div className="elipses">
+						<span className='circle-left' />
+						<span className='circle-top' />
+						<span className='circle-right' />
+						<span className='circle-bottom' />
+						<img src={logo} className="logo" alt="Central Logo" />
+						<div className="employee-container">
+							{employees.map((employee, index) => (
+								<img src={employee} key={index} className="employee-image" alt={`Employee ${index + 1}`} />
+							))}
+						</div>
 					</div>
 				</div>
 			</section>
