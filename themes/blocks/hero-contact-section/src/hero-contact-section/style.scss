@@ -1,0 +1,48 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+section#hero-contact-section {
+
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+
+	padding: clamp(16px, 5vw, 48px) clamp(16px, 4vw, 32px);
+	
+	@media(width < 999px) {
+		margin-left: 10px !important;
+		margin-right: 10px !important;
+	}
+
+
+	h1,
+	p {
+		margin: unset !important;
+		color: #1A4553;
+	}
+
+	p {
+		font-size: 16px;
+		font-weight: 400;
+	}
+
+	.big-icon {
+		max-width: 371px;
+		height: auto;
+		width: 100%;
+	}
+
+	.custom-button {
+		border-radius: 32px;
+		margin-top: 20px;
+	}
+
+	header {
+		display: grid;
+		gap: 20px;
+	}
+}
