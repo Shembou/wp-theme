@@ -187,6 +187,7 @@ function register_custom_blocks()
 	register_block_type( dirname(__FILE__) . '/blocks/tags-section/build/tags-section/block.json');
 	register_block_type( dirname(__FILE__) . '/blocks/detailed-employees-section/build/detailed-employees-section/block.json');
 	register_block_type( dirname(__FILE__) . '/blocks/hero-contact-section/build/hero-contact-section/block.json');
+	register_block_type( dirname(__FILE__) . '/blocks/employees-hero-section/build/employees-hero-section/block.json');
 }
 add_action('init', 'register_custom_blocks');
 
