@@ -29,6 +29,15 @@
           }
         }
       }
+    },
+    "tag": {
+      "type": "string"
+    },
+    "heading": {
+      "type": "string"
+    },
+    "paragraph": {
+      "type": "string"
     }
   }
 }

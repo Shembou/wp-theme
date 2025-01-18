@@ -32,7 +32,10 @@ import './editor.scss';
  */
 export default function Edit({ attributes, setAttributes }) {
 	const {
-		tags = []
+		tags = [],
+		tag = '',
+		heading = '',
+		paragraph = '',
 	} = attributes
 
 	const updateTags = (index, field, value) => {
@@ -64,6 +67,29 @@ export default function Edit({ attributes, setAttributes }) {
 	return (
 		<>
 			<InspectorControls>
+				<PanelBody title={__('Heading (optional use)', 'tags-section')}>
+					<PanelRow>
+						<TextControl
+							label={__('Tag', 'tags-section')}
+							value={tag || ''}
+							onChange={(value) => setAttributes({ tag: value })}
+						/>
+					</PanelRow>
+					<PanelRow>
+						<TextControl
+							label={__('Heading', 'tags-section')}
+							value={heading || ''}
+							onChange={(value) => setAttributes({ heading: value })}
+						/>
+					</PanelRow >
+					<PanelRow>
+						<TextControl
+							label={__('Paragraph', 'tags-section')}
+							value={paragraph || ''}
+							onChange={(value) => setAttributes({ paragraph: value })}
+						/>
+					</PanelRow>
+				</PanelBody>
 				<PanelBody title={__('Tags Settings', 'tags-section')} initialOpen={true}>
 					{tags.map((tag, index) => (
 						<React.Fragment key={index}>
@@ -100,11 +126,19 @@ export default function Edit({ attributes, setAttributes }) {
 				</PanelBody>
 			</InspectorControls>
 			<section {...useBlockProps()} id='tags-section'>
-				{tags.map(({ tag, url }, index) => (
-					<a className='tag' key={index} href={url}>
-						{tag}
-					</a>
-				))}
+				{heading != '' && <header>
+					<p className='tag'>{tag}</p>
+					<h2>{heading}</h2>
+					<p>{paragraph}</p>
+				</header>
+				}
+				<div className={`tags ${heading != '' ? 'heading-variant' : ''}`}>
+					{tags.map(({ tag, url }, index) => (
+						<a className='tag' key={index} href={url}>
+							{tag}
+						</a>
+					))}
+				</div>
 			</section>
 		</>
 	);

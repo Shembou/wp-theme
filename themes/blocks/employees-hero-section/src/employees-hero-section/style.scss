@@ -9,7 +9,7 @@
 	display: flex;
 	gap: 96px;
 	align-items: center;
-	justify-content: center;;
+	justify-content: center;
 	@media (width < 999px) {
 		flex-direction: column;
 		align-items: center;
@@ -206,7 +206,7 @@
 
 		h2,
 		p {
-			margin: unset;
+			margin: unset !important;
 		}
 	}
 }
