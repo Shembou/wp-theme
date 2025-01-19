@@ -1,14 +1,1 @@
-/*!*******************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/history-section/style.scss ***!
-  \*******************************************************************************************************************************************************************************************************************************************************/
-/**
- * The following styles get applied both on the front of your site
- * and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
- */
-.wp-block-create-block-history-section {
-  background-color: #21759b;
-  color: #fff;
-  padding: 2px;
-}
+section#history-section{overflow:hidden}@media(width < 999px){section#history-section{margin-right:10px!important;margin-left:10px!important}}section#history-section header{border-right:1px solid #1a4553;border-radius:32px;border-left:1px solid #1a4553;display:grid;font-size:14px;justify-content:center;justify-self:center;margin-bottom:8px;padding:4px 12px;width:-moz-fit-content;width:fit-content}section#history-section h2,section#history-section p{margin:unset!important}section#history-section .animation-wrapper{display:grid;gap:32px}section#history-section .animation-wrapper h2{color:#1a4553;font-size:32px;font-style:normal;font-weight:500;padding-bottom:16px}section#history-section .animation-wrapper p{color:#1a4553;font-size:16px;font-style:normal;font-weight:400;line-height:145%}section#history-section .animation-wrapper .wrapper{align-items:center;display:grid;max-width:586px;position:relative}section#history-section .animation-wrapper .wrapper:nth-child(4n+1){justify-self:flex-start}section#history-section .animation-wrapper .wrapper:nth-child(4n+2),section#history-section .animation-wrapper .wrapper:nth-child(4n+4){justify-self:center}section#history-section .animation-wrapper .wrapper:nth-child(4n+3){justify-self:flex-end}section#history-section .arrow-right{display:grid;justify-items:center;right:calc(100% + 45px);position:absolute;top:43%}section#history-section .arrow-right p{color:#1a4553;font-size:16px;font-style:normal;font-weight:400}@media(width < 1199px){section#history-section .arrow-right{display:none}}section#history-section .arrow-left{display:grid;justify-items:center;position:absolute;left:50%;top:50%}@media(width < 1199px){section#history-section .arrow-left{display:none}}section#history-section .arrow-left p{color:#1a4553;font-size:16px;font-style:normal;font-weight:400;position:absolute}section#history-section .arrow-left p.year-top{right:30%;top:-10%}section#history-section .arrow-left p.year-bottom{bottom:10%}
