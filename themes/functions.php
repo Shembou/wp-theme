@@ -190,6 +190,7 @@ function register_custom_blocks()
 	register_block_type( dirname(__FILE__) . '/blocks/employees-hero-section/build/employees-hero-section/block.json');
 	register_block_type( dirname(__FILE__) . '/blocks/history-section/build/history-section/block.json');
 	register_block_type( dirname(__FILE__) . '/blocks/blog-template/build/blog-template/block.json');
+	register_block_type( dirname(__FILE__) . '/blocks/blog-reference-section/build/blog-reference-section/block.json');
 }
 add_action('init', 'register_custom_blocks');
 
@@ -217,3 +218,64 @@ function theme_register_required_plugins() {
 
 // Hook into the 'tgmpa_register' action to register the required plugins
 add_action('tgmpa_register', 'theme_register_required_plugins');
+
+add_action( 'save_post', 'save_blog_post_callback' );
+
+function save_blog_post_callback( $post_id ) {
+
+    // verify post is not a revision
+    if ( ! wp_is_post_revision( $post_id ) ) {
+
+        // unhook this function to prevent infinite looping
+        remove_action( 'save_post', 'save_blog_post_callback' );
+
+		$post_title = get_post_field('post_title', $post_id);
+
+		$slug = sanitize_title_with_dashes($post_title);
+
+        // update the post slug
+        wp_update_post( array(
+            'ID' => $post_id,
+            'post_name' => $slug // do your thing here
+        ));
+
+        // re-hook this function
+        add_action( 'save_post', 'save_blog_post_callback' );
+
+    }
+}
+
+function set_custom_width() {
+    add_theme_support('align-wide');
+    
+    // Set maximum content width
+    if (!isset($content_width)) {
+        $content_width = 1400;
+    }
+}
+add_action('after_setup_theme', 'set_custom_width');
+
+function custom_gutenberg_width() {
+    echo '
+    <style>
+        .wp-block {
+            max-width: 1400px;
+        }
+        .editor-styles-wrapper .wp-block {
+            max-width: 1400px;
+        }
+        .editor-writing-flow {
+            max-width: 1400px;
+        }
+        .wp-block[data-align="wide"] {
+            max-width: 1400px;
+        }
+        .editor-styles-wrapper .wp-block[data-align="wide"] {
+            max-width: 1400px;
+        }
+    </style>
+    ';
+}
+add_action('admin_head', 'custom_gutenberg_width');
+
+add_theme_support('post-thumbnails');

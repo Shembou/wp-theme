@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",(function(){const o=window.location.hash;if("#blog-reference-section"===o){const e=document.querySelector(o);e&&e.scrollIntoView({behavior:"smooth"})}}));
