@@ -1,0 +1,47 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "create-block/blog-template",
+	"version": "0.1.0",
+	"title": "Blog Template",
+	"category": "common",
+	"icon": "layout",
+	"description": "Example block scaffolded with Create Block tool.",
+	"example": {},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"dimensions": {}
+	},
+	"textdomain": "blog-template",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript":"file:./view.js",
+	"attributes": {
+		"title": {
+			"type":"string"
+		},
+		"post_date": {
+			"type": "string"
+		},
+		"featured_image": {
+			"type": "string"
+		},
+		"selected_categories": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		},
+		"reading_time": {
+			"type": "number"
+		},
+		"table_of_contents": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		}
+	}
+}
