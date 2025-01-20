@@ -1,17 +1,16 @@
 <section <?php echo get_block_wrapper_attributes(); ?> id="blog-reference-section">
 
 <?php
-
 if (!function_exists('parse_blog_html')) {
     function parse_blog_html($content) {
-		if (empty($content)) {
-			return [
-				'reading_time' => 0,
-				'featured_image' => '',
-				'tags' => [],
-				'title' => ''
-			];
-		}
+        if (empty($content)) {
+            return [
+                'reading_time' => 0,
+                'featured_image' => '',
+                'tags' => [],
+                'title' => ''
+            ];
+        }
         // Load content into DOMDocument
         $dom = new DOMDocument();
         @$dom->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
@@ -64,6 +63,9 @@ $categories = get_categories([
     'hide_empty' => false,
 ]);
 
+// Get the current category from the URL
+$category_name = isset($_GET['category_name']) ? sanitize_text_field($_GET['category_name']) : '';
+
 // WP_Query arguments
 $args = [
     'post_type' => 'post',
@@ -72,6 +74,11 @@ $args = [
     'orderby' => 'date',
     'order' => 'DESC',
 ];
+
+// If a category is selected, add the category filter to the query
+if ($category_name) {
+    $args['category_name'] = $category_name;
+}
 
 $query = new WP_Query($args);
 ?>
@@ -82,14 +89,16 @@ $query = new WP_Query($args);
         <h2 class="heading"><?php echo esc_html($heading); ?></h2>
         <p><?php echo esc_html($paragraph); ?></p>
     </div>
-    <div class="categories">
-        <h3>Kategorie</h3>
-        <div class="categories-wrapper">
-            <?php foreach ($categories as $category) : ?>
-                <p class="tag"><?php echo esc_html($category->name); ?></p>
-            <?php endforeach; ?>
-        </div>
-    </div>
+	<div class="categories">
+		<h3>Kategorie</h3>
+		<div class="categories-wrapper">
+			<?php foreach ($categories as $category) : ?>
+				<a href="<?php echo esc_url(add_query_arg('category_name', $category->slug, get_permalink())); ?>" class="tag">
+					<?php echo esc_html($category->name); ?>
+				</a>
+			<?php endforeach; ?>
+		</div>
+	</div>
 </header>
 
 <?php if ($query->have_posts()) : ?>
@@ -129,21 +138,21 @@ $query = new WP_Query($args);
     </div>
 </section>
 
-	<?php if ($query->max_num_pages > 1) : ?>
-		<div class="pagination">
-			<?php
-			echo paginate_links([
-				'base' => str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999))) . '#blog-reference-section',
-				'format' => '?paged=%#%#blog-reference-section',
-				'current' => $current_page,
-				'total' => $query->max_num_pages,
-				'prev_text' => __('Poprzedni'),
-				'next_text' => __('Następny'),
-				'type' => 'list',
-			]);
-			?>
-		</div>
-	<?php endif; ?>
+<?php if ($query->max_num_pages > 1) : ?>
+    <div class="pagination">
+        <?php
+        echo paginate_links([
+            'base' => str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999))) . '#blog-reference-section',
+            'format' => '?paged=%#%#blog-reference-section',
+            'current' => $current_page,
+            'total' => $query->max_num_pages,
+            'prev_text' => __('Poprzedni'),
+            'next_text' => __('Następny'),
+            'type' => 'list',
+        ]);
+        ?>
+    </div>
+<?php endif; ?>
 <?php endif; ?>
 
 <?php wp_reset_postdata(); ?>
