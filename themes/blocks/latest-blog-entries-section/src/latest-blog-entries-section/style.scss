@@ -1,0 +1,160 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+section#latest-blog-entries-section {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 16px;
+
+	@media (width < 1099px) {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	@media (width < 699px) {
+		grid-template-columns: 1fr;
+	}
+
+	.blog-post {
+		display: grid;
+
+		.image-wrapper {
+			position: relative;
+
+			.reading-time {
+				position: absolute;
+				top: 10%;
+				left: 10%;
+				border-radius: 500px;
+				border: 1px solid #A4C8D4;
+				background: #DDF6FE;
+				padding: 8px 16px 8px 20px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				gap: 8px;
+				transform: translate(-10%, -50%);
+				font-size: 16px;
+			}
+
+			img {
+				width: 100%;
+				object-fit: cover;
+				height: 100%;
+				border-radius: 24px;
+			}
+		}
+
+		.blog-contents-wrapper {
+			displaY: grid;
+			gap: 24px;
+			border: 1px solid #EEE;
+			background: #FFF;
+			padding: 0px 24px 24px 24px;
+			border-radius: 24px;
+			z-index: 1;
+			margin-top: -24px;
+		}
+
+		.wrapper {
+			align-self: center;
+
+			h2 {
+				color: #1A4553;
+				font-size: 20px;
+				font-style: normal;
+				font-weight: 400;
+			}
+		}
+	}
+
+	header {
+		display: grid;
+		padding: 24px;
+		gap:30px;
+
+		@media (width < 1099px) {
+			grid-column: -1 / 1;
+			justify-self: center;
+		}
+
+		@media( width < 699px) {
+			grid-column: unset;
+		}
+
+		h2,
+		p {
+			margin: unset !important;
+		}
+
+		.wrapper {
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+		}
+
+		.tag {
+			padding: 4px 12px;
+			border-radius: 32px;
+			border-right: 1px solid #1A4553;
+			border-left: 1px solid #1A4553;
+			font-size: 14px;
+			font-weight: 500;
+			width: fit-content;
+		}
+
+		h2 {
+			color: #1A4553;
+			font-size: 32px;
+			font-weight: 500;
+			margin-top: 8px;
+		}
+
+		p {
+			color: #1A4553;
+			font-size: 16px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: 145%;
+		}
+
+		.custom-button {
+			align-self: flex-end;
+		}
+	}
+	.custom-button {
+		width: fit-content;
+		display: flex;
+		padding: 8px 16px 8px 20px;
+		justify-content: center;
+		align-items: center;
+		gap: 8px;
+		flex: 1 0 0;
+		align-self: stretch;
+		border-radius: 32px;
+		border: 1px solid #5D9AAF;
+		background: #164352;
+		color: #F9FDFF;
+		font-size: 16px;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+
+		div {
+			align-self: center;
+			display: grid;
+			justify-self: center;
+		}
+
+		&.secondary {
+			background: #FFF;
+			border: 1px solid #A4C8D4;
+			color: #1A4553;
+		}
+	}
+}

@@ -16,7 +16,7 @@ export default function parseBlogHTML(htmlString) {
             .map(tag => tag.textContent);
 
         // Extract title
-        const title = doc.querySelector('.wp-block-heading')?.textContent || '';
+        const title = doc.querySelector('.post-title')?.textContent || '';
 
         return {
             reading_time: readingTime,

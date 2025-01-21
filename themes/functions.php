@@ -192,6 +192,7 @@ function register_custom_blocks()
 	register_block_type( dirname(__FILE__) . '/blocks/blog-template/build/blog-template/block.json');
 	register_block_type( dirname(__FILE__) . '/blocks/blog-reference-section/build/blog-reference-section/block.json');
 	register_block_type( dirname(__FILE__) . '/blocks/simple-hero-section/build/simple-hero-section/block.json');
+	register_block_type( dirname(__FILE__) . '/blocks/latest-blog-entries-section/build/latest-blog-entries-section/block.json');
 }
 add_action('init', 'register_custom_blocks');
 
