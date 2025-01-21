@@ -22,18 +22,35 @@ export default function save({ attributes }) {
 		paragraph = '',
 		leftImage = '',
 		rightImage = '',
+		isReversed
 	} = attributes
 	return (
 		<section {...useBlockProps.save()} id="stacked-images-section">
-			<header>
-				<p className='tag'>{tag}</p>
-				<h2>{heading}</h2>
-				<p className='paragraph'>{paragraph}</p>
-			</header>
-			<div>
-				<img src={leftImage} className='image-left' />
-				<img src={rightImage} className='image-right' />
-			</div>
+			{isReversed ?
+				<>
+					<div>
+						<img src={leftImage} className='image-left' />
+						<img src={rightImage} className='image-right' />
+					</div>
+					<header>
+						<p className='tag'>{tag}</p>
+						<h2>{heading}</h2>
+						<p className='paragraph'>{paragraph}</p>
+					</header>
+				</>
+				:
+				<>
+					<header>
+						<p className='tag'>{tag}</p>
+						<h2>{heading}</h2>
+						<p className='paragraph'>{paragraph}</p>
+					</header>
+					<div>
+						<img src={leftImage} className='image-left' />
+						<img src={rightImage} className='image-right' />
+					</div>
+				</>
+			}
 		</section>
 	);
 }

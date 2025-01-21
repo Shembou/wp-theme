@@ -12,7 +12,7 @@ import { __ } from '@wordpress/i18n';
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 import { InspectorControls, useBlockProps, MediaUpload } from '@wordpress/block-editor';
-import { PanelBody, PanelRow, TextareaControl, TextControl, Button } from '@wordpress/components';
+import { PanelBody, PanelRow, TextareaControl, TextControl, Button, ToggleControl } from '@wordpress/components';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -37,6 +37,7 @@ export default function Edit({ attributes, setAttributes }) {
 		paragraph = '',
 		leftImage = '',
 		rightImage = '',
+		isReversed,
 	} = attributes
 	return (
 		<>
@@ -61,6 +62,13 @@ export default function Edit({ attributes, setAttributes }) {
 							label={__('paragraph', 'stacked-images-section')}
 							value={paragraph || ''}
 							onChange={(value) => setAttributes({ paragraph: value })}
+						/>
+					</PanelRow>
+					<PanelRow>
+						<ToggleControl
+							label={__('Reverse Layout', 'stacked-images-section')}
+							checked={isReversed}
+							onChange={(value) => setAttributes({ isReversed: value })}
 						/>
 					</PanelRow>
 				</PanelBody>
@@ -142,15 +150,31 @@ export default function Edit({ attributes, setAttributes }) {
 				</PanelBody>
 			</InspectorControls>
 			<section {...useBlockProps()} id="stacked-images-section">
-				<header>
-					<p className='tag'>{tag}</p>
-					<h2>{heading}</h2>
-					<p className='paragraph'>{paragraph}</p>
-				</header>
-				<div>
-					<img src={leftImage} className='image-left'/>
-					<img src={rightImage} className='image-right'/>
-				</div>
+				{isReversed ?
+					<>
+						<div>
+							<img src={leftImage} className='image-left' />
+							<img src={rightImage} className='image-right' />
+						</div>
+						<header>
+							<p className='tag'>{tag}</p>
+							<h2>{heading}</h2>
+							<p className='paragraph'>{paragraph}</p>
+						</header>
+					</>
+					:
+					<>
+						<header>
+							<p className='tag'>{tag}</p>
+							<h2>{heading}</h2>
+							<p className='paragraph'>{paragraph}</p>
+						</header>
+						<div>
+							<img src={leftImage} className='image-left' />
+							<img src={rightImage} className='image-right' />
+						</div>
+					</>
+				}
 			</section>
 		</>
 	);

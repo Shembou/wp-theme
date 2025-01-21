@@ -30,6 +30,10 @@
     },
     "rightImage": {
       "type": "string"
+    },
+    "isReversed": {
+      "type": "boolean",
+      "default": "false"
     }
   }
 }
