@@ -1,0 +1,79 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+section#simple-hero-section {
+	border-radius: 32px;
+	border: 1px solid #EEE;
+	background: #FFF;
+
+	.wrapper {
+		padding: 48px 32px;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: flex-start;
+
+		gap: 30px;
+
+		header {
+			display: grid;
+			gap: 20px;
+
+			.custom-button {
+				margin-top: 20px;
+				border-radius: 32px;
+				width: fit-content;
+				display: flex;
+				padding: 8px 16px 8px 20px;
+				justify-content: center;
+				align-items: center;
+				gap: 8px;
+				align-self: stretch;
+				border-radius: 32px;
+				border: 1px solid #5D9AAF;
+				background: #164352;
+				color: #F9FDFF;
+				font-size: 16px;
+				text-decoration: none;
+
+				&:hover {
+					text-decoration: underline;
+				}
+
+				div {
+					align-self: center;
+					display: grid;
+					justify-self: center;
+				}
+
+				&.secondary {
+					background: #FFF;
+					border: 1px solid #A4C8D4;
+					color: #1A4553;
+				}
+			}
+
+
+			max-width: 576px;
+		}
+
+		h1,
+		p {
+			color: #1A4553;
+			margin: unset;
+		}
+
+		img {
+			max-width: 417px;
+			height: auto;
+			border-radius: 24px;
+			width: 100%;
+		}
+	}
+
+
+}
