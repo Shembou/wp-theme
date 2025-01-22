@@ -194,6 +194,7 @@ function register_custom_blocks()
 	register_block_type( dirname(__FILE__) . '/blocks/simple-hero-section/build/simple-hero-section/block.json');
 	register_block_type( dirname(__FILE__) . '/blocks/latest-blog-entries-section/build/latest-blog-entries-section/block.json');
 	register_block_type( dirname(__FILE__) . '/blocks/common/header-button-with-icon/build/header-button-with-icon/block.json');
+	register_block_type( dirname(__FILE__) . '/blocks/common/footer-button-with-icon/build/footer-button-with-icon/block.json');
 }
 add_action('init', 'register_custom_blocks');
 
@@ -282,3 +283,11 @@ function custom_gutenberg_width() {
 add_action('admin_head', 'custom_gutenberg_width');
 
 add_theme_support('post-thumbnails');
+
+add_filter( 'the_title', 'remove_page_titles', 10, 2 );
+function remove_page_titles( $title, $id ) {
+    if ( is_page() && in_the_loop() ) {
+        return ''; // Return empty to remove the title
+    }
+    return $title;
+}

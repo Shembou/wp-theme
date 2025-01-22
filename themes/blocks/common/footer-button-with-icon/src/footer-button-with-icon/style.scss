@@ -1,0 +1,25 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+a#footer-button {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	color: #1A4553;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	padding: 10px 0px;
+	transition: all 0.4s ease-in-out;
+	width: fit-content;
+	text-decoration: none;
+	align-items: center;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
