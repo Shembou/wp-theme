@@ -1,0 +1,63 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+div#copy-text-button {
+	display: flex;
+	gap: 32px;
+	flex-wrap: wrap;
+	align-content: center;
+	align-items: center;
+	width: fit-content;
+
+	.info {
+		display: flex;
+		gap: 8px;
+	}
+
+	.icon {
+		padding: 8px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 500px;
+		background: #DDF6FE;
+	}
+
+	.copy-button {
+		padding: 2px 6px;
+		justify-content: center;
+		align-items: center;
+		border-radius: 500px;
+		border: 1px solid #B9DAE5;
+		background: #DDF6FE;
+		color: #1A4553;
+		font-size: 14px;
+		font-weight: 400;
+		transition: all 0.2s ease-in-out; // Smooth transition for hover effects
+
+		&:hover {
+			cursor: pointer;
+			background: #c5edf9; // Slightly darker background on hover
+			border-color: #9ccdda; // Slightly darker border color
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Add a subtle shadow
+		}
+
+		&:active {
+			transform: scale(0.95); // Shrink slightly on click
+			box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); // Reduce shadow on active
+		}
+
+		&:focus {
+			outline: none; // Remove default outline
+			box-shadow: 0 0 0 3px rgba(185, 218, 229, 0.5); // Custom focus ring
+		}
+	}
+
+	p {
+		margin: unset !important
+	}
+}
