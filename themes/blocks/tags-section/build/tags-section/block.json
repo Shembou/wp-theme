@@ -4,8 +4,8 @@
   "name": "create-block/tags-section",
   "version": "0.1.0",
   "title": "Tags Section",
-  "category": "widgets",
-  "icon": "smiley",
+  "category": "theme",
+  "icon": "tag",
   "description": "Example block scaffolded with Create Block tool.",
   "example": {},
   "supports": {

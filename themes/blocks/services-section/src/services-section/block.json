@@ -5,7 +5,7 @@
 	"version": "0.1.0",
 	"title": "Services Section",
 	"category": "theme",
-	"icon": "table",
+	"icon": "editor-table",
 	"description": "Example block scaffolded with Create Block tool.",
 	"example": {},
 	"supports": {

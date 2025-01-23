@@ -4,8 +4,8 @@
   "name": "create-block/enumerated-tiles-section",
   "version": "0.1.0",
   "title": "Enumerated Tiles Section",
-  "category": "widgets",
-  "icon": "smiley",
+  "category": "theme",
+  "icon": "editor-ol",
   "description": "Example block scaffolded with Create Block tool.",
   "example": {},
   "supports": {

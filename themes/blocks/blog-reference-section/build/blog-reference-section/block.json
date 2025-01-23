@@ -5,8 +5,8 @@
   "version": "0.1.0",
   "title": "Blog Reference Section",
   "category": "theme",
-  "icon": "book-alt",
-  "description": "Example block scaffolded with Create Block tool.",
+  "icon": "admin-post",
+  "description": "Blog reference section created with block scaffold.",
   "example": {},
   "supports": {
     "html": false
