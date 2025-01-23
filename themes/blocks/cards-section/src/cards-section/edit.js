@@ -119,8 +119,7 @@ export default function Edit({ attributes, setAttributes }) {
 	};
 
 	const onCornerImageSelectSvg = async (media, cardIndex, card) => {
-		const svgContent = await fetchCornerImageSvg(media)
-		updateCard(cardIndex, 'cornerImage', svgContent)
+		updateCard(cardIndex, 'cornerImage', media.url)
 	}
 
 	// Render controls for pins
@@ -184,7 +183,7 @@ export default function Edit({ attributes, setAttributes }) {
 				/>
 				<MediaUpload
 					onSelect={(media) => onCornerImageSelectSvg(media, cardIndex, card)}
-					allowedTypes={['image/svg+xml']}
+					allowedTypes={['image']}
 					render={({ open }) => (
 						<Button
 							onClick={open}
@@ -291,7 +290,7 @@ export default function Edit({ attributes, setAttributes }) {
 									/>
 								</>
 							</CustomButton>
-							<div dangerouslySetInnerHTML={{ __html: card.cornerImage }} />
+							<img className={`corner-image ${index % 2 == 0 ? 'even' : 'odd'}`} src={card.cornerImage} />
 						</div>
 					);
 				})}
