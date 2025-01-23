@@ -4,7 +4,7 @@
 	"name": "create-block/services-section",
 	"version": "0.1.0",
 	"title": "Services Section",
-	"category": "widgets",
+	"category": "theme",
 	"icon": "table",
 	"description": "Example block scaffolded with Create Block tool.",
 	"example": {},

@@ -4,7 +4,7 @@
   "name": "create-block/cards-section",
   "version": "0.1.0",
   "title": "Cards Section",
-  "category": "widgets",
+  "category": "theme",
   "icon": "grid",
   "description": "Example block scaffolded with Create Block tool.",
   "example": {},

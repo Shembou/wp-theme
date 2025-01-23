@@ -4,8 +4,8 @@
 	"name": "create-block/simple-cta-section",
 	"version": "0.1.0",
 	"title": "Simple Cta Section",
-	"category": "widgets",
-	"icon": "smiley",
+	"category": "theme",
+	"icon": "editor-contract",
 	"description": "Example block scaffolded with Create Block tool.",
 	"example": {},
 	"supports": {

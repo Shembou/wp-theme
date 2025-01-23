@@ -4,8 +4,8 @@
 	"name": "create-block/header-button-with-icon",
 	"version": "0.1.0",
 	"title": "Header Button With Icon",
-	"category": "widgets",
-	"icon": "smiley",
+	"category": "common",
+	"icon": "button",
 	"description": "Example block scaffolded with Create Block tool.",
 	"example": {},
 	"supports": {

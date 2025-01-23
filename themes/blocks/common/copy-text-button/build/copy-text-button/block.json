@@ -4,8 +4,8 @@
   "name": "create-block/copy-text-button",
   "version": "0.1.0",
   "title": "Copy Text Button",
-  "category": "widgets",
-  "icon": "smiley",
+  "category": "common",
+  "icon": "button",
   "description": "Example block scaffolded with Create Block tool.",
   "example": {},
   "supports": {

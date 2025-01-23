@@ -4,8 +4,8 @@
 	"name": "create-block/stacked-images-section",
 	"version": "0.1.0",
 	"title": "Stacked Images Section",
-	"category": "widgets",
-	"icon": "smiley",
+	"category": "theme",
+	"icon": "images-alt",
 	"description": "Example block scaffolded with Create Block tool.",
 	"example": {},
 	"supports": {
