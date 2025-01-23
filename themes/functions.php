@@ -278,6 +278,9 @@ function custom_gutenberg_width() {
         .editor-styles-wrapper .wp-block[data-align="wide"] {
             max-width: 1400px;
         }
+		.wp-block-group.alignfull {
+			max-width: 1400px;
+		}
     </style>
     ';
 }
