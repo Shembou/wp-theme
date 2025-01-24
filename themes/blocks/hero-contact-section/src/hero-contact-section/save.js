@@ -5,6 +5,7 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 import { useBlockProps } from '@wordpress/block-editor';
+import CustomButton from '../../../common/CustomButton';
 
 /**
  * The save function defines the way in which the different attributes should
@@ -15,10 +16,31 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @return {Element} Element to render.
  */
-export default function save() {
+export default function save({ attributes }) {
+
+	const {
+		heading = '',
+		paragraph = '',
+		button = {
+			url: '',
+			text: '',
+			svg: ''
+		},
+		image = '',
+	} = attributes
 	return (
-		<p { ...useBlockProps.save() }>
-			{ 'Hero Contact Section – hello from the saved content!' }
-		</p>
+		<section {...useBlockProps.save()} id="hero-contact-section">
+			<div className='wrapper'>
+				<header>
+					<h1>{heading}</h1>
+					<p>{paragraph}</p>
+					<CustomButton {...button}>
+						{button.text}
+						<img src={button.svg} />
+					</CustomButton>
+				</header>
+				<img src={image} className='big-icon' />
+			</div>
+		</section>
 	);
 }

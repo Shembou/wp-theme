@@ -145,15 +145,17 @@ export default function Edit({ attributes, setAttributes }) {
 				</PanelBody>
 			</InspectorControls>
 			<section {...useBlockProps()} id="hero-contact-section">
-				<header>
-					<h1>{heading}</h1>
-					<p>{paragraph}</p>
-					<CustomButton {...button}>
-						{button.text}
-						<img src={button.svg} />
-					</CustomButton>
-				</header>
-				<img src={image} className='big-icon' />
+				<div className='wrapper'>
+					<header>
+						<h1>{heading}</h1>
+						<p>{paragraph}</p>
+						<CustomButton {...button}>
+							{button.text}
+							<img src={button.svg} />
+						</CustomButton>
+					</header>
+					<img src={image} className='big-icon' />
+				</div>
 			</section>
 		</>
 	);
