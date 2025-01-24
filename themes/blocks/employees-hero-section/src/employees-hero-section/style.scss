@@ -19,8 +19,6 @@ section#employees-hero-section {
 		@media (width < 999px) {
 			flex-direction: column;
 			align-items: center;
-			margin-left: 10px !important;
-			margin-right: 10px !important;
 		}
 
 		.elipses {
@@ -32,7 +30,7 @@ section#employees-hero-section {
 			justify-content: center;
 			align-items: center;
 
-			@media (width <=500px) {
+			@media (width <=580px) {
 				width: 300px;
 				min-width: unset;
 				height: 300px;
@@ -108,7 +106,7 @@ section#employees-hero-section {
 			border: 5px solid rgba(195, 222, 231, 0.50);
 			background: #FFF;
 
-			@media (width <=500px) {
+			@media (width <=580px) {
 				width: 80px;
 				height: 80px;
 				padding: 10px;
@@ -133,7 +131,7 @@ section#employees-hero-section {
 			object-fit: cover;
 			border: 2px solid #DDF6FE;
 
-			@media (width <=500px) {
+			@media (width <=580px) {
 				width: 80px;
 				height: 80px;
 			}
