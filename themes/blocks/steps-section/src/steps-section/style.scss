@@ -11,11 +11,6 @@ section#steps-section {
 	align-items: flex-start;
 	flex-wrap: wrap;
 
-	@media (width < 999px) {
-		margin-left: 10px !important;
-		margin-right: 10px !important;
-	}
-
 	header {
 		display: grid;
 		gap: 8px;
