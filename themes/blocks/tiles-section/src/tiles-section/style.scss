@@ -12,8 +12,6 @@ div#tiles-section {
 
 	@media (width < 999px) {
 		grid-template-columns: 1fr 1fr;
-		margin-left: 10px !important;
-		margin-right: 10px !important;
 	}
 
 	@media (width < 778px) {
