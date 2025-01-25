@@ -27,12 +27,12 @@ export default function save({ attributes }) {
 				{tag}
 			</header>
 			<div className='animation-wrapper'>
-				{history_showcase.map(({ heading, paragraph, year }, index) => (
+				{history_showcase && history_showcase.map(({ heading, paragraph, year }, index) => (
 					<div className={`wrapper`} key={index}>
 						{index == 1 &&
 							<div className='arrow-left'>
 								<p className='year-top'>{year} r.</p>
-								<p className='year-bottom'>{history_showcase[2].year} r,</p>
+								{history_showcase[2] && <p className='year-bottom'>{history_showcase[2].year} r,</p>}
 								<ArrowLeft />
 							</div>
 						}
