@@ -9,10 +9,6 @@ section#services-section {
 	display: grid;
 	gap: 64px;
 
-	@media (width < 999px) {
-		margin-left: 10px !important;
-		margin-right: 10px !important;
-	}
 
 	header {
 		display: grid;
@@ -26,8 +22,9 @@ section#services-section {
 			padding: 4px 12px;
 			justify-content: center;
 			align-items: center;
-			width: min-content;
+			width: fit-content;
 			justify-self: center;
+			font-size: 14px;
 		}
 
 		h2 {
