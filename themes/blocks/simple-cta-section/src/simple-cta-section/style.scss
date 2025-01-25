@@ -10,13 +10,13 @@ div#simple-cta-section {
 	flex-direction: column;
 	justify-content: center;
 
-	@media (width < 999px) {
-		margin-left: 10px !important;
-		margin-right: 10px !important;
-	}
 
 	h2 {
 		text-align: center;
+		font-size: 24px;
+		color: #1A4553;
+		font-style: normal;
+		font-weight: 400;
 	}
 
 	.buttons-wrapper {
