@@ -1,25 +1,28 @@
-/**
- * Use this file for JavaScript code that you want to run in the front-end
- * on posts/pages that contain this block.
- *
- * When this file is defined as the value of the `viewScript` property
- * in `block.json` it will be enqueued on the front end of the site.
- *
- * Example:
- *
- * ```js
- * {
- *   "viewScript": "file:./view.js"
- * }
- * ```
- *
- * If you're not making any changes to this file because your project doesn't need any
- * JavaScript running in the front-end, then you should delete this file and remove
- * the `viewScript` property from `block.json`.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-metadata/#view-script
- */
+document.addEventListener('DOMContentLoaded', () => {
+    // Select all anchor links with hashes (e.g., <a href="#section">)
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
 
-/* eslint-disable no-console */
-console.log( 'Hello World! (from create-block-privacy-policy-template block)' );
-/* eslint-enable no-console */
+    anchorLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            // Prevent default anchor behavior
+            e.preventDefault();
+
+            // Get the target element by its ID
+            const targetId = link.getAttribute('href').substring(1); // Remove the '#' from the href
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                // Adjust for fixed header (optional: set your header height here)
+                const headerOffset = document.querySelector('.fixed-header')?.offsetHeight || 50;
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+                // Smooth scroll to the adjusted position
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+});

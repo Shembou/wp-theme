@@ -4,7 +4,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
 /**
  * The save function defines the way in which the different attributes should
@@ -15,10 +15,31 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @return {Element} Element to render.
  */
-export default function save() {
+export default function save({ attributes }) {
+	const {
+		table_of_contents
+	} = attributes
+
 	return (
-		<p { ...useBlockProps.save() }>
-			{ 'Privacy Policy Template – hello from the saved content!' }
-		</p>
+		<section {...useBlockProps.save()} id="privacy-policy-section">
+			{table_of_contents?.length > 0 ? (
+				<div className='table-of-contents'>
+					<div className='contents-wrapper'>
+						<h2>Table of contents</h2>
+						{table_of_contents.map((heading, index) => (
+							<a href={`#${heading}`} key={index} className='toc-link'>
+								{heading.replace(/-/g, ' ')}
+							</a>
+						))}
+					</div>
+				</div>
+			) : (
+				<p>Add headings to generate table of contents</p>
+			)}
+
+			<div className="post-content">
+				<InnerBlocks.Content />
+			</div>
+		</section>
 	);
 }
