@@ -196,6 +196,7 @@ function register_custom_blocks()
 	register_block_type( dirname(__FILE__) . '/blocks/common/header-button-with-icon/build/header-button-with-icon/block.json');
 	register_block_type( dirname(__FILE__) . '/blocks/common/footer-button-with-icon/build/footer-button-with-icon/block.json');
 	register_block_type( dirname(__FILE__) . '/blocks/common/copy-text-button/build/copy-text-button/block.json');
+	register_block_type( dirname(__FILE__) . '/blocks/privacy-policy-template/build/privacy-policy-template/block.json');
 }
 add_action('init', 'register_custom_blocks');
 
