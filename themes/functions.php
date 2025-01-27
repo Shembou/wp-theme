@@ -226,6 +226,16 @@ function theme_register_required_plugins() {
 			'force_deactivation' => false, // Set to false to avoid forced deactivation
 			'external_url'       => '', // External URL if the plugin is hosted outside the WordPress.org repository
 		),
+		// Contact Form 7 Plugin
+		array(
+			'name'               => 'Contact Form 7', // Plugin name
+			'slug'               => 'contact-form-7', // Plugin slug (the plugin directory name)
+			'required'           => true, // Set to true to make this plugin required
+			'version'            => '', // Specify version if you need a specific one
+			'force_activation'   => false, // Set to false to avoid forced activation
+			'force_deactivation' => false, // Set to false to avoid forced deactivation
+			'external_url'       => '', // External URL if the plugin is hosted outside the WordPress.org repository
+		),
     );
 
     // Call to action hook to register the plugins
