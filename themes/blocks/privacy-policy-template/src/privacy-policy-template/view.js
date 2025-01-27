@@ -1,8 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Select all anchor links with hashes (e.g., <a href="#section">)
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
-    const toc = document.querySelector('.table-of-contents');
     const section = document.querySelector('#privacy-policy-section');
+    if (!section) {
+        return;
+    }
+    const toc = section.querySelector('.table-of-contents');
 
     anchorLinks.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -27,17 +30,29 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-    if (toc && section) {
+
+    if (section && toc) {
         const updatePosition = () => {
             const sectionRect = section.getBoundingClientRect();
+            const tocHeight = toc.offsetHeight;
+            const sectionHeight = section.offsetHeight;
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
             if (window.innerWidth >= 999) {  // Only apply on desktop
-                if (sectionRect.top <= 40) {
+                // Calculate the point where TOC should stop being fixed
+                const bottomLimit = sectionRect.bottom - tocHeight - 40; // 40 is the top offset
+
+                if (sectionRect.top <= 40 && bottomLimit > 0) {
                     toc.style.position = 'fixed';
                     toc.style.top = '40px';
                     toc.style.width = '300px';
-                    toc.style.left = `${sectionRect.left}px`; // Add this to maintain horizontal position
+                    toc.style.left = `${sectionRect.left}px`;
+                } else if (bottomLimit <= 0) {
+                    // When we reach the bottom of the section, switch to absolute positioning
+                    toc.style.position = 'absolute';
+                    toc.style.top = `${sectionHeight - tocHeight}px`;
+                    toc.style.left = '0';
+                    toc.style.width = '300px';
                 } else {
                     toc.style.position = 'relative';
                     toc.style.top = '0';
