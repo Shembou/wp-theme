@@ -23,23 +23,22 @@ export default function save({ attributes }) {
 	return (
 		<section {...useBlockProps.save()} id="privacy-policy-section">
 			{table_of_contents?.length > 0 ? (
-				<div className='table-of-contents'>
-					<div className='contents-wrapper'>
-						<h2>Table of contents</h2>
-						{table_of_contents.map((heading, index) => (
-							<a href={`#${heading}`} key={index} className='toc-link'>
-								{heading.replace(/-/g, ' ')}
-							</a>
-						))}
-					</div>
+				<div className="table-of-contents">
+					<h2>Spis treści:</h2>
+					{table_of_contents.map((heading, index) => (
+						<a href={`#${heading}`} key={index} className="toc-link">
+							{heading.replace(/-/g, ' ')}
+						</a>
+					))}
 				</div>
 			) : (
-				<p>Add headings to generate table of contents</p>
+				<p>{__('Add headings to generate table of contents')}</p>
 			)}
 
 			<div className="post-content">
 				<InnerBlocks.Content />
 			</div>
 		</section>
+
 	);
 }

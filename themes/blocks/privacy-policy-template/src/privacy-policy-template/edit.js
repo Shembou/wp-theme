@@ -49,14 +49,12 @@ export default function Edit({ attributes, setAttributes }) {
 		<section {...useBlockProps()} id="privacy-policy-section">
 			{table_of_contents?.length > 0 ? (
 				<div className="table-of-contents">
-					<div className="contents-wrapper">
-						<h2>{__('Table of Contents')}</h2>
-						{table_of_contents.map((heading, index) => (
-							<a href={`#${heading}`} key={index} className="toc-link">
-								{heading.replace(/-/g, ' ')}
-							</a>
-						))}
-					</div>
+					<h2>Spis treści:</h2>
+					{table_of_contents.map((heading, index) => (
+						<a href={`#${heading}`} key={index} className="toc-link">
+							{heading.replace(/-/g, ' ')}
+						</a>
+					))}
 				</div>
 			) : (
 				<p>{__('Add headings to generate table of contents')}</p>

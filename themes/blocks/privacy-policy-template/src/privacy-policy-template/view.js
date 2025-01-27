@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Select all anchor links with hashes (e.g., <a href="#section">)
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    const toc = document.querySelector('.table-of-contents');
+    const section = document.querySelector('#privacy-policy-section');
 
     anchorLinks.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -25,4 +27,34 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+    if (toc && section) {
+        const updatePosition = () => {
+            const sectionRect = section.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (window.innerWidth >= 999) {  // Only apply on desktop
+                if (sectionRect.top <= 40) {
+                    toc.style.position = 'fixed';
+                    toc.style.top = '40px';
+                    toc.style.width = '300px';
+                    toc.style.left = `${sectionRect.left}px`; // Add this to maintain horizontal position
+                } else {
+                    toc.style.position = 'relative';
+                    toc.style.top = '0';
+                    toc.style.left = '0';
+                    toc.style.width = '300px';
+                }
+            } else {
+                // Reset styles on mobile
+                toc.style.position = 'relative';
+                toc.style.top = '0';
+                toc.style.left = '0';
+                toc.style.width = `calc(100% - 64px)`;
+            }
+        };
+
+        window.addEventListener('scroll', updatePosition);
+        window.addEventListener('resize', updatePosition);
+        updatePosition(); // Call once on load
+    }
 });

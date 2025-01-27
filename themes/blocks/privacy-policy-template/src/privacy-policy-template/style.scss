@@ -6,25 +6,13 @@
  */
 
 section#privacy-policy-section {
-	display: flex;
-	flex-wrap: nowrap;
+	display: grid;
+	grid-template-columns: 364px 1fr;
 	gap: 64px;
+	position: relative;
 
 	@media (width < 999px) {
-		flex-wrap: wrap;
-	}
-
-	.contents-wrapper {
-		min-width: 300px;
-		display: flex;
-		flex-direction: column;
-		gap: 48px;
-
-		@media (width < 999px) {
-			width: 100vw;
-			margin: auto;
-		}
-
+		grid-template-columns: 1fr;
 	}
 
 	ul {
@@ -53,49 +41,68 @@ section#privacy-policy-section {
 	}
 
 	.table-of-contents {
-		height: 100%;
+		display: grid;
+		top: 40px;
+		height: fit-content;
+		align-items: start;
+		align-self: start;
+		width: 364px;
+		z-index: 10;
 
-		.contents-wrapper {
-			display: flex;
-			flex-direction: column;
-			gap: 24px;
-			padding: 32px;
-			border-radius: 32px;
-			background: #FFF;
-			box-shadow: -219px 0px 61px 0px #DDF6FE, -140px 0px 56px 0px rgba(221, 246, 254, 0.01), -79px 0px 47px 0px rgba(221, 246, 254, 0.05), -35px 0px 35px 0px rgba(221, 246, 254, 0.09);
-			max-height: 50vh;
-			overflow-y: auto;
-			top: 50px;
-			position: sticky;
-			align-self: flex-start;
+		@media (width < 999px) {
+			width: 100vw;
+			margin: auto;
+			position: unset;
+		}
 
-			h2 {
-				color: #1A4553;
-				font-size: 32px;
-				font-style: normal;
-				font-weight: 500;
-			}
+		gap: 24px;
+		padding: 32px;
+		border-radius: 32px;
+		background: #FFFFFF;
+		box-shadow: -219px 0px 61px 0px #DDF6FE,
+		-140px 0px 56px 0px rgba(221, 246, 254, 0.01),
+		-79px 0px 47px 0px rgba(221, 246, 254, 0.05),
+		-35px 0px 35px 0px rgba(221, 246, 254, 0.09);
+		max-height: 50vh;
+		overflow-y: auto;
 
-			a {
-				color: #1A4553;
-				font-size: 16px;
-				font-style: normal;
-				font-weight: 400;
-				text-decoration-line: underline;
-				text-decoration-style: solid;
-				text-underline-offset: auto;
 
-			}
+		h2 {
+			color: #1A4553;
+			font-size: 32px;
+			font-style: normal;
+			font-weight: 500;
+		}
 
-			h2,
-			a {
-				padding: unset !important;
-				margin: unset !important
-			}
+		a {
+			color: #1A4553;
+			font-size: 16px;
+			font-style: normal;
+			font-weight: 400;
+			text-decoration-line: underline;
+			text-decoration-style: solid;
+			text-underline-offset: auto;
+
+		}
+
+		h2,
+		a {
+			padding: unset !important;
+			margin: unset !important
 		}
 	}
 
 	.toc-link {
 		width: fit-content !important;
+	}
+
+	.post-content {
+		display: flex;
+		flex-direction: column;
+		grid-column: 2;
+
+		@media (width < 999px) {
+			grid-column: 1; // On mobile, use full width
+		}
 	}
 }
