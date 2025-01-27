@@ -4,8 +4,8 @@
   "name": "create-block/contact-form-section",
   "version": "0.1.0",
   "title": "Contact Form Section",
-  "category": "widgets",
-  "icon": "smiley",
+  "category": "theme",
+  "icon": "feedback",
   "description": "Example block scaffolded with Create Block tool.",
   "example": {},
   "supports": {
