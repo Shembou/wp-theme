@@ -197,6 +197,7 @@ function register_custom_blocks()
 	register_block_type( dirname(__FILE__) . '/blocks/common/footer-button-with-icon/build/footer-button-with-icon/block.json');
 	register_block_type( dirname(__FILE__) . '/blocks/common/copy-text-button/build/copy-text-button/block.json');
 	register_block_type( dirname(__FILE__) . '/blocks/privacy-policy-template/build/privacy-policy-template/block.json');
+	register_block_type( dirname(__FILE__) . '/blocks/contact-form-section/build/contact-form-section/block.json');
 }
 add_action('init', 'register_custom_blocks');
 
@@ -205,16 +206,6 @@ require_once get_template_directory() . '/inc/class-tgm-plugin-activation.php';
 function theme_register_required_plugins() {
     // Array of plugin arrays
     $plugins = array(
-        // Example: Newsletter
-        array(
-            'name'               => 'Newsletter', // Plugin name
-            'slug'               => 'newsletter', // Plugin slug (the plugin directory name)
-            'required'           => true, // Set to true to make this plugin required
-            'version'            => '', // Specify version if you need a specific one
-            'force_activation'   => true, // Automatically activate the plugin
-            'force_deactivation' => false, // Don't deactivate the plugin if already activated
-            'external_url'       => '', // External URL if the plugin is hosted outside the WordPress.org repository
-        ),
         // LiteSpeed Cache Plugin
         array(
             'name'               => 'LiteSpeed Cache', // Plugin name
@@ -228,7 +219,7 @@ function theme_register_required_plugins() {
 		// The SEO Framework Plugin
 		array(
 			'name'               => 'The SEO Framework', // Plugin name
-			'slug'               => 'the-seo-framework', // Plugin slug (the plugin directory name)
+			'slug'               => 'autodescription', // Plugin slug (the plugin directory name)
 			'required'           => true, // Set to true to make this plugin required
 			'version'            => '', // Specify version if you need a specific one
 			'force_activation'   => false, // Set to false to avoid forced activation
