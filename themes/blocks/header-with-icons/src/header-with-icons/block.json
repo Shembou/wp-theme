@@ -4,8 +4,8 @@
 	"name": "create-block/header-with-icons",
 	"version": "0.1.0",
 	"title": "Header With Icons",
-	"category": "widgets",
-	"icon": "smiley",
+	"category": "theme",
+	"icon": "embed-photo",
 	"description": "Example block scaffolded with Create Block tool.",
 	"example": {},
 	"supports": {

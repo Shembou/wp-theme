@@ -8,12 +8,7 @@
 section#header-with-icons {
 	display: grid;
 	gap: 48px;
-
-	@media (width < 999px) {
-		margin-left: 10px !important;
-		margin-right: 10px !important;
-	}
-
+	
 	.tag {
 		font-size: 14px;
 		padding: 4px 12px;

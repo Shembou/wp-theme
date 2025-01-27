@@ -4,8 +4,8 @@
   "name": "create-block/minimalistic-hero-section",
   "version": "0.1.0",
   "title": "Minimalistic Hero Section",
-  "category": "widgets",
-  "icon": "smiley",
+  "category": "common",
+  "icon": "welcome-view-site",
   "description": "Example block scaffolded with Create Block tool.",
   "example": {},
   "supports": {

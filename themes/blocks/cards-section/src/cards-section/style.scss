@@ -8,48 +8,75 @@
 section#cards-section {
 	display: grid;
 	grid-template-columns: 1fr;
-	gap:16px;
+	gap: 16px;
 	border: unset !important;
+
 	@media(width > 1200px) {
 		grid-template-columns: 1fr 1fr;
 	}
+
 	@media (width < 999px) {
 		margin-left: 10px !important;
 		margin-right: 10px !important;
 	}
+
 	>div {
-		border-radius:24px;
+		border-radius: 24px;
 		display: grid;
-		gap:32px;
+		gap: 32px;
 		align-items: center !important;
 		justify-self: center;
 		justify-items: center !important;
+		width: calc(100% - 96px);
+		position: relative;
+		overflow: hidden;
+		padding: 48px;
+
 		&.gray {
 			border: 1px solid #EEE;
 			background: #FFF;
 		}
+
 		&.blue-green {
 			border: 1px solid #B9DAE5;
 			background: #DDF6FE;
 		}
+
 		.wrapper {
 			display: grid;
-			gap:24px;
+			gap: 24px;
 			text-align: center !important;
+			z-index: 2;
 		}
 	}
-	h1,h2,h3,h4,h5,h6 {
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
 		color: #1A4553;
 		font-size: 24px;
-	
 	}
-	
+
+	p,
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin: unset !important;
+	}
+
 	.pinsWrapper {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		gap: 12px;
 		flex-wrap: wrap;
+
 		.pin {
 			color: #1A4553;
 			font-size: 16px;
@@ -63,17 +90,18 @@ section#cards-section {
 			align-items: center;
 			display: flex;
 			margin: unset !important;
+
 			&::before {
 				content: '';
 				display: inline-block;
-				width: 9px; 
-				height: 9px; 
+				width: 9px;
+				height: 9px;
 				background: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9" fill="none"><g filter="url(%23filter0_f_5625_2698)"><circle cx="4.5" cy="4.5" r="3" fill="white"/><circle cx="4.5" cy="4.5" r="2.76827" stroke="%2300D9FF" stroke-width="0.463468"/></g><circle cx="4.49891" cy="4.49891" r="2.69902" fill="%237CD6D9" stroke="%235091A7" stroke-width="0.599782"/></svg>') no-repeat center;
 				background-size: contain;
 			}
 		}
 	}
-	
+
 	.custom-button {
 		justify-self: center;
 		width: fit-content;
@@ -90,17 +118,35 @@ section#cards-section {
 		font-size: 16px;
 		text-decoration: none;
 		font-weight: 400;
+		z-index: 2;
+
 		&:hover {
 			text-decoration: underline;
 		}
+
 		div {
 			align-self: center;
 			display: grid;
 			justify-self: center;
 		}
+
 	}
-	
-	.blue-green > .custom-button {
+
+	.corner-image {
+		position: absolute;
+		bottom: 0px;
+	}
+
+	.even {
+
+		left: 0px;
+	}
+
+	.odd {
+		right: 0px;
+	}
+
+	.blue-green>.custom-button {
 		border: 1px solid #A4C8D4;
 		background: #FFF;
 		color: #324C4D;

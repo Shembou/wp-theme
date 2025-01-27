@@ -24,19 +24,19 @@ export default function save({ attributes }) {
 	} = attributes
 	return (
 		<section {...useBlockProps.save()} id='tags-section'>
-		{heading != '' && <header>
-			<p className='tag'>{tag}</p>
-			<h2>{heading}</h2>
-			<p>{paragraph}</p>
-		</header>
-		}
-		<div className={`tags ${heading != '' ? 'heading-variant' : ''}`}>
-			{tags.map(({ tag, url }, index) => (
-				<a className='tag' key={index} href={url}>
-					{tag}
-				</a>
-			))}
-		</div>
-	</section>
+			{heading != '' && <header>
+				<p className='tag'>{tag}</p>
+				<h2>{heading}</h2>
+				<p>{paragraph}</p>
+			</header>
+			}
+			<div className={`tags ${heading != '' ? 'heading-variant' : ''}`}>
+				{tags && tags.map(({ tag, url }, index) => (
+					<a className='tag' key={index} href={url}>
+						{tag}
+					</a>
+				))}
+			</div>
+		</section>
 	);
 }

@@ -11,7 +11,9 @@
   "supports": {
     "html": false,
     "anchor": true,
-    "dimensions": {}
+    "position": {
+      "sticky": true
+    }
   },
   "textdomain": "blog-template",
   "editorScript": "file:./index.js",

@@ -133,7 +133,7 @@ export default function Edit({ attributes, setAttributes }) {
 				</header>
 				}
 				<div className={`tags ${heading != '' ? 'heading-variant' : ''}`}>
-					{tags.map(({ tag, url }, index) => (
+					{tags && tags.map(({ tag, url }, index) => (
 						<a className='tag' key={index} href={url}>
 							{tag}
 						</a>

@@ -44,7 +44,7 @@ export default function save({ attributes }) {
 								/>
 							</>
 						</CustomButton>
-						<div dangerouslySetInnerHTML={{ __html: card.cornerImage }} />
+						<img className={`corner-image ${index % 2 == 0 ? 'even' : 'odd'}`} src={card.cornerImage} />
 					</div>
 				);
 			})}

@@ -10,6 +10,7 @@ section#cta-section {
 	gap: 12px;
 	justify-content: center;
 
+
 	@media (width < 999px) {
 		margin-left: 10px !important;
 		margin-right: 10px !important;
@@ -27,6 +28,8 @@ section#cta-section {
 		width: 100%;
 		display: grid;
 		align-items: center;
+		color: #1A4553;
+		font-size: 24px;
 
 		@media (width <=778px) {
 			width: auto;
@@ -50,6 +53,7 @@ section#cta-section {
 		&:hover {
 			text-decoration: underline;
 		}
+
 		>p {
 			justify-self: center;
 		}

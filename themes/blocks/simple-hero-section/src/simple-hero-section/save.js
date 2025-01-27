@@ -30,8 +30,7 @@ export default function save({ attributes }) {
 				<header>
 					<h1>{heading}</h1>
 					<p>{paragraph}</p>
-					<CustomButton {...button}>{button.text} <img src={button.svg} /></CustomButton>
-				</header>
+					{button?.text && <CustomButton {...button}>{button.text} <img src={button.svg} /></CustomButton>}				</header>
 				<img src={image} />
 			</div>
 		</section>

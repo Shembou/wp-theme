@@ -6,11 +6,8 @@
  */
 
 section#minimalistic-hero-section {
-	@media (width < 1000px) {
-		margin-left: 10px !important;
-		margin-right: 10px !important;
-	}
-
+	display:grid;
+	justify-content: center;
 	h2,
 	p {
 		color: #1A4553;
@@ -23,7 +20,6 @@ section#minimalistic-hero-section {
 		gap: 8px;
 		align-items: center;
 		text-align: center;
-
 		h2 {
 			margin-bottom: 8px;
 		}

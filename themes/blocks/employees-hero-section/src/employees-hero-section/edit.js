@@ -91,7 +91,7 @@ export default function Edit({ attributes, setAttributes }) {
 					/>
 
 					{/* Employees Array */}
-					{employees.map((employee, index) => (
+					{ (employees || [])?.length > 0 && employees.map((employee, index) => (
 						<div key={index} style={{ marginBottom: '20px' }}>
 							<MediaUpload
 								onSelect={(media) => {
@@ -126,7 +126,7 @@ export default function Edit({ attributes, setAttributes }) {
 								isSmall
 								style={{ marginTop: '10px' }}
 								onClick={() => {
-									const newEmployees = employees.filter((_, i) => i !== index);
+									const newEmployees = employees?.filter((_, i) => i !== index);
 									setAttributes({ employees: newEmployees });
 								}}
 							>
@@ -161,12 +161,12 @@ export default function Edit({ attributes, setAttributes }) {
 						<span className='circle-top' />
 						<span className='circle-right' />
 						<span className='circle-bottom' />
-						<img src={logo} className="logo" alt="Central Logo" />
-						<div className="employee-container">
+						{logo && <img src={logo} className="logo" alt="Central Logo" />}
+						{(employees || [])?.length > 0 && <div className="employee-container">
 							{employees.map((employee, index) => (
 								<img src={employee} key={index} className="employee-image" alt={`Employee ${index + 1}`} />
 							))}
-						</div>
+						</div>}
 					</div>
 				</div>
 			</section>

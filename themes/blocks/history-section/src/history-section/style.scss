@@ -8,11 +8,6 @@
 section#history-section {
 	overflow: hidden;
 
-	@media (width < 999px) {
-		margin-left: 10px !important;
-		margin-right: 10px !important;
-	}
-
 	header {
 		font-size: 14px;
 		padding: 4px 12px;

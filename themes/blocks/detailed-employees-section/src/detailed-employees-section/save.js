@@ -43,7 +43,7 @@ export default function save({ attributes }) {
 					</div>
 				</div>
 			))}
-			{limit < employees.length && (
+			{parseInt(limit) < employees.length && (
 				<div className="tooltip-wrapper"
 					style={{ '--currentPercentile': `${parseInt((limit / employees.length) * 100)}%` }}>
 					<div className="tooltip">

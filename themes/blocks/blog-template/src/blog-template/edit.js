@@ -175,14 +175,14 @@ export default function Edit({ attributes, setAttributes }) {
 							))}
 						</div>
 					</div>
-					{attributes?.table_of_contents?.length > 0 ? (
-						<div className='table-of-contents'>
-							<div className='contents-wrapper'>
-								<h2>Spis treści:</h2>
-								{attributes.table_of_contents.map((heading, index) => (
-									<a href={`#${heading}`} key={index} className='toc-link'>{heading}</a>
-								))}
-							</div>
+					{table_of_contents?.length > 0 ? (
+						<div className="table-of-contents">
+							<h2>Spis treści:</h2>
+							{table_of_contents.map((heading, index) => (
+								<a href={`#${heading}`} key={index} className="toc-link">
+									{heading.replace(/-/g, ' ')}
+								</a>
+							))}
 						</div>
 					) : (
 						<p>{__('Add headings to generate table of contents')}</p>

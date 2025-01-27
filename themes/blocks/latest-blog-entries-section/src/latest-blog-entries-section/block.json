@@ -4,8 +4,8 @@
 	"name": "create-block/latest-blog-entries-section",
 	"version": "0.1.0",
 	"title": "Latest Blog Entries Section",
-	"category": "widgets",
-	"icon": "smiley",
+	"category": "theme",
+	"icon": "embed-post",
 	"description": "Example block scaffolded with Create Block tool.",
 	"example": {},
 	"supports": {

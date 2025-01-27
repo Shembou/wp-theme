@@ -120,6 +120,10 @@ section#detailed-employees-section {
 		max-width: 223px;
 		justify-self: center;
 
+		&.hidden {
+			display: none;
+		}
+
 		.tooltip {
 			width: fit-content;
 			left: var(--currentPercentile);

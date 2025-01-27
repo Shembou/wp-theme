@@ -4,8 +4,8 @@
   "name": "create-block/tiles-section",
   "version": "0.1.0",
   "title": "Tiles Section",
-  "category": "widgets",
-  "icon": "smiley",
+  "category": "theme",
+  "icon": "menu-alt",
   "description": "Example block scaffolded with Create Block tool.",
   "example": {},
   "supports": {

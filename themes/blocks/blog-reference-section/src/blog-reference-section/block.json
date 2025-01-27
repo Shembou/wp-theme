@@ -4,9 +4,9 @@
 	"name": "create-block/blog-reference-section",
 	"version": "0.1.0",
 	"title": "Blog Reference Section",
-	"category": "widgets",
-	"icon": "smiley",
-	"description": "Example block scaffolded with Create Block tool.",
+	"category": "theme",
+	"icon": "admin-post",
+	"description": "Blog reference section created with block scaffold.",
 	"example": {},
 	"supports": {
 		"html": false

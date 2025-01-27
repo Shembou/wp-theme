@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",(()=>{document.querySelectorAll(".copy-button").forEach((e=>{e.addEventListener("click",(()=>{const t=e.previousElementSibling.textContent;navigator.clipboard.writeText(t)}))}))}));
