@@ -213,9 +213,28 @@ function theme_register_required_plugins() {
             'version'            => '', // Specify version if you need a specific one
             'force_activation'   => true, // Automatically activate the plugin
             'force_deactivation' => false, // Don't deactivate the plugin if already activated
-			'external_url'       => '',
+            'external_url'       => '', // External URL if the plugin is hosted outside the WordPress.org repository
         ),
-        // You can add more plugins in the same format if needed
+        // LiteSpeed Cache Plugin
+        array(
+            'name'               => 'LiteSpeed Cache', // Plugin name
+            'slug'               => 'litespeed-cache', // Plugin slug (the plugin directory name)
+            'required'           => true, // Set to true to make this plugin required
+            'version'            => '', // Specify version if you need a specific one
+            'force_activation'   => false, // Set to false to avoid forced activation
+            'force_deactivation' => false, // Set to false to avoid forced deactivation
+            'external_url'       => '', // External URL if the plugin is hosted outside the WordPress.org repository
+        ),
+		// The SEO Framework Plugin
+		array(
+			'name'               => 'The SEO Framework', // Plugin name
+			'slug'               => 'the-seo-framework', // Plugin slug (the plugin directory name)
+			'required'           => true, // Set to true to make this plugin required
+			'version'            => '', // Specify version if you need a specific one
+			'force_activation'   => false, // Set to false to avoid forced activation
+			'force_deactivation' => false, // Set to false to avoid forced deactivation
+			'external_url'       => '', // External URL if the plugin is hosted outside the WordPress.org repository
+		),
     );
 
     // Call to action hook to register the plugins
