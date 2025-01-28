@@ -9,7 +9,11 @@
   "description": "Sekcja wstępna z mózgiem",
   "example": {},
   "supports": {
-    "html": false
+    "html": false,
+    "spacing": {
+      "margin": true,
+      "padding": true
+    }
   },
   "textdomain": "hero-section",
   "editorScript": "file:./index.js",

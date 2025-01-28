@@ -9,7 +9,11 @@
   "description": "Example block scaffolded with Create Block tool.",
   "example": {},
   "supports": {
-    "html": false
+    "html": false,
+    "spacing": {
+      "margin": true,
+      "padding": true
+    }
   },
   "textdomain": "values-section",
   "editorScript": "file:./index.js",

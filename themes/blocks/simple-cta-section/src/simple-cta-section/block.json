@@ -9,24 +9,43 @@
 	"description": "Example block scaffolded with Create Block tool.",
 	"example": {},
 	"supports": {
-		"html": false
+		"html": false,
+		"spacing": {
+			"margin": true,
+			"padding": true
+		}
 	},
 	"textdomain": "simple-cta-section",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
 	"attributes": {
-		"heading": {"type": "string"},
+		"heading": {
+			"type": "string"
+		},
 		"buttons": {
 			"type": "array",
 			"items": {
 				"type": "object",
 				"properties": {
-					"url": { "type": "string"},
-					"text": { "type": "string"},
-					"svg": {"type": "string", "default": ""},
-					"buttonType": {"type": "string", "emum": ["primary", "secondary"]}
-				  }
+					"url": {
+						"type": "string"
+					},
+					"text": {
+						"type": "string"
+					},
+					"svg": {
+						"type": "string",
+						"default": ""
+					},
+					"buttonType": {
+						"type": "string",
+						"emum": [
+							"primary",
+							"secondary"
+						]
+					}
+				}
 			}
 		}
 	}

@@ -10,9 +10,9 @@
   "example": {},
   "supports": {
     "html": false,
-    "anchor": true,
-    "position": {
-      "sticky": true
+    "spacing": {
+      "margin": true,
+      "padding": true
     }
   },
   "textdomain": "blog-template",

@@ -9,7 +9,11 @@
 	"description": "Example block scaffolded with Create Block tool.",
 	"example": {},
 	"supports": {
-		"html": false
+		"html": false,
+		"spacing": {
+			"margin": true,
+			"padding": true
+		}
 	},
 	"textdomain": "employees-hero-section",
 	"editorScript": "file:./index.js",
@@ -17,13 +21,13 @@
 	"style": "file:./style-index.css",
 	"attributes": {
 		"tag": {
-			"type":"string"
+			"type": "string"
 		},
 		"heading": {
-			"type":"string"
+			"type": "string"
 		},
 		"paragraph": {
-			"type":"string"
+			"type": "string"
 		},
 		"employees": {
 			"type": "array",

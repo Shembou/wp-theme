@@ -9,7 +9,11 @@
 	"description": "Example block scaffolded with Create Block tool.",
 	"example": {},
 	"supports": {
-		"html": false
+		"html": false,
+		"spacing": {
+			"margin": true,
+			"padding": true
+		}
 	},
 	"textdomain": "services-section",
 	"editorScript": "file:./index.js",
@@ -30,21 +34,41 @@
 			"items": {
 				"type": "object",
 				"properties": {
-					"heading": {"type": "string"},
-					"paragraph": {"type": "string"},
+					"heading": {
+						"type": "string"
+					},
+					"paragraph": {
+						"type": "string"
+					},
 					"buttons": {
-						"type":"array",
+						"type": "array",
 						"items": {
 							"type": "object",
 							"properties": {
-								"url": { "type": "string"},
-								"text": { "type": "string"},
-								"svg": {"type": "string", "default": ""},
-								"buttonType": {"type": "string", "emum": ["primary", "secondary"]}
+								"url": {
+									"type": "string"
+								},
+								"text": {
+									"type": "string"
+								},
+								"svg": {
+									"type": "string",
+									"default": ""
+								},
+								"buttonType": {
+									"type": "string",
+									"emum": [
+										"primary",
+										"secondary"
+									]
+								}
 							}
 						}
 					},
-					"icon": {"type": "string", "default": ""},
+					"icon": {
+						"type": "string",
+						"default": ""
+					},
 					"image": {
 						"type": "string"
 					}

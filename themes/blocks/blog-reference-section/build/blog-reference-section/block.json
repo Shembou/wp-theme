@@ -9,7 +9,11 @@
   "description": "Blog reference section created with block scaffold.",
   "example": {},
   "supports": {
-    "html": false
+    "html": false,
+    "spacing": {
+      "margin": true,
+      "padding": true
+    }
   },
   "textdomain": "blog-reference-section",
   "editorScript": "file:./index.js",

@@ -9,7 +9,11 @@
 	"description": "Sekcja wstępna z mózgiem",
 	"example": {},
 	"supports": {
-		"html": false
+		"html": false,
+		"spacing": {
+			"margin": true,
+			"padding": true
+		}
 	},
 	"textdomain": "hero-section",
 	"editorScript": "file:./index.js",
@@ -31,15 +35,27 @@
 			"items": {
 				"type": "object",
 				"properties": {
-					"url": { "type": "string" },
-					"text": { "type": "string" },
-					"isOverlapping": { "type": "boolean" },
+					"url": {
+						"type": "string"
+					},
+					"text": {
+						"type": "string"
+					},
+					"isOverlapping": {
+						"type": "boolean"
+					},
 					"color": {
 						"type": "string",
-						"enum": ["gray", "blue-green"]
+						"enum": [
+							"gray",
+							"blue-green"
+						]
 					}
 				},
-				"required": ["url", "text"]
+				"required": [
+					"url",
+					"text"
+				]
 			},
 			"minItems": 1,
 			"maxItems": 4
@@ -47,10 +63,20 @@
 		"button": {
 			"type": "object",
 			"properties": {
-				"url": { "type": "string"},
-				"text": { "type": "string"},
-				"isSecondary": { "type": "boolean", "default": false},
-				"svg": {"type": "string", "default": ""}
+				"url": {
+					"type": "string"
+				},
+				"text": {
+					"type": "string"
+				},
+				"isSecondary": {
+					"type": "boolean",
+					"default": false
+				},
+				"svg": {
+					"type": "string",
+					"default": ""
+				}
 			}
 		}
 	}

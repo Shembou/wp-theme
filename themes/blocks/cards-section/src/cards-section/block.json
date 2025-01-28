@@ -9,7 +9,11 @@
 	"description": "Example block scaffolded with Create Block tool.",
 	"example": {},
 	"supports": {
-		"html": false
+		"html": false,
+		"spacing": {
+			"margin": true,
+			"padding": true
+		}
 	},
 	"textdomain": "cards-section",
 	"editorScript": "file:./index.js",
@@ -21,8 +25,13 @@
 			"items": {
 				"type": "object",
 				"properties": {
-					"heading": {"type": "string"},
-					"HeaderType": {"type": "string", "default": "h1"},
+					"heading": {
+						"type": "string"
+					},
+					"HeaderType": {
+						"type": "string",
+						"default": "h1"
+					},
 					"pins": {
 						"type": "array",
 						"items": {
@@ -32,9 +41,16 @@
 					"button": {
 						"type": "object",
 						"properties": {
-							"url": { "type": "string"},
-							"text": { "type": "string"},
-							"svg": {"type": "string", "default": ""}
+							"url": {
+								"type": "string"
+							},
+							"text": {
+								"type": "string"
+							},
+							"svg": {
+								"type": "string",
+								"default": ""
+							}
 						}
 					},
 					"cornerImage": {
@@ -42,7 +58,10 @@
 					},
 					"color": {
 						"type": "string",
-						"enum": ["gray", "blue-green"]
+						"enum": [
+							"gray",
+							"blue-green"
+						]
 					}
 				}
 			}
