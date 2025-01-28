@@ -158,7 +158,7 @@ export default function Edit({ attributes, setAttributes }) {
 					<header>
 						<h1>{heading}</h1>
 						<p>{paragraph}</p>
-						{button?.text && <CustomButton {...button}>{button.text} <img src={button.svg} /></CustomButton>}
+						{button?.text && <CustomButton {...button}><p>{button.text}</p> <img src={button.svg} /></CustomButton>}
 					</header>
 					<img src={image} />
 				</div>

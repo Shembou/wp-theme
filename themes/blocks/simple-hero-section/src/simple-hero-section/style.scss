@@ -32,13 +32,15 @@ section#simple-hero-section {
 				justify-content: center;
 				align-items: center;
 				gap: 8px;
-				align-self: stretch;
-				border-radius: 32px;
 				border: 1px solid #5D9AAF;
 				background: #164352;
-				color: #F9FDFF;
-				font-size: 16px;
 				text-decoration: none;
+				text-wrap: nowrap;
+
+				p {
+					color: #F9FDFF;
+					font-size: 16px;
+				}
 
 				&:hover {
 					text-decoration: underline;
