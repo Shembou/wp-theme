@@ -110,12 +110,6 @@ section#blog-template {
 		list-style: none !important;
 		padding: 0;
 
-		li {
-			display: flex;
-			/* Align the icon and text */
-			margin-bottom: 0.5rem;
-		}
-
 		li::before {
 			content: '';
 			display: inline-block;

@@ -55,10 +55,10 @@ section#tags-section {
 
 	.tags {
 		display: flex;
-		justify-content: center;
 		align-items: center;
 		gap: 12px;
 		flex-wrap: wrap;
+		justify-content: center;
 
 		.tag {
 			color: #1A4553;
@@ -94,6 +94,7 @@ section#tags-section {
 
 		&.heading-variant {
 			max-width: 506px;
+			justify-content: flex-start;
 		}
 	}
 
