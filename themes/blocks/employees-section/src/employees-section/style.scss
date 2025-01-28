@@ -9,6 +9,7 @@ section#employees-section {
 	display: flex;
 	gap: 96px;
 	justify-content: center;
+
 	@media (width < 999px) {
 		flex-direction: column;
 		align-items: center;
@@ -186,24 +187,40 @@ section#employees-section {
 			border-radius: 32px;
 			margin-top: 32px;
 			display: flex;
-			@media (width <= 999px) {
+
+			@media (width <=999px) {
 				justify-self: center;
 			}
-		}
 
-		>div {
-			display: grid;
-			gap: 16px;
+			align-items: center;
+			align-self: stretch;
+			background: #164352;
+			border: 1px solid #5d9aaf;
+			color: #f9fdff;
+			display: flex;
+			flex: 1 0 0;
+			font-size: 16px;
+			gap: 8px;
+			justify-content: center;
+			padding: 8px 16px 8px 20px;
+			text-decoration: none;
+			width: -moz-fit-content;
+			width: fit-content
 		}
+	}
 
-		h2 {
-			color: #1A4553;
-			font-size: 32px;
-		}
+	>div {
+		display: grid;
+		gap: 16px;
+	}
 
-		h2,
-		p {
-			margin: unset;
-		}
+	h2 {
+		color: #1A4553;
+		font-size: 32px;
+	}
+
+	h2,
+	p {
+		margin: unset;
 	}
 }
