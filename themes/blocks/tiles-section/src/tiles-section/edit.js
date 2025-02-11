@@ -138,7 +138,7 @@ export default function Edit({ attributes, setAttributes }) {
 						} else {
 							tileCounter++;
 							return (
-								<div className='tile' key={index}>
+								<div className={`tile ${index % 2 != 0 ? 'even' : 'odd'}`} key={index}>
 									<h3>{String(tileCounter).padStart(2, '0')}</h3>
 									<h3>{tile.heading}</h3>
 									<p>{tile.paragraph}</p>

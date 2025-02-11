@@ -12,6 +12,11 @@ span#info {
 	align-items: center;
 	width: fit-content;
 
+	p {
+		margin: unset !important;
+		font-size: 16px !important;
+	}
+
 	img {
 		padding: 8px;
 		flex-shrink: 0;
@@ -26,9 +31,9 @@ span#info {
 		padding: 2px 6px;
 		justify-content: center;
 		align-items: center;
-		border-radius: 500px;
+		border-radius: 999px;
 		border: 1px solid #B9DAE5;
-		background: #DDF6FE;
+		background: #FFF;
 		color: #1A4553;
 		font-size: 14px;
 		font-weight: 400;
