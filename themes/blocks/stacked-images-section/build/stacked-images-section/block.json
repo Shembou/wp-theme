@@ -32,7 +32,13 @@
     "leftImage": {
       "type": "string"
     },
+    "leftImage_alt": {
+      "type": "string"
+    },
     "rightImage": {
+      "type": "string"
+    },
+    "rightImage_alt": {
       "type": "string"
     },
     "isReversed": {

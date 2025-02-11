@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
-import { __ } from '@wordpress/i18n';
+import { __ } from "@wordpress/i18n";
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -11,8 +11,18 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { InspectorControls, useBlockProps, MediaUpload } from '@wordpress/block-editor';
-import { PanelBody, TextareaControl, TextControl, Button, SelectControl } from '@wordpress/components'
+import {
+	InspectorControls,
+	useBlockProps,
+	MediaUpload,
+} from "@wordpress/block-editor";
+import {
+	PanelBody,
+	TextareaControl,
+	TextControl,
+	Button,
+	SelectControl,
+} from "@wordpress/components";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -20,8 +30,8 @@ import { PanelBody, TextareaControl, TextControl, Button, SelectControl } from '
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import './editor.scss';
-import CustomButton from '../../../common/CustomButton';
+import "./editor.scss";
+import CustomButton from "../../../common/CustomButton";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -32,13 +42,14 @@ import CustomButton from '../../../common/CustomButton';
  * @return {Element} Element to render.
  */
 export default function Edit({ attributes, setAttributes }) {
-
 	const {
-		tag = '',
-		heading = '',
-		paragraph = '',
-		cards = []
-	} = attributes
+		tag = "",
+		heading = "",
+		paragraph = "",
+		cards = [],
+		icon_alt = "",
+		image_alt = "",
+	} = attributes;
 
 	const updateAttribute = (key, value) => {
 		setAttributes({ [key]: value });
@@ -50,30 +61,30 @@ export default function Edit({ attributes, setAttributes }) {
 			...newCards[index],
 			[field]: value,
 		};
-		setAttributes({ cards: newCards })
-	}
+		setAttributes({ cards: newCards });
+	};
 
 	const addCard = () => {
 		setAttributes({
 			cards: [
 				...cards,
 				{
-					heading: '',
+					heading: "",
 					buttons: [],
-					paragraph: '',
-					icon: '',
-					image: ''
-				}
-			]
-		})
-	}
+					paragraph: "",
+					icon: "",
+					image: "",
+				},
+			],
+		});
+	};
 
 	const updateButton = (cardIndex, index, field, value) => {
 		const newCards = [...cards];
 		const newButtons = [...(newCards[cardIndex].buttons || [])];
 		newButtons[index] = {
 			...newButtons[index],
-			[field]: value
+			[field]: value,
 		};
 		newCards[cardIndex].buttons = newButtons; // Update buttons in the card
 		setAttributes({ cards: newCards });
@@ -81,7 +92,9 @@ export default function Edit({ attributes, setAttributes }) {
 
 	const removeButton = (cardIndex, buttonIndex) => {
 		const newCards = [...cards];
-		const newButtons = newCards[cardIndex].buttons.filter((_, i) => i !== buttonIndex);
+		const newButtons = newCards[cardIndex].buttons.filter(
+			(_, i) => i !== buttonIndex
+		);
 		newCards[cardIndex].buttons = newButtons;
 		setAttributes({ cards: newCards });
 	};
@@ -89,7 +102,7 @@ export default function Edit({ attributes, setAttributes }) {
 	const addButton = (cardIndex) => {
 		const newCards = [...cards];
 		const newButtons = [...(newCards[cardIndex].buttons || [])];
-		const buttonToAdd = { url: '', text: '', svg: '', buttonType: '' }; // Define default button values
+		const buttonToAdd = { url: "", text: "", svg: "", buttonType: "" }; // Define default button values
 		newButtons.push(buttonToAdd); // Add the new button
 		newCards[cardIndex].buttons = newButtons; // Update the buttons array in the card
 		setAttributes({ cards: newCards }); // Update the state
@@ -98,49 +111,65 @@ export default function Edit({ attributes, setAttributes }) {
 	const renderButtonControls = (cardIndex) => (
 		<div>
 			{(cards[cardIndex].buttons || []).map((button, index) => (
-				<div key={index} style={{ marginBottom: '10px' }}>
+				<div key={index} style={{ marginBottom: "10px" }}>
 					<TextControl
-						label={__('Button Url', 'services-section')}
-						value={button.url || ''}
-						onChange={(value) => updateButton(cardIndex, index, 'url', value)}
+						label={__("Button Url", "services-section")}
+						value={button.url || ""}
+						onChange={(value) => updateButton(cardIndex, index, "url", value)}
 					/>
 					<TextControl
-						label={__('Button text', 'services-section')}
-						value={button.text || ''}
-						onChange={(value) => updateButton(cardIndex, index, 'text', value)}
+						label={__("Button text", "services-section")}
+						value={button.text || ""}
+						onChange={(value) => updateButton(cardIndex, index, "text", value)}
 					/>
 					<SelectControl
-						label={__('Button type', 'services-section')}
-						value={button.buttonType || ''}
+						label={__("Button type", "services-section")}
+						value={button.buttonType || ""}
 						options={[
-							{ label: 'Primary', value: 'primary' },
-							{ label: 'Secondary', value: 'secondary' },
+							{ label: "Primary", value: "primary" },
+							{ label: "Secondary", value: "secondary" },
 						]}
-						onChange={(value) => updateButton(cardIndex, index, 'buttonType', value)}
+						onChange={(value) =>
+							updateButton(cardIndex, index, "buttonType", value)
+						}
 					/>
 					<MediaUpload
-						onSelect={(media) => updateButton(cardIndex, index, 'svg', media.url)}
-						allowedTypes={['image']}
+						onSelect={(media) =>
+							updateButton(cardIndex, index, "svg", media.url)
+						}
+						allowedTypes={["image"]}
 						render={({ open }) => (
 							<div>
 								<Button onClick={open} variant="secondary">
 									{button.svg
-										? __('Replace Svg', 'services-section')
-										: __('Upload Svg', 'services-section')}
+										? __("Replace Svg", "services-section")
+										: __("Upload Svg", "services-section")}
 								</Button>
 								{button.svg && (
-									<div style={{ marginTop: '10px', alignItems: 'center', display: 'grid' }}>
+									<div
+										style={{
+											marginTop: "10px",
+											alignItems: "center",
+											display: "grid",
+										}}
+									>
 										<img
 											src={button.svg}
-											alt={__('Card Svg', 'services-section')}
-											style={{ maxWidth: '100%', border: '1px', padding: '10px' }}
+											alt={__("Card Svg", "services-section")}
+											style={{
+												maxWidth: "100%",
+												border: "1px",
+												padding: "10px",
+											}}
 										/>
 										<Button
-											onSelect={(media) => updateButton(cardIndex, index, 'svg', '')}
+											onSelect={(media) =>
+												updateButton(cardIndex, index, "svg", "")
+											}
 											variant="link"
 											isDestructive
 										>
-											{__('Remove Image', 'services-section')}
+											{__("Remove Image", "services-section")}
 										</Button>
 									</div>
 								)}
@@ -152,56 +181,65 @@ export default function Edit({ attributes, setAttributes }) {
 						isSmall
 						onClick={() => removeButton(cardIndex, index)}
 					>
-						{__('Remove Button', 'services-section')}
+						{__("Remove Button", "services-section")}
 					</Button>
 				</div>
 			))}
 			<Button
 				isPrimary
 				onClick={() => addButton(cardIndex)}
-				style={{ marginTop: '10px' }}
+				style={{ marginTop: "10px" }}
 			>
-				{__('Add Button', 'services-section')}
+				{__("Add Button", "services-section")}
 			</Button>
 		</div>
 	);
 
 	const renderCardControls = () =>
 		cards.map((card, cardIndex) => (
-			<div key={cardIndex} style={{ marginBottom: '20px' }}>
+			<div key={cardIndex} style={{ marginBottom: "20px" }}>
 				<TextControl
-					label={__('Card Heading text', 'services-section')}
-					value={card.heading || ''}
-					onChange={(value) => updateCard(cardIndex, 'heading', value)}
+					label={__("Card Heading text", "services-section")}
+					value={card.heading || ""}
+					onChange={(value) => updateCard(cardIndex, "heading", value)}
 				/>
 				<TextareaControl
-					label={__('Card Text', 'services-section')}
-					value={card.paragraph || ''}
-					onChange={(value) => updateCard(cardIndex, 'paragraph', value)}
+					label={__("Card Text", "services-section")}
+					value={card.paragraph || ""}
+					onChange={(value) => updateCard(cardIndex, "paragraph", value)}
 				/>
 				<MediaUpload
-					onSelect={(media) => updateCard(cardIndex, 'icon', media.url)}
-					allowedTypes={['image']}
+					onSelect={(media) => {
+						updateCard(cardIndex, "icon", media.url);
+						updateCard(cardIndex, "icon_alt", media.alt);
+					}}
+					allowedTypes={["image"]}
 					render={({ open }) => (
 						<div>
 							<Button onClick={open} variant="secondary">
 								{card.icon
-									? __('Replace Icon', 'services-section')
-									: __('Upload Icon', 'services-section')}
+									? __("Replace Icon", "services-section")
+									: __("Upload Icon", "services-section")}
 							</Button>
 							{card.icon && (
-								<div style={{ marginTop: '10px', alignItems: 'center', display: 'flex' }}>
+								<div
+									style={{
+										marginTop: "10px",
+										alignItems: "center",
+										display: "flex",
+									}}
+								>
 									<img
 										src={card.icon}
-										alt={__('Card Icon', 'services-section')}
-										style={{ maxWidth: '100%', border: '1px', padding: '10px' }}
+										alt={__("Card Icon", "services-section")}
+										style={{ maxWidth: "100%", border: "1px", padding: "10px" }}
 									/>
 									<Button
-										onClick={() => updateCard(cardIndex, 'icon', '')}
+										onClick={() => updateCard(cardIndex, "icon", "")}
 										variant="link"
 										isDestructive
 									>
-										{__('Remove Icon', 'services-section')}
+										{__("Remove Icon", "services-section")}
 									</Button>
 								</div>
 							)}
@@ -209,28 +247,37 @@ export default function Edit({ attributes, setAttributes }) {
 					)}
 				/>
 				<MediaUpload
-					onSelect={(media) => updateCard(cardIndex, 'image', media.url)}
-					allowedTypes={['image']}
+					onSelect={(media) => {
+						updateCard(cardIndex, "image", media.url);
+						updateCard(cardIndex, "image_alt", media.alt);
+					}}
+					allowedTypes={["image"]}
 					render={({ open }) => (
 						<div>
 							<Button onClick={open} variant="secondary">
 								{card.image
-									? __('Replace Image', 'services-section')
-									: __('Upload Image', 'services-section')}
+									? __("Replace Image", "services-section")
+									: __("Upload Image", "services-section")}
 							</Button>
 							{card.image && (
-								<div style={{ marginTop: '10px', alignItems: 'center', display: 'grid' }}>
+								<div
+									style={{
+										marginTop: "10px",
+										alignItems: "center",
+										display: "grid",
+									}}
+								>
 									<img
 										src={card.image}
-										alt={__('Card Image', 'services-section')}
-										style={{ maxWidth: '100%', border: '1px', padding: '10px' }}
+										alt={__("Card Image", "services-section")}
+										style={{ maxWidth: "100%", border: "1px", padding: "10px" }}
 									/>
 									<Button
-										onClick={() => updateCard(cardIndex, 'image', '')}
+										onClick={() => updateCard(cardIndex, "image", "")}
 										variant="link"
 										isDestructive
 									>
-										{__('Remove Image', 'services-section')}
+										{__("Remove Image", "services-section")}
 									</Button>
 								</div>
 							)}
@@ -239,30 +286,30 @@ export default function Edit({ attributes, setAttributes }) {
 				/>
 				{renderButtonControls(cardIndex)}
 			</div>
-		))
+		));
 
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={__('Settings', 'services-section')}>
+				<PanelBody title={__("Settings", "services-section")}>
 					<TextControl
-						label={__('Tag Text', 'services-section')}
-						value={tag || ''}
-						onChange={(value) => updateAttribute('tag', value)}
+						label={__("Tag Text", "services-section")}
+						value={tag || ""}
+						onChange={(value) => updateAttribute("tag", value)}
 					/>
 					<TextareaControl
-						label={__('Heading', 'services-section')}
-						value={heading || ''}
-						onChange={(value) => updateAttribute('heading', value)}
+						label={__("Heading", "services-section")}
+						value={heading || ""}
+						onChange={(value) => updateAttribute("heading", value)}
 					/>
 					<TextareaControl
-						label={__('Paragraph', 'services-section')}
-						value={paragraph || ''}
-						onChange={(value) => updateAttribute('paragraph', value)}
+						label={__("Paragraph", "services-section")}
+						value={paragraph || ""}
+						onChange={(value) => updateAttribute("paragraph", value)}
 					/>
 					{renderCardControls()}
 					<Button isPrimary onClick={addCard}>
-						{__('Add Card', 'cards-section')}
+						{__("Add Card", "cards-section")}
 					</Button>
 				</PanelBody>
 			</InspectorControls>
@@ -272,31 +319,41 @@ export default function Edit({ attributes, setAttributes }) {
 					<h2>{heading}</h2>
 					<p>{paragraph}</p>
 				</header>
-				<div className='cards-wrapper'>
-					{cards && cards.map((card, index) => (
-						<div className={`card-wrapper ${index % 2 == 1 && `additional-wrapper-styles`}`} key={index}>
-							<div className='text-wrapper'>
-								<h3 className='card-heading'>{card.heading}</h3>
-								<p>{card.paragraph}</p>
-								<div className={"buttons-wrapper"}>
-									{card.buttons && card.buttons.map((button, buttonIndex) => (
-										<div className='button-wrapper' key={buttonIndex}>
-											<CustomButton url={button.url} className={`${button.buttonType}`}>
-												<>
-													{button.text}
-													<img src={button.svg} />
-												</>
-											</CustomButton>
-										</div>
-									))}
+				<div className="cards-wrapper">
+					{cards &&
+						cards.map((card, index) => (
+							<div
+								className={`card-wrapper ${
+									index % 2 == 1 && `additional-wrapper-styles`
+								}`}
+								key={index}
+							>
+								<div className="text-wrapper">
+									<h3 className="card-heading">{card.heading}</h3>
+									<p>{card.paragraph}</p>
+									<div className={"buttons-wrapper"}>
+										{card.buttons &&
+											card.buttons.map((button, buttonIndex) => (
+												<div className="button-wrapper" key={buttonIndex}>
+													<CustomButton
+														url={button.url}
+														className={`${button.buttonType}`}
+													>
+														<>
+															{button.text}
+															<img src={button.svg} />
+														</>
+													</CustomButton>
+												</div>
+											))}
+									</div>
+									<img className={"icon"} src={card.icon} alt={card.icon_alt} />
 								</div>
-								<img className={'icon'} src={card.icon} />
+								<img src={card.image} alt={card.image_alt} className="image" />
 							</div>
-							<img src={card.image} className='image' />
-						</div>
-					))}
+						))}
 				</div>
-			</section >
+			</section>
 		</>
 	);
 }

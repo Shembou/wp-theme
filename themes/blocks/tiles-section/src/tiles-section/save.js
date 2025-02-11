@@ -33,7 +33,7 @@ export default function save({attributes}) {
 				</header>
 				{tiles.map((tile, index) => {
 					if (tile.image !== '') {
-						return <img src={tile.image} key={index} />;
+						return <img src={tile.image} alt={tile.image_alt} key={index} />;
 					} else {
 						tileCounter++;
 						return (

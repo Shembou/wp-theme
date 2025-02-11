@@ -4,8 +4,8 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
-import CustomButton from '../../../common/CustomButton';
+import { useBlockProps } from "@wordpress/block-editor";
+import CustomButton from "../../../common/CustomButton";
 
 /**
  * The save function defines the way in which the different attributes should
@@ -16,37 +16,46 @@ import CustomButton from '../../../common/CustomButton';
  *
  * @return {Element} Element to render.
  */
-export default function save({ attributes}) {
-
+export default function save({ attributes }) {
 	const {
-		tag = '',
-		heading = '',
-		paragraph = '',
-		logo = '',
+		tag = "",
+		heading = "",
+		paragraph = "",
+		logo = "",
+		logo_alt = "",
 		button = {
-			url: '',
-			text: '',
-			svg: ''
+			url: "",
+			text: "",
+			svg: "",
 		},
-		employees = []
-	} = attributes
+		employees = [],
+	} = attributes;
 
 	return (
 		<section {...useBlockProps.save()} id="employees-section">
 			<div className="elipses">
-				<span className='circle-left' />
-				<span className='circle-top' />
-				<span className='circle-right' />
-				<span className='circle-bottom' />
-				<img src={logo} className="logo" alt="Central Logo" />
+				<span className="circle-left" />
+				<span className="circle-top" />
+				<span className="circle-right" />
+				<span className="circle-bottom" />
+				<img
+					src={logo}
+					className="logo"
+					alt={`${logo_alt ? logo_alt : "Central Logo"}`}
+				/>
 				<div className="employee-container">
 					{employees.map((employee, index) => (
-						<img src={employee} key={index} className="employee-image" alt={`Employee ${index + 1}`} />
+						<img
+							src={employee}
+							key={index}
+							className="employee-image"
+							alt={`Employee ${index + 1}`}
+						/>
 					))}
 				</div>
 			</div>
-			<div className='wrapper'>
-				<p className='tag'>{tag}</p>
+			<div className="wrapper">
+				<p className="tag">{tag}</p>
 				<div>
 					<h2>{heading}</h2>
 					<p>{paragraph}</p>

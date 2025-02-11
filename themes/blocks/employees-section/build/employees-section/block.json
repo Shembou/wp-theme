@@ -32,6 +32,9 @@
     "logo": {
       "type": "string"
     },
+    "logo_alt": {
+      "type": "string"
+    },
     "button": {
       "type": "object",
       "properties": {

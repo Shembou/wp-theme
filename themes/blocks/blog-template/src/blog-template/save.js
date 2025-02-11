@@ -4,7 +4,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps, InnerBlocks, RichText } from '@wordpress/block-editor';
+import { useBlockProps, InnerBlocks, RichText } from "@wordpress/block-editor";
 
 /**
  * The save function defines the way in which the different attributes should
@@ -23,17 +23,25 @@ export default function save({ attributes }) {
 		reading_time,
 		table_of_contents,
 		featured_image,
-		title
-	} = attributes
+		featured_image_alt,
+		title,
+	} = attributes;
 	return (
 		<section {...useBlockProps.save()} id="blog-template">
 			<div className="toc-container">
 				<div className="post-meta">
 					<span className="post-date">
-						{attributes.post_date && new Intl.DateTimeFormat('pl-PL', { day: '2-digit', month: 'long', year: 'numeric' }).format(new Date(attributes.post_date))}
+						{attributes.post_date &&
+							new Intl.DateTimeFormat("pl-PL", {
+								day: "2-digit",
+								month: "long",
+								year: "numeric",
+							}).format(new Date(attributes.post_date))}
 					</span>
 					<span className="reading-time">
-						{attributes.reading_time ? `${attributes.reading_time} min. czytania` : ''}
+						{attributes.reading_time
+							? `${attributes.reading_time} min. czytania`
+							: ""}
 					</span>
 				</div>
 				<RichText.Content
@@ -41,10 +49,16 @@ export default function save({ attributes }) {
 					className="post-title"
 					value={attributes.title}
 				/>
-				<img src={featured_image} className='featured-image' />
-				<div className='selected-categories'>
+				<img
+					src={featured_image}
+					alt={featured_image_alt}
+					className="featured-image"
+				/>
+				<div className="selected-categories">
 					{selected_categories.map((category, index) => (
-						<p key={index} className='tag'>{category}</p>
+						<p key={index} className="tag">
+							{category}
+						</p>
 					))}
 				</div>
 				{table_of_contents?.length > 0 ? (
@@ -52,12 +66,12 @@ export default function save({ attributes }) {
 						<h2>Spis treści:</h2>
 						{table_of_contents.map((heading, index) => (
 							<a href={`#${heading}`} key={index} className="toc-link">
-								{heading.replace(/-/g, ' ')}
+								{heading.replace(/-/g, " ")}
 							</a>
 						))}
 					</div>
 				) : (
-					<p>{__('Add headings to generate table of contents')}</p>
+					<p>{__("Add headings to generate table of contents")}</p>
 				)}
 			</div>
 			<div className="post-content">
@@ -66,4 +80,3 @@ export default function save({ attributes }) {
 		</section>
 	);
 }
-

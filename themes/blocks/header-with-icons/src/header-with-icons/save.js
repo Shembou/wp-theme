@@ -21,6 +21,7 @@ export default function save({ attributes }) {
 		heading = '',
 		paragraph = '',
 		image = '',
+		image_alt = '',
 		description = []
 	} = attributes
 	return (
@@ -31,12 +32,12 @@ export default function save({ attributes }) {
 				<p>{paragraph}</p>
 			</header>
 			<div className='content-wrapper'>
-				<img src={image} />
+				<img src={image} alt={image_alt} />
 				<div className='text-wrapper'>
 					{description.map((item, index) => (
 						<div className='item-wrapper' key={index}>
 							<h2>
-								<img src={item.icon} />
+								<img src={item.icon} alt={item.icon_alt}/>
 								{item.header}
 							</h2>
 							<p>{item.paragraph}</p>

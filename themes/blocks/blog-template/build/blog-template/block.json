@@ -30,6 +30,9 @@
     "featured_image": {
       "type": "string"
     },
+    "featured_image_alt": {
+      "type": "string"
+    },
     "selected_categories": {
       "type": "array",
       "items": {

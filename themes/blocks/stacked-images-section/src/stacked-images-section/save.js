@@ -4,7 +4,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps } from "@wordpress/block-editor";
 
 /**
  * The save function defines the way in which the different attributes should
@@ -17,40 +17,50 @@ import { useBlockProps } from '@wordpress/block-editor';
  */
 export default function save({ attributes }) {
 	const {
-		tag = '',
-		heading = '',
-		paragraph = '',
-		leftImage = '',
-		rightImage = '',
-		isReversed
-	} = attributes
+		tag = "",
+		heading = "",
+		paragraph = "",
+		leftImage = "",
+		rightImage = "",
+		leftImage_alt = "",
+		rightImage_alt = "",
+		isReversed,
+	} = attributes;
 	return (
 		<section {...useBlockProps.save()} id="stacked-images-section">
-			{isReversed ?
+			{isReversed ? (
 				<>
 					<div>
-						<img src={leftImage} className='image-left' />
-						<img src={rightImage} className='image-right' />
+						<img src={leftImage} alt={leftImage_alt} className="image-left" />
+						<img
+							src={rightImage}
+							alt={rightImage_alt}
+							className="image-right"
+						/>
 					</div>
 					<header>
-						<p className='tag'>{tag}</p>
+						<p className="tag">{tag}</p>
 						<h2>{heading}</h2>
-						<p className='paragraph'>{paragraph}</p>
+						<p className="paragraph">{paragraph}</p>
 					</header>
 				</>
-				:
+			) : (
 				<>
 					<header>
-						<p className='tag'>{tag}</p>
+						<p className="tag">{tag}</p>
 						<h2>{heading}</h2>
-						<p className='paragraph'>{paragraph}</p>
+						<p className="paragraph">{paragraph}</p>
 					</header>
 					<div>
-						<img src={leftImage} className='image-left' />
-						<img src={rightImage} className='image-right' />
+						<img src={leftImage} alt={leftImage_alt} className="image-left" />
+						<img
+							src={rightImage}
+							alt={rightImage_alt}
+							className="image-right"
+						/>
 					</div>
 				</>
-			}
+			)}
 		</section>
 	);
 }

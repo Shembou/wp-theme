@@ -36,6 +36,7 @@ export default function Edit({ attributes, setAttributes }) {
 		heading = '',
 		paragraph = '',
 		image = '',
+		image_alt = '',
 		description = []
 	} = attributes
 
@@ -92,7 +93,10 @@ export default function Edit({ attributes, setAttributes }) {
 					</PanelRow>
 					<PanelRow>
 						<MediaUpload
-							onSelect={(media) => updateBaseAttribute('image', media.url)}
+							onSelect={(media) => {
+								updateBaseAttribute('image', media.url)
+								updateBaseAttribute('image_alt', media.alt)
+							}}
 							allowedTypes={['image']}
 							render={({ open }) => (
 								<div>
@@ -129,7 +133,10 @@ export default function Edit({ attributes, setAttributes }) {
 						<div key={index} style={{ marginBottom: '20px', borderBottom: '1px solid #ddd', paddingBottom: '10px' }}>
 							<PanelRow>
 								<MediaUpload
-									onSelect={(media) => updateDescriptionItem(index, 'icon', media.url)}
+									onSelect={(media) => {
+										updateDescriptionItem(index, 'icon', media.url)
+										updateDescriptionItem(index, 'icon_alt', media.alt)
+									}}
 									allowedTypes={['image']}
 									render={({ open }) => (
 										<div>
@@ -195,12 +202,12 @@ export default function Edit({ attributes, setAttributes }) {
 					<p>{paragraph}</p>
 				</header>
 				<div className='content-wrapper'>
-					<img src={image} />
+					<img src={image} alt={image_alt}/>
 					<div className='text-wrapper'>
 						{description.map((item, index) => (
 							<div className='item-wrapper' key={index}>
 								<h2>
-									<img src={item.icon} />
+									<img src={item.icon} alt={item.icon_alt}/>
 									{item.header}
 								</h2>
 								<p>{item.paragraph}</p>

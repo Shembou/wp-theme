@@ -83,7 +83,6 @@ export default function Edit({ attributes, setAttributes }) {
 							>
 								<MediaUpload
 									onSelect={(media) => {
-										console.log(media.alt)
 										updateValueItem(index, "icon", media.url);
 										updateValueItem(index, "icon_alt", media.alt);
 									}}

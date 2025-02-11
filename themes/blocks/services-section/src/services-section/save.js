@@ -4,9 +4,9 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps } from "@wordpress/block-editor";
 
-import CustomButton from '../../../common/CustomButton'
+import CustomButton from "../../../common/CustomButton";
 
 /**
  * The save function defines the way in which the different attributes should
@@ -19,13 +19,7 @@ import CustomButton from '../../../common/CustomButton'
  */
 
 export default function save({ attributes }) {
-
-	const {
-		tag = '',
-		heading = '',
-		paragraph = '',
-		cards = []
-	} = attributes
+	const { tag = "", heading = "", paragraph = "", cards = [] } = attributes;
 
 	return (
 		<section {...useBlockProps.save()} id="services-section">
@@ -34,30 +28,40 @@ export default function save({ attributes }) {
 				<h2>{heading}</h2>
 				<p>{paragraph}</p>
 			</header>
-			<div className='cards-wrapper'>
-				{cards && cards.map((card, index) => (
-					<div className={`card-wrapper ${index % 2 == 1 && `additional-wrapper-styles`}`} key={index}>
-						<div className='text-wrapper'>
-							<h3 className='card-heading'>{card.heading}</h3>
-							<p>{card.paragraph}</p>
-							<div className={"buttons-wrapper"}>
-								{card.buttons && card.buttons.map((button, buttonIndex) => (
-									<div className='button-wrapper' key={buttonIndex}>
-										<CustomButton url={button.url} className={`${button.buttonType}`}>
-											<>
-												{button.text}
-												<img src={button.svg} />
-											</>
-										</CustomButton>
-									</div>
-								))}
+			<div className="cards-wrapper">
+				{cards &&
+					cards.map((card, index) => (
+						<div
+							className={`card-wrapper ${
+								index % 2 == 1 && `additional-wrapper-styles`
+							}`}
+							key={index}
+						>
+							<div className="text-wrapper">
+								<h3 className="card-heading">{card.heading}</h3>
+								<p>{card.paragraph}</p>
+								<div className={"buttons-wrapper"}>
+									{card.buttons &&
+										card.buttons.map((button, buttonIndex) => (
+											<div className="button-wrapper" key={buttonIndex}>
+												<CustomButton
+													url={button.url}
+													className={`${button.buttonType}`}
+												>
+													<>
+														{button.text}
+														<img src={button.svg} />
+													</>
+												</CustomButton>
+											</div>
+										))}
+								</div>
+								<img className={"icon"} src={card.icon} alt={card.icon_alt} />
 							</div>
-							<img className={'icon'} src={card.icon} />
+							<img src={card.image} className="image" alt={card.image_alt} />
 						</div>
-						<img src={card.image} className='image' />
-					</div>
-				))}
+					))}
 			</div>
-		</section >
+		</section>
 	);
 }

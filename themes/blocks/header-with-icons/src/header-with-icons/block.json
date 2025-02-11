@@ -32,12 +32,18 @@
 		"image": {
 			"type": "string"
 		},
+		"image_alt": {
+			"type": "string"
+		},
 		"description": {
 			"type": "array",
 			"items": {
 				"type": "object",
 				"properties": {
 					"icon": {
+						"type": "string"
+					},
+					"icon_url": {
 						"type": "string"
 					},
 					"paragraph": {

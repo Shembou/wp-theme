@@ -58,7 +58,8 @@ export default function Edit({ attributes, setAttributes }) {
 					tags: [],
 					paragraph: '',
 					link: '',
-					image: ''
+					image: '',
+					image_alt: ''
 				}
 			]
 		})
@@ -148,7 +149,10 @@ export default function Edit({ attributes, setAttributes }) {
 							</PanelRow>
 							<PanelRow>
 								<MediaUpload
-									onSelect={(media) => updateEmployee(index, 'image', media.url)}
+									onSelect={(media) => {
+										updateEmployee(index, 'image', media.url)
+										updateEmployee(index, 'image_alt', media.alt)
+									}}
 									allowedTypes={['image']}
 									render={({ open }) => (
 										<div>
@@ -212,9 +216,9 @@ export default function Edit({ attributes, setAttributes }) {
 				</PanelBody>
 			</InspectorControls >
 			<section {...useBlockProps()} id="detailed-employees-section">
-				{employees.slice(0, currentLimit).map(({ image, heading, tags, paragraph, link }, index) => (
+				{employees.slice(0, currentLimit).map(({ image, heading, tags, paragraph, link, image_alt }, index) => (
 					<div className={`employee-wrapper ${index % 2 ? 'odd' : 'even'}`} key={index}>
-						<img src={image} />
+						<img src={image} alt={image_alt} />
 						<div className="description-wrapper">
 							<h2>{heading}</h2>
 							<div className="tags-wrapper">

@@ -39,6 +39,9 @@
           },
           "image": {
             "type": "string"
+          },
+          "image_alt": {
+            "type": "string"
           }
         }
       }

@@ -35,7 +35,7 @@ export default function save({ attributes }) {
 							scrollingRowCounter++;
 							return (
 								<div key={index} className={`value-item ${scrollingRowCounter % 2 == 0 && 'green'}`}>
-									{value.icon && <img src={value.icon} alt="" className="value-icon" />}
+									{value.icon && <img src={value.icon} alt={value.icon_alt} className="value-icon" />}
 									<span className="value-text">{value.text}</span>
 								</div>
 							);
@@ -49,7 +49,7 @@ export default function save({ attributes }) {
 							scrollingRowReverseCounter++;
 							return (
 								<div key={index} className={`value-item ${scrollingRowReverseCounter % 2 == 0 && 'green'}`}>
-									{value.icon && <img src={value.icon} alt="" className="value-icon" />}
+									{value.icon && <img src={value.icon} alt={value.icon_alt} className="value-icon" />}
 									<span className="value-text">{value.text}</span>
 								</div>
 							);

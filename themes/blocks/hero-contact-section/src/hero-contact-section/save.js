@@ -27,6 +27,7 @@ export default function save({ attributes }) {
 			svg: ''
 		},
 		image = '',
+		image_alt = ''
 	} = attributes
 	return (
 		<section {...useBlockProps.save()} id="hero-contact-section">
@@ -39,7 +40,7 @@ export default function save({ attributes }) {
 						<img src={button.svg} />
 					</CustomButton>
 				</header>
-				<img src={image} className='big-icon' />
+				<img src={image} alt={image_alt} className='big-icon' />
 			</div>
 		</section>
 	);

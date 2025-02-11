@@ -71,6 +71,12 @@
           },
           "image": {
             "type": "string"
+          },
+          "icon_alt": {
+            "type": "string"
+          },
+          "image_alt": {
+            "type": "string"
           }
         }
       }

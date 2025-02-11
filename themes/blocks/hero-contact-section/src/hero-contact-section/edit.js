@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
-import { __ } from '@wordpress/i18n';
+import { __ } from "@wordpress/i18n";
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -11,8 +11,17 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { InspectorControls, useBlockProps, MediaUpload } from '@wordpress/block-editor';
-import { PanelBody, PanelRow, TextControl, Button } from '@wordpress/components';
+import {
+	InspectorControls,
+	useBlockProps,
+	MediaUpload,
+} from "@wordpress/block-editor";
+import {
+	PanelBody,
+	PanelRow,
+	TextControl,
+	Button,
+} from "@wordpress/components";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -20,8 +29,8 @@ import { PanelBody, PanelRow, TextControl, Button } from '@wordpress/components'
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import './editor.scss';
-import CustomButton from '../../../common/CustomButton';
+import "./editor.scss";
+import CustomButton from "../../../common/CustomButton";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -32,22 +41,22 @@ import CustomButton from '../../../common/CustomButton';
  * @return {Element} Element to render.
  */
 export default function Edit({ attributes, setAttributes }) {
-
 	const updateButtonAttributes = (key, value) => {
-		const newButton = { ...button, [key]: value }
-		setAttributes({ button: newButton })
-	}
+		const newButton = { ...button, [key]: value };
+		setAttributes({ button: newButton });
+	};
 
 	const {
-		heading = '',
-		paragraph = '',
+		heading = "",
+		paragraph = "",
 		button = {
-			url: '',
-			text: '',
-			svg: ''
+			url: "",
+			text: "",
+			svg: "",
 		},
-		image = '',
-	} = attributes
+		image = "",
+		image_alt = "",
+	} = attributes;
 	return (
 		<>
 			<InspectorControls>
@@ -55,55 +64,65 @@ export default function Edit({ attributes, setAttributes }) {
 					<PanelRow>
 						<TextControl
 							label="Heading"
-							value={heading || ''}
+							value={heading || ""}
 							onChange={(value) => setAttributes({ heading: value })}
 						/>
 					</PanelRow>
 					<PanelRow>
 						<TextControl
 							label="Paragraph"
-							value={paragraph || ''}
+							value={paragraph || ""}
 							onChange={(value) => setAttributes({ paragraph: value })}
 						/>
 					</PanelRow>
 					<PanelRow>
 						<TextControl
 							label="Button url"
-							value={button.url || ''}
-							onChange={(value) => updateButtonAttributes('url', value)}
+							value={button.url || ""}
+							onChange={(value) => updateButtonAttributes("url", value)}
 						/>
 					</PanelRow>
 					<PanelRow>
 						<TextControl
 							label="Button text"
-							value={button.text || ''}
-							onChange={(value) => updateButtonAttributes('text', value)}
+							value={button.text || ""}
+							onChange={(value) => updateButtonAttributes("text", value)}
 						/>
 					</PanelRow>
 					<PanelRow>
 						<MediaUpload
-							onSelect={(media) => updateButtonAttributes('svg', media.url)}
-							allowedTypes={['image']}
+							onSelect={(media) => updateButtonAttributes("svg", media.url)}
+							allowedTypes={["image"]}
 							render={({ open }) => (
 								<div>
 									<Button onClick={open} variant="secondary">
 										{button.svg
-											? __('Replace svg', 'hero-contact-section')
-											: __('Upload svg', 'hero-contact-section')}
+											? __("Replace svg", "hero-contact-section")
+											: __("Upload svg", "hero-contact-section")}
 									</Button>
 									{button.svg && (
-										<div style={{ marginTop: '10px', alignItems: 'center', display: 'flex' }}>
+										<div
+											style={{
+												marginTop: "10px",
+												alignItems: "center",
+												display: "flex",
+											}}
+										>
 											<img
 												src={button.svg}
-												alt={__('Button svg', 'hero-contact-section')}
-												style={{ maxWidth: '100%', border: '1px', padding: '10px' }}
+												alt={__("Button svg", "hero-contact-section")}
+												style={{
+													maxWidth: "100%",
+													border: "1px",
+													padding: "10px",
+												}}
 											/>
 											<Button
-												onClick={() => updateButtonAttributes('svg', '')}
+												onClick={() => updateButtonAttributes("svg", "")}
 												variant="link"
 												isDestructive
 											>
-												{__('Remove svg', 'hero-contact-section')}
+												{__("Remove svg", "hero-contact-section")}
 											</Button>
 										</div>
 									)}
@@ -113,28 +132,41 @@ export default function Edit({ attributes, setAttributes }) {
 					</PanelRow>
 					<PanelRow>
 						<MediaUpload
-							onSelect={(media) => setAttributes({ image: media.url })}
-							allowedTypes={['image']}
+							onSelect={(media) => {
+								setAttributes({ image: media.url });
+								setAttributes({ image_alt: media.alt });
+							}}
+							allowedTypes={["image"]}
 							render={({ open }) => (
 								<div>
 									<Button onClick={open} variant="secondary">
 										{image
-											? __('Replace Image', 'hero-contact-section')
-											: __('Upload Image', 'hero-contact-section')}
+											? __("Replace Image", "hero-contact-section")
+											: __("Upload Image", "hero-contact-section")}
 									</Button>
 									{image && (
-										<div style={{ marginTop: '10px', alignItems: 'center', display: 'flex' }}>
+										<div
+											style={{
+												marginTop: "10px",
+												alignItems: "center",
+												display: "flex",
+											}}
+										>
 											<img
 												src={image}
-												alt={__('Image', 'hero-contact-section')}
-												style={{ maxWidth: '100%', border: '1px', padding: '10px' }}
+												alt={__("Image", "hero-contact-section")}
+												style={{
+													maxWidth: "100%",
+													border: "1px",
+													padding: "10px",
+												}}
 											/>
 											<Button
-												onClick={() => setAttributes({ image: '' })}
+												onClick={() => setAttributes({ image: "" })}
 												variant="link"
 												isDestructive
 											>
-												{__('Remove Image', 'hero-contact-section')}
+												{__("Remove Image", "hero-contact-section")}
 											</Button>
 										</div>
 									)}
@@ -145,7 +177,7 @@ export default function Edit({ attributes, setAttributes }) {
 				</PanelBody>
 			</InspectorControls>
 			<section {...useBlockProps()} id="hero-contact-section">
-				<div className='wrapper'>
+				<div className="wrapper">
 					<header>
 						<h1>{heading}</h1>
 						<p>{paragraph}</p>
@@ -154,7 +186,7 @@ export default function Edit({ attributes, setAttributes }) {
 							<img src={button.svg} />
 						</CustomButton>
 					</header>
-					<img src={image} className='big-icon' />
+					<img src={image} alt={image_alt} className="big-icon" />
 				</div>
 			</section>
 		</>
