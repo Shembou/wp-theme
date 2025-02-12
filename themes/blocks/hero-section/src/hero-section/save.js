@@ -21,7 +21,7 @@ export default function save({ attributes }) {
 		header = '',
 		text = '',
 		HeaderType = 'h2',
-		button = { text: '', url: '', isSecondary: false, svg: '' },
+		button = { text: '', url: '', isSecondary: false, svg: '', svg_alt: '' },
 		links = [],
 	} = attributes;
 
@@ -37,9 +37,7 @@ export default function save({ attributes }) {
 						<CustomButton {...button}>
 							<>
 								{button.text}
-								<div
-									dangerouslySetInnerHTML={{ __html: button.svg }}
-								/>
+								<img src={button.svg} alt={button.svg_alt} />
 							</>
 						</CustomButton>
 					</header>

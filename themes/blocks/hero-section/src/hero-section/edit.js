@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
-import { __ } from '@wordpress/i18n';
+import { __ } from "@wordpress/i18n";
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -11,8 +11,20 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { InspectorControls, useBlockProps, URLInput, MediaUpload } from '@wordpress/block-editor';
-import { TextControl, PanelBody, SelectControl, ToggleControl, Button, TextareaControl } from '@wordpress/components'
+import {
+	InspectorControls,
+	useBlockProps,
+	URLInput,
+	MediaUpload,
+} from "@wordpress/block-editor";
+import {
+	TextControl,
+	PanelBody,
+	SelectControl,
+	ToggleControl,
+	Button,
+	TextareaControl,
+} from "@wordpress/components";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -20,9 +32,9 @@ import { TextControl, PanelBody, SelectControl, ToggleControl, Button, TextareaC
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import './editor.scss';
-import CustomButton from '../../../common/CustomButton';
-import fetchButtonSvg from '../../../utils/fetchButtonSvg';
+import "./editor.scss";
+import CustomButton from "../../../common/CustomButton";
+import fetchButtonSvg from "../../../utils/fetchButtonSvg";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -33,12 +45,11 @@ import fetchButtonSvg from '../../../utils/fetchButtonSvg';
  * @return {Element} Element to render.
  */
 export default function Edit({ attributes, setAttributes }) {
-
 	const {
-		header = '',
-		text = '',
-		HeaderType = 'h2',
-		button = { text: '', url: '', isSecondary: false, svg: '' },
+		header = "",
+		text = "",
+		HeaderType = "h2",
+		button = { text: "", url: "", isSecondary: false, svg: "", svg_alt: "" },
 		links = [],
 	} = attributes;
 
@@ -53,7 +64,7 @@ export default function Edit({ attributes, setAttributes }) {
 	const addLink = () => {
 		if (links.length < 4) {
 			setAttributes({
-				links: [...links, { url: '', text: '', isOverlapping: false }],
+				links: [...links, { url: "", text: "", isOverlapping: false }],
 			});
 		}
 	};
@@ -75,15 +86,21 @@ export default function Edit({ attributes, setAttributes }) {
 	};
 
 	const onSelectSVG = (media) => {
-		fetchButtonSvg(media, setAttributes, button);
+		setAttributes({
+			button: {
+				...button,
+				svg: media.url,
+				svg_alt: media.alt
+			}
+		})
 	};
 
 	const removeSVG = () => {
 		setAttributes({
 			button: {
 				...button,
-				svg: ''
-			}
+				svg: "",
+			},
 		});
 	};
 
@@ -92,27 +109,27 @@ export default function Edit({ attributes, setAttributes }) {
 			<div key={index} className="link-control">
 				<URLInput
 					value={link.url}
-					label={__('Link URL', 'hero-section')}
-					onChange={(value) => updateLink(index, 'url', value)}
+					label={__("Link URL", "hero-section")}
+					onChange={(value) => updateLink(index, "url", value)}
 				/>
 				<TextControl
-					label={__('Link Text', 'hero-section')}
+					label={__("Link Text", "hero-section")}
 					value={link.text}
-					onChange={(value) => updateLink(index, 'text', value)}
+					onChange={(value) => updateLink(index, "text", value)}
 				/>
 				<ToggleControl
-					label={__('Is Overlapping?', 'hero-section')}
+					label={__("Is Overlapping?", "hero-section")}
 					checked={link.isOverlapping}
-					onChange={(value) => updateLink(index, 'isOverlapping', value)}
+					onChange={(value) => updateLink(index, "isOverlapping", value)}
 				/>
 				<SelectControl
-					label={__('Color Type', 'hero-section')}
+					label={__("Color Type", "hero-section")}
 					value={link.color}
 					options={[
-						{ label: 'Szary', value: 'gray' },
-						{ label: 'Niebiesko-szary', value: 'blue-green' }
+						{ label: "Szary", value: "gray" },
+						{ label: "Niebiesko-szary", value: "blue-green" },
 					]}
-					onChange={(value) => updateLink(index, 'color', value)}
+					onChange={(value) => updateLink(index, "color", value)}
 				/>
 				<Button
 					isSecondary
@@ -120,7 +137,7 @@ export default function Edit({ attributes, setAttributes }) {
 					onClick={() => removeLink(index)}
 					className="remove-link-button"
 				>
-					{__('Remove Link', 'hero-section')}
+					{__("Remove Link", "hero-section")}
 				</Button>
 			</div>
 		));
@@ -128,50 +145,50 @@ export default function Edit({ attributes, setAttributes }) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={__('Settings', 'hero-section')}>
+				<PanelBody title={__("Settings", "hero-section")}>
 					<SelectControl
-						label={__('Header Type', 'hero-section')}
+						label={__("Header Type", "hero-section")}
 						value={HeaderType}
 						options={[
-							{ label: 'H1', value: 'h1' },
-							{ label: 'H2', value: 'h2' },
-							{ label: 'H3', value: 'h3' },
-							{ label: 'H4', value: 'h4' },
-							{ label: 'H5', value: 'h5' },
-							{ label: 'H6', value: 'h6' },
+							{ label: "H1", value: "h1" },
+							{ label: "H2", value: "h2" },
+							{ label: "H3", value: "h3" },
+							{ label: "H4", value: "h4" },
+							{ label: "H5", value: "h5" },
+							{ label: "H6", value: "h6" },
 						]}
 						onChange={(value) => setAttributes({ HeaderType: value })}
 					/>
 					<TextareaControl
-						label={__('Heading', 'hero-section')}
-						value={header || ''}
+						label={__("Heading", "hero-section")}
+						value={header || ""}
 						onChange={(value) => setAttributes({ header: value })}
 						height={2}
 					/>
 					<TextareaControl
-						label={__('Text', 'hero-section')}
-						value={text || ''}
+						label={__("Text", "hero-section")}
+						value={text || ""}
 						onChange={(value) => setAttributes({ text: value })}
 					/>
 					<TextControl
-						label={__('Button Text', 'hero-section')}
-						value={button.text || ''}
-						onChange={(value) => updateButton('text', value)}
+						label={__("Button Text", "hero-section")}
+						value={button.text || ""}
+						onChange={(value) => updateButton("text", value)}
 					/>
 					<URLInput
-						label={__('Button URL', 'hero-section')}
-						value={button.url || ''}
-						onChange={(value) => updateButton('url', value)}
+						label={__("Button URL", "hero-section")}
+						value={button.url || ""}
+						onChange={(value) => updateButton("url", value)}
 					/>
 
 					<ToggleControl
-						label={__('Is Secondary Button?', 'hero-section')}
+						label={__("Is Secondary Button?", "hero-section")}
 						checked={button.isSecondary}
-						onChange={(value) => updateButton('isSecondary', value)}
+						onChange={(value) => updateButton("isSecondary", value)}
 					/>
 					<MediaUpload
 						onSelect={onSelectSVG}
-						allowedTypes={['image/svg+xml']}
+						allowedTypes={["image"]}
 						render={({ open }) => (
 							<Button
 								onClick={open}
@@ -180,7 +197,9 @@ export default function Edit({ attributes, setAttributes }) {
 								className="custom-media-upload-button"
 								style={{ display: "grid" }}
 							>
-								{button?.svg ? __('Replace SVG', 'hero-section') : __('Upload SVG', 'hero-section')}
+								{button?.svg
+									? __("Replace SVG", "hero-section")
+									: __("Upload SVG", "hero-section")}
 							</Button>
 						)}
 					/>
@@ -192,7 +211,7 @@ export default function Edit({ attributes, setAttributes }) {
 							className="custom-remove-svg-button"
 							style={{ display: "grid" }}
 						>
-							{__('Remove SVG', 'hero-section')}
+							{__("Remove SVG", "hero-section")}
 						</Button>
 					)}
 					{renderLinksControls()}
@@ -203,34 +222,42 @@ export default function Edit({ attributes, setAttributes }) {
 						disabled={links.length >= 4}
 						style={{ marginTop: "10px" }}
 					>
-						{__('Add Link', 'hero-section')}
+						{__("Add Link", "hero-section")}
 					</Button>
 				</PanelBody>
 			</InspectorControls>
 			<section {...useBlockProps()} id="hero-section">
-				<div className='section-wrapper'>
-					<div className='wrapper'>
-						<header className='header-wrapper'>
-							<HeaderType className="wp-blocks wp-header header">{header}</HeaderType>
+				<div className="section-wrapper">
+					<div className="wrapper">
+						<header className="header-wrapper">
+							<HeaderType className="wp-blocks wp-header header">
+								{header}
+							</HeaderType>
 							<p className="paragraph">{text}</p>
 							<CustomButton {...button}>
 								<>
 									{button.text}
-									<div
-										dangerouslySetInnerHTML={{ __html: button.svg }}
-									/>
+									<img src={button.svg} alt={button.svg_alt} />
 								</>
 							</CustomButton>
 						</header>
 					</div>
-					<div className='animation-wrapper'>
+					<div className="animation-wrapper">
 						{BrainIcon()}
 						{links.map((link, index) => (
-							<a key={index} href={link.url} className={`animation-inside-link link-${index} ${link.isOverlapping ? "overlap" : "default"} ${link.color == "gray" && 'gray'}`}>{link.text}</a>
+							<a
+								key={index}
+								href={link.url}
+								className={`animation-inside-link link-${index} ${
+									link.isOverlapping ? "overlap" : "default"
+								} ${link.color == "gray" && "gray"}`}
+							>
+								{link.text}
+							</a>
 						))}
 					</div>
 				</div>
-			</section >
+			</section>
 		</>
 	);
 }
