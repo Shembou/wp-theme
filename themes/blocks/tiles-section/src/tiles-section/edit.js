@@ -58,6 +58,16 @@ export default function Edit({ attributes, setAttributes }) {
 		setAttributes({ tiles: updatedTiles });
 	};
 
+	const onTileImageChange = (index, media) => {
+		const updatedTiles = [...tiles];
+		updatedTiles[index] = {
+			...updatedTiles[index],
+			image: media.url,
+			image_alt: media.alt,
+		};
+		setAttributes({ tiles: updatedTiles });
+	};
+
 	const renderTileControls = () => (
 		<div>
 			{tiles.map((tile, index) => (
@@ -74,8 +84,7 @@ export default function Edit({ attributes, setAttributes }) {
 					/>
 					<MediaUpload
 						onSelect={(media) => {
-							updateTile(index, "image", media.url);
-							updateTile(index, "image_alt", media.alt);
+							onTileImageChange(index, media);
 						}}
 						allowedTypes={["image"]}
 						render={({ open }) => (
