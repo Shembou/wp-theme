@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
-import { __ } from '@wordpress/i18n';
+import { __ } from "@wordpress/i18n";
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -11,8 +11,12 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { InspectorControls, useBlockProps, MediaUpload } from '@wordpress/block-editor';
-import { PanelBody, TextControl, Button } from '@wordpress/components';
+import {
+	InspectorControls,
+	useBlockProps,
+	MediaUpload,
+} from "@wordpress/block-editor";
+import { PanelBody, TextControl, Button } from "@wordpress/components";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -20,7 +24,7 @@ import { PanelBody, TextControl, Button } from '@wordpress/components';
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import './editor.scss';
+import "./editor.scss";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -31,54 +35,81 @@ import './editor.scss';
  * @return {Element} Element to render.
  */
 export default function Edit({ attributes, setAttributes }) {
-
 	const {
-		heading = '',
-		backgroundImage = '',
+		heading = "",
+		backgroundImage = "",
+		backgroundImage_alt = "",
 		button = {
-			text: '',
-			url: '',
-			svg: '',
-		}
-	} = attributes
+			text: "",
+			url: "",
+			svg: "",
+			svg_alt: "",
+		},
+	} = attributes;
 
 	const onChangeButton = (field, value) => {
 		const newButton = { ...attributes.button, [field]: value };
-		setAttributes({ button: newButton })
-	}
+		setAttributes({ button: newButton });
+	};
+
+	const onButtonSvgChange = (media) => {
+		const newButton = {
+			...attributes.button,
+			svg: media.url,
+			svg_alt: media.alt,
+		};
+		setAttributes({ button: newButton });
+	};
 
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={__('Settings', 'cta-section')}>
+				<PanelBody title={__("Settings", "cta-section")}>
 					<TextControl
-						label={__('Heading', 'cta-section')}
-						value={heading || ''}
+						label={__("Heading", "cta-section")}
+						value={heading || ""}
 						onChange={(value) => setAttributes({ heading: value })}
 					/>
 					<MediaUpload
-						onSelect={(media) => setAttributes({ backgroundImage: media.url })}
-						allowedTypes={['image']}
+						onSelect={(media) =>
+							setAttributes({
+								backgroundImage: media.url,
+								backgroundImage_alt: media.alt,
+							})
+						}
+						allowedTypes={["image"]}
 						render={({ open }) => (
 							<div>
 								<Button onClick={open} variant="secondary">
 									{backgroundImage
-										? __('Replace Image', 'cta-section')
-										: __('Upload Image', 'cta-section')}
+										? __("Replace Image", "cta-section")
+										: __("Upload Image", "cta-section")}
 								</Button>
 								{backgroundImage && (
-									<div style={{ marginTop: '10px', alignItems: 'center', display: 'grid' }}>
+									<div
+										style={{
+											marginTop: "10px",
+											alignItems: "center",
+											display: "grid",
+										}}
+									>
 										<img
 											src={backgroundImage}
-											alt={__('Background Image', 'cta-section')}
-											style={{ maxWidth: '100%', border: '1px', padding: '10px' }}
+											alt={__("Background Image", "cta-section")}
+											style={{
+												maxWidth: "100%",
+												border: "1px",
+												padding: "10px",
+											}}
 										/>
 										<Button
-											onSelect={(media) => setAttributes({ backgroundImage: media.url })}
+											onSelect={(media) =>
+												setAttributes({ backgroundImage: media.url })
+											}
 											variant="link"
 											isDestructive
 										>
-											{__('Remove Image', 'cta-section')}
+											{__("Remove Image", "cta-section")}
 										</Button>
 									</div>
 								)}
@@ -86,38 +117,48 @@ export default function Edit({ attributes, setAttributes }) {
 						)}
 					/>
 					<TextControl
-						label={__('Button Url', 'cta-section')}
-						value={button.url || ''}
-						onChange={(value) => onChangeButton('url', value)}
+						label={__("Button Url", "cta-section")}
+						value={button.url || ""}
+						onChange={(value) => onChangeButton("url", value)}
 					/>
 					<TextControl
-						label={__('Button text', 'cta-section')}
-						value={button.text || ''}
-						onChange={(value) => onChangeButton('text', value)}
+						label={__("Button text", "cta-section")}
+						value={button.text || ""}
+						onChange={(value) => onChangeButton("text", value)}
 					/>
 					<MediaUpload
-						onSelect={(media) => onChangeButton('svg', media.url)}
-						allowedTypes={['image']}
+						onSelect={(media) => onButtonSvgChange(media)}
+						allowedTypes={["image"]}
 						render={({ open }) => (
 							<div>
 								<Button onClick={open} variant="secondary">
 									{button.svg
-										? __('Replace Svg', 'cta-section')
-										: __('Upload Svg', 'cta-section')}
+										? __("Replace Svg", "cta-section")
+										: __("Upload Svg", "cta-section")}
 								</Button>
 								{button.svg && (
-									<div style={{ marginTop: '10px', alignItems: 'center', display: 'grid' }}>
+									<div
+										style={{
+											marginTop: "10px",
+											alignItems: "center",
+											display: "grid",
+										}}
+									>
 										<img
 											src={button.svg}
-											alt={__('Card Svg', 'cta-section')}
-											style={{ maxWidth: '100%', border: '1px', padding: '10px' }}
+											alt={__("Card Svg", "cta-section")}
+											style={{
+												maxWidth: "100%",
+												border: "1px",
+												padding: "10px",
+											}}
 										/>
 										<Button
-											onSelect={(media) => onChangeButton('svg', '')}
+											onSelect={(media) => onChangeButton("svg", "")}
 											variant="link"
 											isDestructive
 										>
-											{__('Remove Image', 'cta-section')}
+											{__("Remove Image", "cta-section")}
 										</Button>
 									</div>
 								)}
@@ -127,12 +168,19 @@ export default function Edit({ attributes, setAttributes }) {
 				</PanelBody>
 			</InspectorControls>
 			<section {...useBlockProps()} id="cta-section">
-				<h2 style={{ background: `linear-gradient(0deg, rgba(255, 255, 255, 0.70) 0%, rgba(255, 255, 255, 0.70) 100%), url(${backgroundImage}) lightgray 50% / cover no-repeat` }} className={'heading'}>{heading}</h2>
-				<a href={button.url} className='button-wrapper'>
+				<h2
+					style={{
+						background: `linear-gradient(0deg, rgba(255, 255, 255, 0.70) 0%, rgba(255, 255, 255, 0.70) 100%), url(${backgroundImage}) lightgray 50% / cover no-repeat`,
+					}}
+					className={"heading"}
+				>
+					{heading}
+				</h2>
+				<a href={button.url} className="button-wrapper">
 					<p>{button.text}</p>
-					<img className='icon' src={button.svg} />
+					<img className="icon" src={button.svg} alt={button.svg_alt} />
 				</a>
-			</section >
+			</section>
 		</>
 	);
 }

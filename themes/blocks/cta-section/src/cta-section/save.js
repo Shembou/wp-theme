@@ -4,7 +4,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps } from "@wordpress/block-editor";
 
 /**
  * The save function defines the way in which the different attributes should
@@ -16,24 +16,31 @@ import { useBlockProps } from '@wordpress/block-editor';
  * @return {Element} Element to render.
  */
 export default function save({ attributes }) {
+	const {
+		heading = "",
+		backgroundImage = "",
+		button = {
+			text: "",
+			url: "",
+			svg: "",
+			svg_alt: "",
+		},
+	} = attributes;
 
-    const {
-        heading = '',
-        backgroundImage = '',
-        button = {
-            text: '',
-            url: '',
-            svg: '',
-        }
-    } = attributes
-
-    return (
-        <section {...useBlockProps.save()} id="cta-section">
-            <h2 style={{ background: `linear-gradient(0deg, rgba(255, 255, 255, 0.70) 0%, rgba(255, 255, 255, 0.70) 100%), url(${backgroundImage}) lightgray 50% / cover no-repeat` }} className={'heading'}>{heading}</h2>
-            <a href={button.url} className='button-wrapper'>
-                <p>{button.text}</p>
-                <img className='icon' src={button.svg} />
-            </a>
-        </section>
-    );
+	return (
+		<section {...useBlockProps.save()} id="cta-section">
+			<h2
+				style={{
+					background: `linear-gradient(0deg, rgba(255, 255, 255, 0.70) 0%, rgba(255, 255, 255, 0.70) 100%), url(${backgroundImage}) lightgray 50% / cover no-repeat`,
+				}}
+				className={"heading"}
+			>
+				{heading}
+			</h2>
+			<a href={button.url} className="button-wrapper">
+				<p>{button.text}</p>
+				<img className="icon" src={button.svg} alt={button.svg_alt} />
+			</a>
+		</section>
+	);
 }
