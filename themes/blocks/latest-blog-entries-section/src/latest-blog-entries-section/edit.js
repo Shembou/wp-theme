@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
-import { __ } from '@wordpress/i18n';
+import { __ } from "@wordpress/i18n";
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -11,13 +11,18 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, PanelRow, TextControl, TextareaControl } from '@wordpress/components';
+import { useBlockProps, InspectorControls } from "@wordpress/block-editor";
+import {
+	PanelBody,
+	PanelRow,
+	TextControl,
+	TextareaControl,
+} from "@wordpress/components";
 
-import CustomButton from '../../../common/CustomButton';
-import parseBlogHTML from '../../../utils/parseBlogHTML';
+import CustomButton from "../../../common/CustomButton";
+import parseBlogHTML from "../../../utils/parseBlogHTML";
 
-import { useSelect } from '@wordpress/data';
+import { useSelect } from "@wordpress/data";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -25,7 +30,7 @@ import { useSelect } from '@wordpress/data';
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import './editor.scss';
+import "./editor.scss";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -36,14 +41,10 @@ import './editor.scss';
  * @return {Element} Element to render.
  */
 export default function Edit({ attributes, setAttributes }) {
-	const {
-		tag = '',
-		heading = '',
-		paragraph = ''
-	} = attributes
+	const { tag = "", heading = "", paragraph = "" } = attributes;
 
-	const posts = useSelect(select =>
-		select('core').getEntityRecords('postType', 'post', { per_page: -1 })
+	const posts = useSelect((select) =>
+		select("core").getEntityRecords("postType", "post", { per_page: -1 }),
 	);
 
 	const post_data = posts
@@ -59,49 +60,56 @@ export default function Edit({ attributes, setAttributes }) {
 				<PanelBody>
 					<PanelRow>
 						<TextControl
-							label={__('Tag', 'latest-blog-entries-section')}
-							value={tag || ''}
+							label={__("Tag", "latest-blog-entries-section")}
+							value={tag || ""}
 							onChange={(value) => setAttributes({ tag: value })}
 						/>
 					</PanelRow>
 					<PanelRow>
 						<TextControl
-							label={__('Heading', 'latest-blog-entries-section')}
-							value={heading || ''}
+							label={__("Heading", "latest-blog-entries-section")}
+							value={heading || ""}
 							onChange={(value) => setAttributes({ heading: value })}
 						/>
 					</PanelRow>
 					<PanelRow>
 						<TextareaControl
-							label={__('Paragraph', 'latest-blog-entries-section')}
-							value={paragraph || ''}
+							label={__("Paragraph", "latest-blog-entries-section")}
+							value={paragraph || ""}
 							onChange={(value) => setAttributes({ paragraph: value })}
 						/>
 					</PanelRow>
 				</PanelBody>
 			</InspectorControls>
-			<section {...useBlockProps()} id='latest-blog-entries-section'>
-				{post_data && post_data.map(({ link, data }, index) => (
-					<div className='blog-post' key={index}>
-						<div className="image-wrapper">
-							<p className='reading-time'><BookmarkIconBlack /> {data.reading_time} min. czytania</p>
-							<img src={data.featured_image} />
-						</div>
-						<div className='blog-contents-wrapper'>
-							<div className='wrapper'>
-								<h2>{data.title}</h2>
-								<CustomButton url={link}>Czytaj dalej <BookmarkIconWhite /></CustomButton>
+			<section {...useBlockProps()} id="latest-blog-entries-section">
+				{post_data &&
+					post_data.map(({ link, data }, index) => (
+						<div className="blog-post" key={index}>
+							<div className="image-wrapper">
+								<p className="reading-time">
+									<BookmarkIconBlack /> {data.reading_time} min. czytania
+								</p>
+								<img src={data.featured_image} />
+							</div>
+							<div className="blog-contents-wrapper">
+								<div className="wrapper">
+									<h2>{data.title}</h2>
+									<CustomButton url={link}>
+										Czytaj dalej <BookmarkIconWhite />
+									</CustomButton>
+								</div>
 							</div>
 						</div>
-					</div>
-				))}
+					))}
 				<header>
 					<div className="wrapper">
-						<p className='tag'>{tag}</p>
+						<p className="tag">{tag}</p>
 						<h2>{heading}</h2>
 						<p>{paragraph}</p>
 					</div>
-					<CustomButton url="/blog">Przejdź do bloga <BookmarkIconWhite /></CustomButton>
+					<CustomButton url="/blog">
+						Przejdź do bloga <BookmarkIconWhite />
+					</CustomButton>
 				</header>
 			</section>
 		</>
@@ -115,6 +123,7 @@ const BookmarkIconWhite = (props) => (
 		height="16"
 		fill="none"
 		viewBox="0 0 16 16"
+		alt="Bookmark Icon"
 	>
 		<path
 			fill="#F9FDFF"
@@ -130,6 +139,7 @@ const BookmarkIconBlack = (props) => (
 		height="17"
 		fill="none"
 		viewBox="0 0 16 17"
+		alt="Bookmark Icon"
 	>
 		<path
 			fill="#324C4D"
