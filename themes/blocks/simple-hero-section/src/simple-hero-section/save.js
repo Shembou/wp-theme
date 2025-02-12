@@ -27,7 +27,7 @@ export default function save({ attributes }) {
 					<p>{paragraph}</p>
 					{button?.text && (
 						<CustomButton {...button}>
-							<p>{button.text}</p> <img src={button.svg} />
+							<p>{button.text}</p> <img src={button.svg} alt={button.svg_alt} />
 						</CustomButton>
 					)}
 				</header>

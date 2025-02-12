@@ -4,8 +4,8 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
-import CustomButton from '../../../common/CustomButton';
+import { useBlockProps } from "@wordpress/block-editor";
+import CustomButton from "../../../common/CustomButton";
 
 /**
  * The save function defines the way in which the different attributes should
@@ -18,29 +18,35 @@ import CustomButton from '../../../common/CustomButton';
  */
 export default function save({ attributes }) {
 	const {
-		tag = '',
-		heading = '',
-		paragraph = '',
+		tag = "",
+		heading = "",
+		paragraph = "",
 		tiles = [],
 		button = {
-			url: '',
-			text: '',
-			svg: ''
-		}
-	} = attributes
+			url: "",
+			text: "",
+			svg: "",
+			svg_alt,
+		},
+	} = attributes;
 	return (
-		<section {...useBlockProps.save()} id='enumerated-tiles-section'>
+		<section {...useBlockProps.save()} id="enumerated-tiles-section">
 			<header>
-				<p className='tag'>{tag}</p>
+				<p className="tag">{tag}</p>
 				<h2>{heading}</h2>
 				<p>{paragraph}</p>
 			</header>
-			<div className='tiles-wrapper'>
+			<div className="tiles-wrapper">
 				{tiles.map(({ heading, paragraph }, index) => (
 					<React.Fragment key={index}>
-						<div className={
-							`tile ${index % 2 == 0 ? 'green' : 'white'} ${index <= 2 ? 'top' : 'bottom'} ${(index + 2) % 3 != 0 ? 'additional-space' : ''}`}>
-							<h2>0{index + 1} {heading}</h2>
+						<div
+							className={`tile ${index % 2 == 0 ? "green" : "white"} ${
+								index <= 2 ? "top" : "bottom"
+							} ${(index + 2) % 3 != 0 ? "additional-space" : ""}`}
+						>
+							<h2>
+								0{index + 1} {heading}
+							</h2>
 							<p>{paragraph}</p>
 						</div>
 						{index == 2 && <BrainIcon />}
@@ -50,7 +56,7 @@ export default function save({ attributes }) {
 			<CustomButton {...button}>
 				<>
 					{button.text}
-					<img src={button.svg} />
+					<img src={button.svg} alt={button.svg_alt} />
 				</>
 			</CustomButton>
 		</section>
@@ -64,7 +70,7 @@ const BrainIcon = (props) => (
 		height="134"
 		fill="none"
 		viewBox="0 0 148 134"
-		className='brain-icon'
+		className="brain-icon"
 	>
 		<path
 			fill="#E8EBEF"

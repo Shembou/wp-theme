@@ -46,6 +46,11 @@ export default function Edit({ attributes, setAttributes }) {
 		setAttributes({ button: newButton });
 	};
 
+	const updateButtonSvg = (media) => {
+		const newButton = { ...button, svg: media.url, svg_alt: media.alt };
+		setAttributes({ button: newButton });
+	};
+
 	const {
 		heading = "",
 		paragraph = "",
@@ -53,6 +58,7 @@ export default function Edit({ attributes, setAttributes }) {
 			url: "",
 			text: "",
 			svg: "",
+			svg_alt: "",
 		},
 		image = "",
 		image_alt = "",
@@ -91,7 +97,7 @@ export default function Edit({ attributes, setAttributes }) {
 					</PanelRow>
 					<PanelRow>
 						<MediaUpload
-							onSelect={(media) => updateButtonAttributes("svg", media.url)}
+							onSelect={(media) => updateButtonSvg(media)}
 							allowedTypes={["image"]}
 							render={({ open }) => (
 								<div>
@@ -133,8 +139,7 @@ export default function Edit({ attributes, setAttributes }) {
 					<PanelRow>
 						<MediaUpload
 							onSelect={(media) => {
-								setAttributes({ image: media.url });
-								setAttributes({ image_alt: media.alt });
+								setAttributes({ image: media.url, image_alt: media.alt });
 							}}
 							allowedTypes={["image"]}
 							render={({ open }) => (
@@ -183,7 +188,7 @@ export default function Edit({ attributes, setAttributes }) {
 						<p>{paragraph}</p>
 						<CustomButton {...button}>
 							{button.text}
-							<img src={button.svg} />
+							<img src={button.svg} alt={button.svg_alt} />
 						</CustomButton>
 					</header>
 					<img src={image} alt={image_alt} className="big-icon" />

@@ -44,6 +44,9 @@
         "svg": {
           "type": "string",
           "default": ""
+        },
+        "svg_alt": {
+          "type": "string"
         }
       }
     }

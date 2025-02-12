@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
-import { __ } from '@wordpress/i18n';
+import { __ } from "@wordpress/i18n";
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -11,16 +11,27 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps, InspectorControls, MediaUpload } from '@wordpress/block-editor';
-import { PanelBody, PanelRow, Button, TextControl, IconButton, TextareaControl } from '@wordpress/components';
-import CustomButton from '../../../common/CustomButton'
+import {
+	useBlockProps,
+	InspectorControls,
+	MediaUpload,
+} from "@wordpress/block-editor";
+import {
+	PanelBody,
+	PanelRow,
+	Button,
+	TextControl,
+	IconButton,
+	TextareaControl,
+} from "@wordpress/components";
+import CustomButton from "../../../common/CustomButton";
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * Those files can contain any CSS code that gets applied to the editor.
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import './editor.scss';
+import "./editor.scss";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -32,16 +43,17 @@ import './editor.scss';
  */
 export default function Edit({ attributes, setAttributes }) {
 	const {
-		tag = '',
-		heading = '',
-		paragraph = '',
+		tag = "",
+		heading = "",
+		paragraph = "",
 		tiles = [],
 		button = {
-			url: '',
-			text: '',
-			svg: ''
-		}
-	} = attributes
+			url: "",
+			text: "",
+			svg: "",
+			svg_alt: "",
+		},
+	} = attributes;
 
 	// Update base attributes
 	const updateBaseAttribute = (key, value) => {
@@ -56,7 +68,7 @@ export default function Edit({ attributes, setAttributes }) {
 
 	// Add a new tile to the tiles array
 	const addTile = () => {
-		const newTiles = [...tiles, { icon: '', title: '', description: '' }];
+		const newTiles = [...tiles, { icon: "", title: "", description: "" }];
 		setAttributes({ tiles: newTiles });
 	};
 
@@ -83,61 +95,78 @@ export default function Edit({ attributes, setAttributes }) {
 						<TextControl
 							label="Tag"
 							value={tag}
-							onChange={(value) => updateBaseAttribute('tag', value)}
+							onChange={(value) => updateBaseAttribute("tag", value)}
 						/>
 					</PanelRow>
 					<PanelRow>
 						<TextControl
 							label="Heading"
 							value={heading}
-							onChange={(value) => updateBaseAttribute('heading', value)}
+							onChange={(value) => updateBaseAttribute("heading", value)}
 						/>
 					</PanelRow>
 					<PanelRow>
 						<TextControl
 							label="Paragraph"
 							value={paragraph}
-							onChange={(value) => updateBaseAttribute('paragraph', value)}
+							onChange={(value) => updateBaseAttribute("paragraph", value)}
 						/>
 					</PanelRow>
 					<PanelRow>
 						<TextControl
 							label="Button URL"
 							value={button.url}
-							onChange={(value) => updateButtonAttribute('url', value)}
+							onChange={(value) => updateButtonAttribute("url", value)}
 						/>
 					</PanelRow>
 					<PanelRow>
 						<TextControl
 							label="Button Text"
 							value={button.text}
-							onChange={(value) => updateButtonAttribute('text', value)}
+							onChange={(value) => updateButtonAttribute("text", value)}
 						/>
 					</PanelRow>
 					<PanelRow>
 						<MediaUpload
-							onSelect={(media) => updateButtonAttribute('svg', media.url)}
-							allowedTypes={['image']}
+							onSelect={(media) => {
+								const updatedButton = {
+									...button,
+									svg: media.svg,
+									svg_alt: media.alt,
+								};
+								setAttributes({ button: updatedButton });
+							}}
+							allowedTypes={["image"]}
 							render={({ open }) => (
 								<div>
 									<Button onClick={open} variant="secondary">
 										{button.svg
-											? __('Replace SVG', 'header-with-icons')
-											: __('Upload SVG', 'header-with-icons')}
+											? __("Replace SVG", "header-with-icons")
+											: __("Upload SVG", "header-with-icons")}
 									</Button>
 									{button.svg && (
-										<div style={{ marginTop: '10px', alignItems: 'center', display: 'grid' }}>
+										<div
+											style={{
+												marginTop: "10px",
+												alignItems: "center",
+												display: "grid",
+											}}
+										>
 											<img
 												src={button.svg}
-												alt={__('Button Svg', 'header-with-icons')}
-												style={{ maxWidth: '100%', border: '1px', padding: '10px' }}
+												alt={__("Button Svg", "header-with-icons")}
+												style={{
+													maxWidth: "100%",
+													border: "1px",
+													padding: "10px",
+												}}
 											/>
 											<Button
-												onClick={() => updateBaseAttribute('image', '')}
+												onClick={() => updateBaseAttribute("image", "")}
 												variant="link"
 												isDestructive
 											>
-												{__('Remove Image', 'header-with-icons')}
+												{__("Remove Image", "header-with-icons")}
 											</Button>
 										</div>
 									)}
@@ -150,19 +179,26 @@ export default function Edit({ attributes, setAttributes }) {
 				{/* Tiles Panel */}
 				<PanelBody title="Tiles" initialOpen={false}>
 					{tiles.map((tile, index) => (
-						<div key={index} style={{ marginBottom: '20px', borderBottom: '1px solid #ddd', paddingBottom: '10px' }}>
+						<div
+							key={index}
+							style={{
+								marginBottom: "20px",
+								borderBottom: "1px solid #ddd",
+								paddingBottom: "10px",
+							}}
+						>
 							<PanelRow>
 								<TextControl
 									label={`Tile ${index + 1} Title`}
 									value={tile.heading}
-									onChange={(value) => updateTile(index, 'heading', value)}
+									onChange={(value) => updateTile(index, "heading", value)}
 								/>
 							</PanelRow>
 							<PanelRow>
 								<TextareaControl
 									label={`Tile ${index + 1} Description`}
 									value={tile.paragraph}
-									onChange={(value) => updateTile(index, 'paragraph', value)}
+									onChange={(value) => updateTile(index, "paragraph", value)}
 								/>
 							</PanelRow>
 							<PanelRow>
@@ -182,28 +218,33 @@ export default function Edit({ attributes, setAttributes }) {
 					</PanelRow>
 				</PanelBody>
 			</InspectorControls>
-			<section {...useBlockProps()} id='enumerated-tiles-section'>
+			<section {...useBlockProps()} id="enumerated-tiles-section">
 				<header>
-					<p className='tag'>{tag}</p>
+					<p className="tag">{tag}</p>
 					<h2>{heading}</h2>
 					<p>{paragraph}</p>
 				</header>
-				<div className='tiles-wrapper'>
+				<div className="tiles-wrapper">
 					{tiles.map(({ heading, paragraph }, index) => (
 						<React.Fragment key={index}>
-							<div className={
-								`tile ${index % 2 == 0 ? 'green' : 'white'} ${index <= 2 ? 'top' : 'bottom'} ${(index + 2) % 3 != 0 ? 'additional-space' : ''}`}>
-								<h2>0{index + 1} {heading}</h2>
+							<div
+								className={`tile ${index % 2 == 0 ? "green" : "white"} ${
+									index <= 2 ? "top" : "bottom"
+								} ${(index + 2) % 3 != 0 ? "additional-space" : ""}`}
+							>
+								<h2>
+									0{index + 1} {heading}
+								</h2>
 								<p>{paragraph}</p>
 							</div>
 							{index == 2 && <BrainIcon />}
 						</React.Fragment>
 					))}
-				</div >
+				</div>
 				<CustomButton {...button}>
 					<>
 						{button.text}
-						<img src={button.svg} />
+						<img src={button.svg} alt={button.svg_alt} />
 					</>
 				</CustomButton>
 			</section>
@@ -218,7 +259,7 @@ const BrainIcon = (props) => (
 		height="134"
 		fill="none"
 		viewBox="0 0 148 134"
-		className='brain-icon'
+		className="brain-icon"
 	>
 		<path
 			fill="#E8EBEF"
@@ -240,5 +281,5 @@ const BrainIcon = (props) => (
 			fill="#515A6A"
 			d="M101.994 63.672c-.705.139-1.16.822-1.021 1.526.547 2.745-.678 5.779-2.98 7.38s-5.58 1.696-7.972.231c-2.39-1.461-3.789-4.422-3.399-7.192a1.3 1.3 0 0 0-1.107-1.465 1.3 1.3 0 0 0-1.469 1.104c-.528 3.764 1.37 7.776 4.614 9.764 3.002 1.84 7.043 1.865 10.104.135q.368-.207.716-.448c3.123-2.173 4.788-6.29 4.044-10.017a1.3 1.3 0 0 0-1.53-1.018"
 		></path>
-	</svg >
+	</svg>
 );

@@ -144,8 +144,7 @@ export default function Edit({ attributes, setAttributes }) {
 					<PanelRow>
 						<MediaUpload
 							onSelect={(media) => {
-								setAttributes({ featured_image: media.url });
-								setAttributes({ featured_image_alt: media.alt });
+								setAttributes({ featured_image: media.url, featured_image_alt: media.alt });
 							}}
 							allowedTypes={["image"]}
 							render={({ open }) => (

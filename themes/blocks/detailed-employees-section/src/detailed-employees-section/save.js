@@ -48,14 +48,14 @@ export default function save({ attributes }) {
 							</a>
 						</div>
 					</div>
-				)
+				),
 			)}
 			{parseInt(limit) < employees.length && (
 				<div
 					className="tooltip-wrapper"
 					style={{
 						"--currentPercentile": `${parseInt(
-							(limit / employees.length) * 100
+							(limit / employees.length) * 100,
 						)}%`,
 					}}
 				>
@@ -85,6 +85,7 @@ const ArrowRight = () => (
 		height="16"
 		fill="none"
 		viewBox="0 0 15 16"
+		alt="Arrow right icon"
 	>
 		<path
 			fill="#00A6E0"
@@ -100,6 +101,7 @@ const ArrowDown = (props) => (
 		height="13"
 		fill="none"
 		viewBox="0 0 9 13"
+		alt="Arrow down icon"
 	>
 		<path
 			stroke="#1A4553"

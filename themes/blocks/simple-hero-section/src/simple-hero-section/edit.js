@@ -51,6 +51,7 @@ export default function Edit({ attributes, setAttributes }) {
 			url: "",
 			text: "",
 			svg: "",
+			svg_alt: "",
 		},
 	} = attributes;
 	return (
@@ -74,8 +75,7 @@ export default function Edit({ attributes, setAttributes }) {
 					<PanelRow>
 						<MediaUpload
 							onSelect={(media) => {
-								setAttributes({ image: media.url });
-								setAttributes({ image_alt: media.alt });
+								setAttributes({ image: media.url, image_alt: media.alt });
 							}}
 							allowedTypes={["image"]}
 							render={({ open }) => (
@@ -153,6 +153,7 @@ export default function Edit({ attributes, setAttributes }) {
 									button: {
 										...attributes.button,
 										svg: media.url,
+										svg_alt: media.alt,
 									},
 								})
 							}
@@ -203,7 +204,7 @@ export default function Edit({ attributes, setAttributes }) {
 						<p>{paragraph}</p>
 						{button?.text && (
 							<CustomButton {...button}>
-								<p>{button.text}</p> <img src={button.svg} />
+								<p>{button.text}</p> <img src={button.svg} alt={button.svg_alt}/>
 							</CustomButton>
 						)}
 					</header>
