@@ -47,6 +47,15 @@ export default function Edit({ attributes, setAttributes }) {
 		setAttributes({ values: updatedValues });
 	};
 
+	const updateIcon = (index, media) => {
+		const updatedValues = [...values];
+		updatedValues[index] = {
+			...prevValues,
+			icon: media.url,
+			icon_alt: media.alt,
+		};
+	};
+
 	// Handler to add a new item to the array
 	const addNewValueItem = () => {
 		const updatedValues = [...values, { icon: "", text: "" }];
@@ -82,10 +91,7 @@ export default function Edit({ attributes, setAttributes }) {
 								}}
 							>
 								<MediaUpload
-									onSelect={(media) => {
-										updateValueItem(index, "icon", media.url);
-										updateValueItem(index, "icon_alt", media.alt);
-									}}
+									onSelect={(media) => updateIcon(index, media)}
 									allowedTypes={["image"]}
 									render={({ open }) => (
 										<div>
@@ -164,7 +170,11 @@ export default function Edit({ attributes, setAttributes }) {
 										}`}
 									>
 										{value.icon && (
-											<img src={value.icon} alt={value.icon_alt} className="value-icon" />
+											<img
+												src={value.icon}
+												alt={value.icon_alt}
+												className="value-icon"
+											/>
 										)}
 										<span className="value-text">{value.text}</span>
 									</div>
@@ -185,7 +195,11 @@ export default function Edit({ attributes, setAttributes }) {
 										}`}
 									>
 										{value.icon && (
-											<img src={value.icon} alt={value.icon_alt} className="value-icon" />
+											<img
+												src={value.icon}
+												alt={value.icon_alt}
+												className="value-icon"
+											/>
 										)}
 										<span className="value-text">{value.text}</span>
 									</div>
