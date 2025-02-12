@@ -27,6 +27,7 @@ export default function save({ attributes }) {
 			url: "",
 			text: "",
 			svg: "",
+			svg_alt,
 		},
 		employees = [],
 	} = attributes;
@@ -62,7 +63,7 @@ export default function save({ attributes }) {
 				</div>
 				<CustomButton {...button}>
 					{button.text}
-					<img src={button.svg} />
+					<img src={button.svg} alt={button.svg_alt} />
 				</CustomButton>
 			</div>
 		</section>

@@ -51,6 +51,7 @@ export default function Edit({ attributes, setAttributes }) {
 			url: "",
 			text: "",
 			svg: "",
+			svg_alt: "",
 		},
 		employees = [],
 	} = attributes;
@@ -96,7 +97,9 @@ export default function Edit({ attributes, setAttributes }) {
 					/>
 					<MediaUpload
 						onSelect={(media) =>
-							setAttributes({ button: { ...button, svg: media.url } })
+							setAttributes({
+								button: { ...button, svg: media.url, svg_alt: media.alt },
+							})
 						}
 						allowedTypes={["image"]}
 						render={({ open }) => (
@@ -123,8 +126,7 @@ export default function Edit({ attributes, setAttributes }) {
 
 					<MediaUpload
 						onSelect={(media) => {
-							setAttributes({ logo: media.url });
-							setAttributes({ logo_alt: media.alt });
+							setAttributes({ logo: media.url, logo_alt: media.alt });
 						}}
 						allowedTypes={["image"]}
 						render={({ open }) => (
@@ -236,7 +238,7 @@ export default function Edit({ attributes, setAttributes }) {
 					</div>
 					<CustomButton {...button}>
 						{button.text}
-						<img src={button.svg} />
+						<img src={button.svg} alt={button.svg_alt} />
 					</CustomButton>
 				</div>
 			</section>
