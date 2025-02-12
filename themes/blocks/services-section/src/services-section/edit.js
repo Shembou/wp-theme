@@ -42,14 +42,7 @@ import CustomButton from "../../../common/CustomButton";
  * @return {Element} Element to render.
  */
 export default function Edit({ attributes, setAttributes }) {
-	const {
-		tag = "",
-		heading = "",
-		paragraph = "",
-		cards = [],
-		icon_alt = "",
-		image_alt = "",
-	} = attributes;
+	const { tag = "", heading = "", paragraph = "", cards = [] } = attributes;
 
 	const updateAttribute = (key, value) => {
 		setAttributes({ [key]: value });
@@ -64,6 +57,26 @@ export default function Edit({ attributes, setAttributes }) {
 		setAttributes({ cards: newCards });
 	};
 
+	const updateIcon = (cardIndex, media) => {
+		const newCards = [...cards];
+		newCards[cardIndex] = {
+			...newCards[cardIndex],
+			icon: media.url,
+			icon_alt: media.alt,
+		};
+		setAttributes({ cards: newCards });
+	};
+
+	const updateImage = (cardIndex, media) => {
+		const newCards = [...cards];
+		newCards[cardIndex] = {
+			...newCards[cardIndex],
+			image: media.url,
+			image_alt: media.alt,
+		};
+		setAttributes({ cards: newCards });
+	};
+
 	const addCard = () => {
 		setAttributes({
 			cards: [
@@ -74,6 +87,8 @@ export default function Edit({ attributes, setAttributes }) {
 					paragraph: "",
 					icon: "",
 					image: "",
+					icon_alt: "",
+					image_alt: "",
 				},
 			],
 		});
@@ -90,10 +105,22 @@ export default function Edit({ attributes, setAttributes }) {
 		setAttributes({ cards: newCards });
 	};
 
+	const updateButtonSvg = (cardIndex, index, media) => {
+		const newCards = [...cards];
+		const newButtons = [...(newCards[cardIndex].buttons || [])];
+		newButtons[index] = {
+			...newButtons[index],
+			svg: media.url,
+			svg_alt: media.alt,
+		};
+		newCards[cardIndex].buttons = newButtons;
+		setAttributes({ cards: newCards });
+	};
+
 	const removeButton = (cardIndex, buttonIndex) => {
 		const newCards = [...cards];
 		const newButtons = newCards[cardIndex].buttons.filter(
-			(_, i) => i !== buttonIndex
+			(_, i) => i !== buttonIndex,
 		);
 		newCards[cardIndex].buttons = newButtons;
 		setAttributes({ cards: newCards });
@@ -134,9 +161,7 @@ export default function Edit({ attributes, setAttributes }) {
 						}
 					/>
 					<MediaUpload
-						onSelect={(media) =>
-							updateButton(cardIndex, index, "svg", media.url)
-						}
+						onSelect={(media) => updateButtonSvg(cardIndex, index, media)}
 						allowedTypes={["image"]}
 						render={({ open }) => (
 							<div>
@@ -210,8 +235,7 @@ export default function Edit({ attributes, setAttributes }) {
 				/>
 				<MediaUpload
 					onSelect={(media) => {
-						updateCard(cardIndex, "icon", media.url);
-						updateCard(cardIndex, "icon_alt", media.alt);
+						updateIcon(cardIndex, media);
 					}}
 					allowedTypes={["image"]}
 					render={({ open }) => (
@@ -248,8 +272,7 @@ export default function Edit({ attributes, setAttributes }) {
 				/>
 				<MediaUpload
 					onSelect={(media) => {
-						updateCard(cardIndex, "image", media.url);
-						updateCard(cardIndex, "image_alt", media.alt);
+						updateImage(cardIndex, media);
 					}}
 					allowedTypes={["image"]}
 					render={({ open }) => (
@@ -341,7 +364,7 @@ export default function Edit({ attributes, setAttributes }) {
 													>
 														<>
 															{button.text}
-															<img src={button.svg} />
+															<img src={button.svg} alt={button.svg_alt}/>
 														</>
 													</CustomButton>
 												</div>

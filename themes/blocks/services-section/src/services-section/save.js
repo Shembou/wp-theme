@@ -50,7 +50,7 @@ export default function save({ attributes }) {
 												>
 													<>
 														{button.text}
-														<img src={button.svg} />
+														<img src={button.svg} alt={button.svg_alt} />
 													</>
 												</CustomButton>
 											</div>
