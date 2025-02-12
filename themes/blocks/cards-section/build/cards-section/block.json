@@ -50,10 +50,16 @@
               "svg": {
                 "type": "string",
                 "default": ""
+              },
+              "alt": {
+                "type": "string"
               }
             }
           },
           "cornerImage": {
+            "type": "string"
+          },
+          "cornerImage_alt": {
             "type": "string"
           },
           "color": {

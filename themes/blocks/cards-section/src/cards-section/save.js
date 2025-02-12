@@ -44,7 +44,7 @@ export default function save({ attributes }) {
 								/>
 							</>
 						</CustomButton>
-						<img className={`corner-image ${index % 2 == 0 ? 'even' : 'odd'}`} src={card.cornerImage} />
+						<img className={`corner-image ${index % 2 == 0 ? 'even' : 'odd'}`} src={card.cornerImage} alt={card.cornerImage_alt}/>
 					</div>
 				);
 			})}

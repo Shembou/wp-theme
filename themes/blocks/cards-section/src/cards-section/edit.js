@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
-import { __ } from '@wordpress/i18n';
+import { __ } from "@wordpress/i18n";
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -16,14 +16,14 @@ import {
 	useBlockProps,
 	URLInput,
 	MediaUpload,
-} from '@wordpress/block-editor';
+} from "@wordpress/block-editor";
 import {
 	TextareaControl,
 	TextControl,
 	Button,
 	SelectControl,
 	PanelBody,
-} from '@wordpress/components';
+} from "@wordpress/components";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -31,11 +31,9 @@ import {
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import './editor.scss';
+import "./editor.scss";
 
-import fetchButtonSvg from '../../../utils/fetchButtonSvg';
-import fetchCornerImageSvg from '../../../utils/fetchCornerImageSvg'
-import CustomButton from '../../../common/CustomButton';
+import CustomButton from "../../../common/CustomButton";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -64,14 +62,16 @@ export default function Edit({ attributes, setAttributes }) {
 			cards: [
 				...cards,
 				{
-					heading: '',
-					HeaderType: 'H1',
-					color: 'gray',
-					cornerImage: '',
+					heading: "",
+					HeaderType: "H1",
+					color: "gray",
+					cornerImage: "",
+					cornerImage_alt: "",
 					button: {
-						text: '',
-						url: '',
-						svg: '',
+						text: "",
+						url: "",
+						svg: "",
+						alt: "",
 					},
 					pins: [],
 				},
@@ -97,7 +97,7 @@ export default function Edit({ attributes, setAttributes }) {
 	// Helper to add a new pin
 	const addPin = (cardIndex) => {
 		const newCards = [...cards];
-		const newPins = [...(newCards[cardIndex].pins || []), ''];
+		const newPins = [...(newCards[cardIndex].pins || []), ""];
 		newCards[cardIndex].pins = newPins;
 		setAttributes({ cards: newCards });
 	};
@@ -110,24 +110,34 @@ export default function Edit({ attributes, setAttributes }) {
 		setAttributes({ cards: newCards });
 	};
 
-	const onSelectSVG = async (media, cardIndex, card) => {
-		const svgContent = await fetchButtonSvg(media)
-		updateCard(cardIndex, 'button', {
+	const onSelectSVG = (media, cardIndex, card) => {
+		updateCard(cardIndex, "button", {
 			...card.button,
-			svg: svgContent,
-		})
+			svg: media.url,
+			alt: media.alt,
+		});
 	};
 
-	const onCornerImageSelectSvg = async (media, cardIndex, card) => {
-		updateCard(cardIndex, 'cornerImage', media.url)
-	}
+	const onCornerImageSelectSvg = (media, cardIndex, card) => {
+		const media_url = media.url;
+		updateCard(cardIndex, "cornerImage", media_url);
+		const media_alt = media.alt;
+		updateCard(cardIndex, "cornerImage_alt", media_alt);
+		const newCards = [...cards];
+		newCards[cardIndex] = {
+			...newCards[cardIndex],
+			cornerImage: media.url,
+			cornerImage_alt: media.alt,
+		};
+		setAttributes({ cards: newCards });
+	};
 
 	// Render controls for pins
 	const renderPinsControls = (cardIndex) =>
 		(cards[cardIndex].pins || []).map((pin, pinIndex) => (
-			<div key={pinIndex} style={{ marginBottom: '10px' }}>
+			<div key={pinIndex} style={{ marginBottom: "10px" }}>
 				<TextControl
-					label={__('Pin text', 'cards-section')}
+					label={__("Pin text", "cards-section")}
 					value={pin}
 					onChange={(value) => updatePin(cardIndex, pinIndex, value)}
 				/>
@@ -136,7 +146,7 @@ export default function Edit({ attributes, setAttributes }) {
 					isSmall
 					onClick={() => removePin(cardIndex, pinIndex)}
 				>
-					{__('Remove Pin', 'cards-section')}
+					{__("Remove Pin", "cards-section")}
 				</Button>
 			</div>
 		));
@@ -144,46 +154,46 @@ export default function Edit({ attributes, setAttributes }) {
 	// Render controls for cards
 	const renderCardControls = () =>
 		cards.map((card, cardIndex) => (
-			<div key={cardIndex} style={{ marginBottom: '20px' }}>
+			<div key={cardIndex} style={{ marginBottom: "20px" }}>
 				<TextareaControl
-					label={__('Heading', 'cards-section')}
-					value={card.heading || ''}
-					onChange={(value) => updateCard(cardIndex, 'heading', value)}
+					label={__("Heading", "cards-section")}
+					value={card.heading || ""}
+					onChange={(value) => updateCard(cardIndex, "heading", value)}
 				/>
 				<SelectControl
-					label={__('Header Type', 'cards-section')}
+					label={__("Header Type", "cards-section")}
 					value={card.HeaderType}
 					options={[
-						{ label: 'H1', value: 'h1' },
-						{ label: 'H2', value: 'h2' },
-						{ label: 'H3', value: 'h3' },
-						{ label: 'H4', value: 'h4' },
-						{ label: 'H5', value: 'h5' },
-						{ label: 'H6', value: 'h6' },
+						{ label: "H1", value: "h1" },
+						{ label: "H2", value: "h2" },
+						{ label: "H3", value: "h3" },
+						{ label: "H4", value: "h4" },
+						{ label: "H5", value: "h5" },
+						{ label: "H6", value: "h6" },
 					]}
-					onChange={(value) => updateCard(cardIndex, 'HeaderType', value)}
+					onChange={(value) => updateCard(cardIndex, "HeaderType", value)}
 				/>
 				{renderPinsControls(cardIndex)}
 				<Button
 					isPrimary
 					isSmall
 					onClick={() => addPin(cardIndex)}
-					style={{ marginTop: '10px' }}
+					style={{ marginTop: "10px" }}
 				>
-					{__('Add Pin', 'cards-section')}
+					{__("Add Pin", "cards-section")}
 				</Button>
 				<SelectControl
-					label={__('Color Type', 'cards-section')}
+					label={__("Color Type", "cards-section")}
 					value={card.color}
 					options={[
-						{ label: 'Szary', value: 'gray' },
-						{ label: 'Niebiesko-szary', value: 'blue-green' },
+						{ label: "Szary", value: "gray" },
+						{ label: "Niebiesko-szary", value: "blue-green" },
 					]}
-					onChange={(value) => updateCard(cardIndex, 'color', value)}
+					onChange={(value) => updateCard(cardIndex, "color", value)}
 				/>
 				<MediaUpload
 					onSelect={(media) => onCornerImageSelectSvg(media, cardIndex, card)}
-					allowedTypes={['image']}
+					allowedTypes={["image"]}
 					render={({ open }) => (
 						<Button
 							onClick={open}
@@ -192,25 +202,27 @@ export default function Edit({ attributes, setAttributes }) {
 							className="custom-media-upload-button"
 							style={{ display: "grid" }}
 						>
-							{card.cornerImage ? __('Replace Corner Image SVG', 'cards-section') : __('Upload Corner Image SVG', 'cards-section')}
+							{card.cornerImage
+								? __("Replace Corner Image SVG", "cards-section")
+								: __("Upload Corner Image SVG", "cards-section")}
 						</Button>
 					)}
 				/>
 				<TextControl
-					label={__('Button Text', 'cards-section')}
-					value={card.button?.text || ''}
+					label={__("Button Text", "cards-section")}
+					value={card.button?.text || ""}
 					onChange={(value) =>
-						updateCard(cardIndex, 'button', {
+						updateCard(cardIndex, "button", {
 							...card.button,
 							text: value,
 						})
 					}
 				/>
 				<URLInput
-					label={__('Button URL', 'cards-section')}
-					value={card.button?.url || ''}
+					label={__("Button URL", "cards-section")}
+					value={card.button?.url || ""}
 					onChange={(value) =>
-						updateCard(cardIndex, 'button', {
+						updateCard(cardIndex, "button", {
 							...card.button,
 							url: value,
 						})
@@ -218,7 +230,7 @@ export default function Edit({ attributes, setAttributes }) {
 				/>
 				<MediaUpload
 					onSelect={(media) => onSelectSVG(media, cardIndex, card)}
-					allowedTypes={['image/svg+xml']}
+					allowedTypes={["image"]}
 					render={({ open }) => (
 						<Button
 							onClick={open}
@@ -227,14 +239,16 @@ export default function Edit({ attributes, setAttributes }) {
 							className="custom-media-upload-button"
 							style={{ display: "grid" }}
 						>
-							{card.button?.svg ? __('Replace Button SVG', 'cards-section') : __('Upload Button SVG', 'cards-section')}
+							{card.button?.svg
+								? __("Replace Button SVG", "cards-section")
+								: __("Upload Button SVG", "cards-section")}
 						</Button>
 					)}
 				/>
 				{card.button?.svg && (
 					<Button
 						onClick={() =>
-							updateCard(cardIndex, 'button', {
+							updateCard(cardIndex, "button", {
 								...card.button,
 								svg: null,
 							})
@@ -242,28 +256,28 @@ export default function Edit({ attributes, setAttributes }) {
 						variant="link"
 						isDestructive
 						className="custom-remove-svg-button"
-						style={{ display: 'grid' }}
+						style={{ display: "grid" }}
 					>
-						{__('Remove SVG', 'cards-section')}
+						{__("Remove SVG", "cards-section")}
 					</Button>
 				)}
 				<Button
 					isDestructive
 					isSmall
 					onClick={() => removeCard(cardIndex)}
-					style={{ marginTop: '10px' }}
+					style={{ marginTop: "10px" }}
 				>
-					{__('Remove Card', 'cards-section')}
+					{__("Remove Card", "cards-section")}
 				</Button>
 			</div>
 		));
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={__('Settings', 'cards-section')}>
+				<PanelBody title={__("Settings", "cards-section")}>
 					{renderCardControls()}
 					<Button isPrimary onClick={addCard}>
-						{__('Add Card', 'cards-section')}
+						{__("Add Card", "cards-section")}
 					</Button>
 				</PanelBody>
 			</InspectorControls>
@@ -271,10 +285,13 @@ export default function Edit({ attributes, setAttributes }) {
 				{cards.map((card, index) => {
 					const HeaderTag = card.HeaderType;
 					return (
-						<div key={index} className={`card ${card.color == 'gray' ? 'gray' : 'blue-green'}`}>
-							<div className='wrapper'>
+						<div
+							key={index}
+							className={`card ${card.color == "gray" ? "gray" : "blue-green"}`}
+						>
+							<div className="wrapper">
 								<HeaderTag>{card.heading}</HeaderTag>
-								<div className='pinsWrapper'>
+								<div className="pinsWrapper">
 									{card.pins.map((pin, pinIndex) => (
 										<p className="pin" key={pinIndex}>
 											{pin}
@@ -285,16 +302,17 @@ export default function Edit({ attributes, setAttributes }) {
 							<CustomButton {...card.button}>
 								<>
 									{card.button.text}
-									<div
-										dangerouslySetInnerHTML={{ __html: card.button.svg }}
-									/>
+									<img src={card.button.svg} alt={card.button.alt} />
 								</>
 							</CustomButton>
-							<img className={`corner-image ${index % 2 == 0 ? 'even' : 'odd'}`} src={card.cornerImage} />
+							<img
+								className={`corner-image ${index % 2 == 0 ? "even" : "odd"}`}
+								src={card.cornerImage}
+								alt={card.cornerImage_alt}
+							/>
 						</div>
 					);
 				})}
-
 			</section>
 		</>
 	);
