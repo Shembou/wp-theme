@@ -50,10 +50,12 @@ export default function Edit({ attributes, setAttributes }) {
 	const updateIcon = (index, media) => {
 		const updatedValues = [...values];
 		updatedValues[index] = {
-			...prevValues,
+			...updatedValues[index], // Correctly spreading the existing object
 			icon: media.url,
 			icon_alt: media.alt,
 		};
+
+		setAttributes({ values: updatedValues }); // Ensure the state is updated
 	};
 
 	// Handler to add a new item to the array

@@ -26,6 +26,9 @@
     },
     "icon": {
       "type": "string"
+    },
+    "icon_alt": {
+      "type": "string"
     }
   }
 }

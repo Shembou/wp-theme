@@ -4,7 +4,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps } from "@wordpress/block-editor";
 
 /**
  * The save function defines the way in which the different attributes should
@@ -16,10 +16,7 @@ import { useBlockProps } from '@wordpress/block-editor';
  * @return {Element} Element to render.
  */
 export default function save({ attributes }) {
-	const {
-		text,
-		icon
-	} = attributes
+	const { text, icon, icon_alt } = attributes;
 
 	const copyText = async (text) => {
 		try {
@@ -27,13 +24,13 @@ export default function save({ attributes }) {
 		} catch (err) {
 			console.log(err);
 		}
-	}
+	};
 
 	return (
-		<span {...useBlockProps.save()} id='info'>
-			<img src={icon} />
+		<span {...useBlockProps.save()} id="info">
+			<img src={icon} alt={icon_alt} />
 			<p>{text}</p>
-			<button onClick={() => copyText(text)} className='copy-button'>
+			<button onClick={() => copyText(text)} className="copy-button">
 				skopiuj
 			</button>
 		</span>

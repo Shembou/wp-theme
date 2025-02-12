@@ -4,8 +4,8 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
-import CustomButton from '../../../common/CustomButton';
+import { useBlockProps } from "@wordpress/block-editor";
+import CustomButton from "../../../common/CustomButton";
 
 /**
  * The save function defines the way in which the different attributes should
@@ -17,7 +17,6 @@ import CustomButton from '../../../common/CustomButton';
  * @return {Element} Element to render.
  */
 export default function save({ attributes }) {
-
 	const { cards = [] } = attributes;
 
 	return (
@@ -25,10 +24,13 @@ export default function save({ attributes }) {
 			{cards.map((card, index) => {
 				const HeaderTag = card.HeaderType;
 				return (
-					<div key={index} className={`card ${card.color == 'gray' ? 'gray' : 'blue-green'}`}>
-						<div className='wrapper'>
+					<div
+						key={index}
+						className={`card ${card.color == "gray" ? "gray" : "blue-green"}`}
+					>
+						<div className="wrapper">
 							<HeaderTag>{card.heading}</HeaderTag>
-							<div className='pinsWrapper'>
+							<div className="pinsWrapper">
 								{card.pins.map((pin, pinIndex) => (
 									<p className="pin" key={pinIndex}>
 										{pin}
@@ -39,16 +41,17 @@ export default function save({ attributes }) {
 						<CustomButton {...card.button}>
 							<>
 								{card.button.text}
-								<div
-									dangerouslySetInnerHTML={{ __html: card.button.svg }}
-								/>
+								<img src={card.button.svg} alt={card.button.alt} />
 							</>
 						</CustomButton>
-						<img className={`corner-image ${index % 2 == 0 ? 'even' : 'odd'}`} src={card.cornerImage} alt={card.cornerImage_alt}/>
+						<img
+							className={`corner-image ${index % 2 == 0 ? "even" : "odd"}`}
+							src={card.cornerImage}
+							alt={card.cornerImage_alt}
+						/>
 					</div>
 				);
 			})}
-
 		</section>
 	);
 }

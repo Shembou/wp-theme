@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
-import { __ } from '@wordpress/i18n';
+import { __ } from "@wordpress/i18n";
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -11,8 +11,17 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { InspectorControls, useBlockProps, MediaUpload } from '@wordpress/block-editor';
-import { PanelBody, PanelRow, Button, TextControl } from '@wordpress/components';
+import {
+	InspectorControls,
+	useBlockProps,
+	MediaUpload,
+} from "@wordpress/block-editor";
+import {
+	PanelBody,
+	PanelRow,
+	Button,
+	TextControl,
+} from "@wordpress/components";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -20,7 +29,7 @@ import { PanelBody, PanelRow, Button, TextControl } from '@wordpress/components'
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import './editor.scss';
+import "./editor.scss";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -31,10 +40,7 @@ import './editor.scss';
  * @return {Element} Element to render.
  */
 export default function Edit({ attributes, setAttributes }) {
-	const {
-		text,
-		icon
-	} = attributes
+	const { text, icon, icon_alt } = attributes;
 
 	const copyText = async (text) => {
 		try {
@@ -42,7 +48,7 @@ export default function Edit({ attributes, setAttributes }) {
 		} catch (err) {
 			console.log(err);
 		}
-	}
+	};
 
 	return (
 		<>
@@ -50,35 +56,47 @@ export default function Edit({ attributes, setAttributes }) {
 				<PanelBody title="Values">
 					<PanelRow>
 						<TextControl
-							label={__('Text', 'faq-section')}
-							value={text || ''}
+							label={__("Text", "faq-section")}
+							value={text || ""}
 							onChange={(value) => setAttributes({ text: value })}
 						/>
 					</PanelRow>
 					<PanelRow>
 						<MediaUpload
-							onSelect={(media) => setAttributes({ icon: media.url })}
-							allowedTypes={['image']}
+							onSelect={(media) =>
+								setAttributes({ icon: media.url, icon_alt: media.alt })
+							}
+							allowedTypes={["image"]}
 							render={({ open }) => (
 								<div>
 									<Button onClick={open} variant="secondary">
 										{icon
-											? __('replace icon', 'copy-button')
-											: __('upload icon', 'copy-button')}
+											? __("replace icon", "copy-button")
+											: __("upload icon", "copy-button")}
 									</Button>
 									{icon && (
-										<div style={{ marginTop: '10px', alignItems: 'center', display: 'grid' }}>
+										<div
+											style={{
+												marginTop: "10px",
+												alignItems: "center",
+												display: "grid",
+											}}
+										>
 											<img
 												src={icon}
-												alt={__('Icon', 'copy-button')}
-												style={{ maxWidth: '100%', border: '1px', padding: '10px' }}
+												alt={__("Icon", "copy-button")}
+												style={{
+													maxWidth: "100%",
+													border: "1px",
+													padding: "10px",
+												}}
 											/>
 											<Button
-												onClick={() => setAttributes({ icon: '' })}
+												onClick={() => setAttributes({ icon: "" })}
 												variant="link"
 												isDestructive
 											>
-												{__('Remove icon', 'copy-button')}
+												{__("Remove icon", "copy-button")}
 											</Button>
 										</div>
 									)}
@@ -87,11 +105,11 @@ export default function Edit({ attributes, setAttributes }) {
 						/>
 					</PanelRow>
 				</PanelBody>
-			</InspectorControls >
-			<span {...useBlockProps()} id='info'>
-				<img src={icon} />
+			</InspectorControls>
+			<span {...useBlockProps()} id="info">
+				<img src={icon} alt={icon_alt} />
 				<p>{text}</p>
-				<button onClick={() => copyText(text)} className='copy-button'>
+				<button onClick={() => copyText(text)} className="copy-button">
 					skopiuj
 				</button>
 			</span>

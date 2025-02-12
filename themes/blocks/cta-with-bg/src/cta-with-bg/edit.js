@@ -163,6 +163,7 @@ const ButtonIcon = (props) => (
 		fill="none"
 		viewBox="0 0 289 153"
 		className="lotus-icon"
+		alt="Callendar icon"
 	>
 		<path
 			fill="#082834"
