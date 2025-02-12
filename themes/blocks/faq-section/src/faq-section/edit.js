@@ -297,6 +297,7 @@ const ContactIcon = () => (
 		fill="none"
 		viewBox="0 0 16 16"
 		className='icon'
+		alt="Phone Icon"
 	>
 		<path
 			fill="#1A4553"
@@ -313,6 +314,7 @@ const EmailIcon = (props) => (
 		fill="none"
 		viewBox="0 0 16 16"
 		className='icon'
+		alt="Email Icon"
 	>
 		<path
 			fill="#1A4553"
@@ -329,6 +331,7 @@ const ClockIcon = () => (
 		fill="none"
 		viewBox="0 0 16 16"
 		className='icon'
+		alt="Clock Icon"
 	>
 		<path
 			fill="#1A4553"
