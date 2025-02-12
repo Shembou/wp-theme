@@ -4,8 +4,8 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
-import CustomButton from '../../../common/CustomButton';
+import { useBlockProps } from "@wordpress/block-editor";
+import CustomButton from "../../../common/CustomButton";
 
 /**
  * The save function defines the way in which the different attributes should
@@ -18,17 +18,17 @@ import CustomButton from '../../../common/CustomButton';
  */
 export default function save({ attributes }) {
 	const {
-		heading = '',
-		paragraph = '',
+		heading = "",
+		paragraph = "",
 		button = {
-			url: '',
-			text: '',
-			svg: ''
-		}
-	} = attributes
+			url: "",
+			text: "",
+			svg: "",
+		},
+	} = attributes;
 	return (
 		<section {...useBlockProps.save()} id="cta-with-bg">
-			<div className='section-wrapper'>
+			<div className="section-wrapper">
 				<header>
 					<h2>{heading}</h2>
 					<p>{paragraph}</p>
@@ -36,7 +36,7 @@ export default function save({ attributes }) {
 				<ButtonIcon />
 				<CustomButton {...button}>
 					<>
-						<img src={button.svg} />
+						<img src={button.svg} alt={button.svg_alt} />
 						{button.text}
 					</>
 				</CustomButton>
@@ -52,7 +52,7 @@ const ButtonIcon = (props) => (
 		height="153"
 		fill="none"
 		viewBox="0 0 289 153"
-		className='lotus-icon'
+		className="lotus-icon"
 	>
 		<path
 			fill="#082834"

@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
-import { __ } from '@wordpress/i18n';
+import { __ } from "@wordpress/i18n";
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -11,8 +11,17 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps, InspectorControls, MediaUpload } from '@wordpress/block-editor';
-import { PanelBody, TextControl, Button, TextareaControl } from '@wordpress/components';
+import {
+	useBlockProps,
+	InspectorControls,
+	MediaUpload,
+} from "@wordpress/block-editor";
+import {
+	PanelBody,
+	TextControl,
+	Button,
+	TextareaControl,
+} from "@wordpress/components";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -20,8 +29,8 @@ import { PanelBody, TextControl, Button, TextareaControl } from '@wordpress/comp
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import './editor.scss';
-import CustomButton from '../../../common/CustomButton';
+import "./editor.scss";
+import CustomButton from "../../../common/CustomButton";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -33,19 +42,25 @@ import CustomButton from '../../../common/CustomButton';
  */
 export default function Edit({ attributes, setAttributes }) {
 	const {
-		heading = '',
-		paragraph = '',
+		heading = "",
+		paragraph = "",
 		button = {
-			url: '',
-			text: '',
-			svg: ''
-		}
-	} = attributes
+			url: "",
+			text: "",
+			svg: "",
+			svg_alt: "",
+		},
+	} = attributes;
 
 	const updateButtonAttributes = (key, value) => {
-		const newButton = { ...button, [key]: value }
-		setAttributes({ button: newButton })
-	}
+		const newButton = { ...button, [key]: value };
+		setAttributes({ button: newButton });
+	};
+
+	const updateSvgAttributes = (media) => {
+		const newButton = { ...button, svg: media.url, svg_alt: media.alt };
+		setAttributes({ button: newButton });
+	};
 
 	return (
 		<>
@@ -54,14 +69,14 @@ export default function Edit({ attributes, setAttributes }) {
 					{/* Heading Field */}
 					<TextControl
 						label="Heading"
-						value={heading || ''}
+						value={heading || ""}
 						onChange={(value) => setAttributes({ heading: value })}
 					/>
 
 					{/* Paragraph Field */}
 					<TextareaControl
 						label="Paragraph"
-						value={paragraph || ''}
+						value={paragraph || ""}
 						onChange={(value) => setAttributes({ paragraph: value })}
 					/>
 
@@ -69,40 +84,50 @@ export default function Edit({ attributes, setAttributes }) {
 					<TextControl
 						label="Button URL"
 						value={button.url}
-						onChange={(value) => updateButtonAttributes('url', value)}
+						onChange={(value) => updateButtonAttributes("url", value)}
 					/>
 
 					{/* Button Text Field */}
 					<TextControl
 						label="Button Text"
 						value={button.text}
-						onChange={(value) => updateButtonAttributes('text', value)}
+						onChange={(value) => updateButtonAttributes("text", value)}
 					/>
 
 					{/* Button SVG Field */}
 					<MediaUpload
-						onSelect={(media) => updateButtonAttributes('svg', media.url)}
-						allowedTypes={['image']}
+						onSelect={(media) => updateSvgAttributes(media)}
+						allowedTypes={["image"]}
 						render={({ open }) => (
 							<div>
 								<Button onClick={open} variant="secondary">
 									{button.svg
-										? __('Replace svg', 'cta-with-bg')
-										: __('Upload svg', 'cta-with-bg')}
+										? __("Replace svg", "cta-with-bg")
+										: __("Upload svg", "cta-with-bg")}
 								</Button>
 								{button.svg && (
-									<div style={{ marginTop: '10px', alignItems: 'center', display: 'flex' }}>
+									<div
+										style={{
+											marginTop: "10px",
+											alignItems: "center",
+											display: "flex",
+										}}
+									>
 										<img
 											src={button.svg}
-											alt={__('Card Icon', 'cta-with-bg')}
-											style={{ maxWidth: '100%', border: '1px', padding: '10px' }}
+											alt={__("Card Icon", "cta-with-bg")}
+											style={{
+												maxWidth: "100%",
+												border: "1px",
+												padding: "10px",
+											}}
 										/>
 										<Button
-											onClick={() => updateButtonAttributes('svg', '')}
+											onClick={() => updateButtonAttributes("svg", "")}
 											variant="link"
 											isDestructive
 										>
-											{__('Remove Icon', 'cta-with-bg')}
+											{__("Remove Icon", "cta-with-bg")}
 										</Button>
 									</div>
 								)}
@@ -112,7 +137,7 @@ export default function Edit({ attributes, setAttributes }) {
 				</PanelBody>
 			</InspectorControls>
 			<section {...useBlockProps()} id="cta-with-bg">
-				<div className='section-wrapper'>
+				<div className="section-wrapper">
 					<header>
 						<h2>{heading}</h2>
 						<p>{paragraph}</p>
@@ -120,7 +145,7 @@ export default function Edit({ attributes, setAttributes }) {
 					<ButtonIcon />
 					<CustomButton {...button}>
 						<>
-							<img src={button.svg} />
+							<img src={button.svg} alt={button.svg_alt} />
 							{button.text}
 						</>
 					</CustomButton>
@@ -137,7 +162,7 @@ const ButtonIcon = (props) => (
 		height="153"
 		fill="none"
 		viewBox="0 0 289 153"
-		className='lotus-icon'
+		className="lotus-icon"
 	>
 		<path
 			fill="#082834"
