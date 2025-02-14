@@ -270,6 +270,7 @@ const BrainIcon = (props) => (
 		fill="none"
 		viewBox="0 0 347 316"
 		style={{ zIndex: "2", position: "relative" }}
+		className="brain"
 	>
 		<path
 			fill="#E8EBEF"

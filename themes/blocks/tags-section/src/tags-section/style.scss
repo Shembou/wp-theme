@@ -86,9 +86,22 @@ section#tags-section {
 			}
 
 			&:hover {
-				text-decoration: underline;
 				background: #1A4553;
 				color: #F1FCFF;
+			}
+
+			&::after {
+				content: '';
+				position: absolute;
+				bottom: 10px;
+				width: 0;
+				height: 0.5px;
+				background-color: #F9FDFF;
+				transition: width 0.3s ease-in-out;
+			}
+
+			&:hover::after {
+				width: calc(100% - 30px);
 			}
 		}
 

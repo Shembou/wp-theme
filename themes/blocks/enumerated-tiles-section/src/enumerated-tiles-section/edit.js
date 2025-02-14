@@ -131,7 +131,7 @@ export default function Edit({ attributes, setAttributes }) {
 							onSelect={(media) => {
 								const updatedButton = {
 									...button,
-									svg: media.svg,
+									svg: media.url,
 									svg_alt: media.alt,
 								};
 								setAttributes({ button: updatedButton });

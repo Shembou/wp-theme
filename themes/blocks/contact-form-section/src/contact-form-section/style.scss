@@ -230,6 +230,23 @@ section#contact-form-section {
 
 		a {
 			text-decoration: none !important;
+			position: relative;
+			margin: 4px;
+		}
+
+		a::after {
+			content: "";
+			position: absolute;
+			bottom: 0px;
+			width: 0;
+			height: 0.5px;
+			background-color: #1A4553;
+			transition: width 0.3s ease-in-out;
+			left: 0px;
+		}
+
+		a:hover::after {
+			width: 100%;
 		}
 
 		input[type="submit"] {
@@ -256,5 +273,70 @@ section#contact-form-section {
 		}
 
 
+	}
+
+	.custom-button {
+		padding: 8px 16px 8px 20px;
+		border-radius: 32px;
+		border: 1px solid #5D9AAF;
+		background: #164352;
+		display: flex;
+		flex-direction: row-reverse;
+		align-items: center;
+		gap: 8px;
+		color: white;
+		font-size: 16px;
+		cursor: pointer;
+		transition: background 0.3s, transform 0.2s;
+		position: relative;
+
+		&::before {
+			content: "";
+			display: inline-block;
+			width: 15px;
+			height: 16px;
+			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='16' viewBox='0 0 15 16' fill='none'%3E%3Cpath d='M12.9879 8.33166L8.76914 12.5504C8.68118 12.6384 8.56189 12.6878 8.4375 12.6878C8.31311 12.6878 8.19382 12.6384 8.10586 12.5504C8.0179 12.4625 7.96849 12.3432 7.96849 12.2188C7.96849 12.0944 8.0179 11.9751 8.10586 11.8871L11.5248 8.46877H2.34375C2.21943 8.46877 2.1002 8.41938 2.01229 8.33147C1.92439 8.24357 1.875 8.12434 1.875 8.00002C1.875 7.8757 1.92439 7.75647 2.01229 7.66856C2.1002 7.58065 2.21943 7.53127 2.34375 7.53127H11.5248L8.10586 4.11291C8.0179 4.02495 7.96849 3.90566 7.96849 3.78127C7.96849 3.65688 8.0179 3.53758 8.10586 3.44963C8.19382 3.36167 8.31311 3.31226 8.4375 3.31226C8.56189 3.31226 8.68118 3.36167 8.76914 3.44963L12.9879 7.66838C13.0315 7.71191 13.066 7.76361 13.0896 7.82051C13.1132 7.87742 13.1254 7.93842 13.1254 8.00002C13.1254 8.06162 13.1132 8.12261 13.0896 8.17952C13.066 8.23642 13.0315 8.28812 12.9879 8.33166Z' fill='%23F9FDFF'/%3E%3C/svg%3E");
+			background-repeat: no-repeat;
+			background-size: contain;
+		}
+	}
+
+	.contact-form-wrapper {
+		position: relative;
+	}
+
+	.spinner {
+		display: none;
+		width: 40px;
+		height: 40px;
+		border: 4px solid #5D9AAF;
+		border-top: 4px solid #164352;
+		border-radius: 50%;
+		animation: spin 1s linear infinite;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 20;
+	}
+
+	.contact-form-wrapper.loading form {
+		filter: blur(2px);
+		pointer-events: none;
+	}
+
+	.contact-form-wrapper.loading .spinner {
+		display: block;
+	}
+
+
+	@keyframes spin {
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	.wpcf7-spinner {
+		display: none !important;
 	}
 }

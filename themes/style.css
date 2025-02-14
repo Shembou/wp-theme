@@ -69,3 +69,68 @@ p {
 .more-link {
 	display: block;
 }
+
+.custom-button,
+.wp-block-button__link {
+	transition: color 0.3s ease-in-out;
+	overflow: hidden;
+	position: relative !important;
+}
+
+.custom-button:hover,
+.wp-block-button__link:hover {
+	text-decoration: none !important;
+}
+
+.custom-button::after,
+.wp-block-button__link::after {
+	content: "";
+	position: absolute;
+	bottom: 8px;
+	width: 0;
+	height: 0.5px;
+	background-color: #F9FDFF;
+	transition: width 0.3s ease-in-out;
+}
+
+.custom-button::after {
+	left: 16px;
+}
+
+.wp-block-button__link::after {
+	left: 32px;
+}
+
+.custom-button:hover::after {
+	width: calc(100% - 32px);
+}
+
+.wp-block-button__link:hover::after {
+	width: calc(100% - 64px);
+}
+
+
+.wp-block-navigation-link {
+	transition: color 0.3s ease-in-out;
+	overflow: hidden;
+	position: relative !important;
+}
+
+.wp-block-navigation-link:hover {
+	text-decoration: none !important;
+}
+
+.wp-block-navigation-link::after {
+	content: "";
+	position: absolute;
+	bottom: 0px;
+	width: 0;
+	height: 0.5px;
+	left: 0px;
+	background-color: #F9FDFF;
+	transition: width 0.3s ease-in-out;
+}
+
+.wp-block-navigation-link:hover::after {
+	width: 100%;
+}

@@ -151,4 +151,8 @@ section#cards-section {
 		background: #FFF;
 		color: #324C4D;
 	}
+
+	.blue-green>.custom-button::after {
+		background-color: #324C4D;
+	}
 }

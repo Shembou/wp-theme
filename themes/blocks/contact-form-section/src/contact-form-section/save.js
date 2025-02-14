@@ -4,7 +4,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
+import { useBlockProps, InnerBlocks } from "@wordpress/block-editor";
 
 /**
  * The save function defines the way in which the different attributes should
@@ -16,18 +16,12 @@ import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
  * @return {Element} Element to render.
  */
 export default function save({ attributes }) {
-	const {
-		tag,
-		heading,
-		description,
-		phone,
-		mail
-	} = attributes
+	const { tag, heading, description, phone, mail } = attributes;
 	return (
-		<section {...useBlockProps.save()} id='contact-form-section'>
-			<div className='data-wrapper'>
+		<section {...useBlockProps.save()} id="contact-form-section">
+			<div className="data-wrapper">
 				<header>
-					<p className='tag'>{tag}</p>
+					<p className="tag">{tag}</p>
 					<h2>{heading}</h2>
 					<p>{description}</p>
 				</header>
@@ -36,27 +30,24 @@ export default function save({ attributes }) {
 					<div>
 						<span>
 							<ContactIcon />
-							<p>
-								{phone}
-							</p>
-							<button onClick={() => copyText(phone)} className='copy-button'>
+							<p>{phone}</p>
+							<button onClick={() => copyText(phone)} className="copy-button">
 								skopiuj
 							</button>
 						</span>
 						<span>
 							<EmailIcon />
-							<p>
-								{mail}
-							</p>
-							<button onClick={() => copyText(mail)} className='copy-button'>
+							<p>{mail}</p>
+							<button onClick={() => copyText(mail)} className="copy-button">
 								skopiuj
 							</button>
 						</span>
 					</div>
 				</div>
 			</div>
-			<div className='contact-form-wrapper'>
-				<InnerBlocks.Content/>
+			<div className="contact-form-wrapper">
+				<InnerBlocks.Content />
+				<div className="spinner"></div>
 			</div>
 		</section>
 	);
@@ -69,14 +60,14 @@ const ContactIcon = () => (
 		height="16"
 		fill="none"
 		viewBox="0 0 16 16"
-		className='icon'
+		className="icon"
 	>
 		<path
 			fill="#1A4553"
 			d="M9.017 2.87a.5.5 0 0 1 .612-.353 5.39 5.39 0 0 1 3.854 3.854.5.5 0 1 1-.966.258A4.4 4.4 0 0 0 9.37 3.483a.5.5 0 0 1-.354-.613M8.87 5.483c.862.23 1.416.784 1.646 1.646a.5.5 0 1 0 .966-.258c-.32-1.198-1.156-2.034-2.354-2.354a.5.5 0 1 0-.258.966m5.121 5.96A3.516 3.516 0 0 1 10.5 14.5c-4.962 0-9-4.038-9-9a3.516 3.516 0 0 1 3.058-3.493 1 1 0 0 1 1.038.595l1.32 2.947v.008a1 1 0 0 1-.115.991L5.5 8.091c.468.95 1.463 1.937 2.427 2.406l1.521-1.294.047-.035a1 1 0 0 1 .948-.087l.008.003 2.945 1.32a1 1 0 0 1 .596 1.038M13 11.316h-.007l-2.937-1.315-1.522 1.294-.046.035a1 1 0 0 1-.985.071C6.333 10.837 5.166 9.68 4.6 8.521a1 1 0 0 1 .099-1.03L6 5.947 4.688 3.009v-.007A2.51 2.51 0 0 0 2.5 5.5a8.01 8.01 0 0 0 8 8 2.51 2.51 0 0 0 2.5-2.183"
 		></path>
 	</svg>
-)
+);
 
 const EmailIcon = (props) => (
 	<svg
@@ -85,7 +76,7 @@ const EmailIcon = (props) => (
 		height="16"
 		fill="none"
 		viewBox="0 0 16 16"
-		className='icon'
+		className="icon"
 	>
 		<path
 			fill="#1A4553"

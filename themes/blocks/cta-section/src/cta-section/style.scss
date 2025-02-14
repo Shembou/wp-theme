@@ -50,12 +50,28 @@ section#cta-section {
 			padding: 24px;
 		}
 
-		&:hover {
-			text-decoration: underline;
-		}
-
 		>p {
 			justify-self: center;
+			position: relative;
+
+			&::after {
+				content: "";
+				position: absolute;
+				bottom: 0px;
+				left: 0px;
+				width: 0;
+				height: 0.5px;
+				background-color: rgb(26, 69, 83);
+				transition: width 0.3s ease-in-out;
+			}
+		}
+
+		&:hover>p {
+			text-decoration: none !important;
+
+			&::after {
+				width: 100%;
+			}
 		}
 	}
 

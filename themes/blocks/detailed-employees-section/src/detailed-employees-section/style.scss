@@ -99,9 +99,20 @@ section#detailed-employees-section {
 				text-decoration: none;
 				font-size: 16px;
 				width: fit-content;
+				position: relative;
 
-				&:hover {
-					text-decoration: underline;
+				&::after {
+					content: '';
+					position: absolute;
+					bottom: 8px;
+					width: 0;
+					height: 0.5px;
+					background-color: #00A6E0;
+					transition: width 0.3s ease-in-out;
+				}
+
+				&:hover::after {
+					width: calc(100% - 16px);
 				}
 			}
 		}

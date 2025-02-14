@@ -55,6 +55,7 @@ section#cta-with-bg {
 		position: absolute;
 		right: 25%;
 		bottom: 0;
+
 		@media (width <=500px) {
 			right: 20px;
 		}
@@ -74,8 +75,14 @@ section#cta-with-bg {
 		font-size: 16px;
 		justify-items: center;
 		z-index: 2;
+		text-decoration: none !important;
+
 		@media (width <=778px) {
 			justify-self: center;
+		}
+
+		&:after {
+			background-color: #1A4553;
 		}
 	}
 }

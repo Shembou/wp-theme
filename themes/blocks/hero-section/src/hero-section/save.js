@@ -4,9 +4,8 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
-import CustomButton from '../../../common/CustomButton';
-
+import { useBlockProps } from "@wordpress/block-editor";
+import CustomButton from "../../../common/CustomButton";
 
 /**
  * Save function that defines the final structure of the block
@@ -18,10 +17,10 @@ import CustomButton from '../../../common/CustomButton';
  */
 export default function save({ attributes }) {
 	const {
-		header = '',
-		text = '',
-		HeaderType = 'h2',
-		button = { text: '', url: '', isSecondary: false, svg: '', svg_alt: '' },
+		header = "",
+		text = "",
+		HeaderType = "h2",
+		button = { text: "", url: "", isSecondary: false, svg: "", svg_alt: "" },
 		links = [],
 	} = attributes;
 
@@ -29,10 +28,12 @@ export default function save({ attributes }) {
 
 	return (
 		<section {...blockProps} id="hero-section">
-			<div className='section-wrapper'>
-				<div className='wrapper'>
-					<header className='header-wrapper'>
-						<HeaderType className="wp-blocks wp-header header">{header}</HeaderType>
+			<div className="section-wrapper">
+				<div className="wrapper">
+					<header className="header-wrapper">
+						<HeaderType className="wp-blocks wp-header header">
+							{header}
+						</HeaderType>
 						<p className="paragraph">{text}</p>
 						<CustomButton {...button}>
 							<>
@@ -42,14 +43,22 @@ export default function save({ attributes }) {
 						</CustomButton>
 					</header>
 				</div>
-				<div className='animation-wrapper'>
+				<div className="animation-wrapper">
 					{BrainIcon()}
 					{links.map((link, index) => (
-						<a key={index} href={link.url} className={`animation-inside-link link-${index} ${link.isOverlapping ? "overlap" : "default"} ${link.color == "gray" && 'gray'}`}>{link.text}</a>
+						<a
+							key={index}
+							href={link.url}
+							className={`animation-inside-link link-${index} ${
+								link.isOverlapping ? "overlap" : "default"
+							} ${link.color == "gray" && "gray"}`}
+						>
+							{link.text}
+						</a>
 					))}
 				</div>
 			</div>
-		</section >
+		</section>
 	);
 }
 
@@ -61,6 +70,7 @@ const BrainIcon = (props) => (
 		fill="none"
 		viewBox="0 0 347 316"
 		style={{ zIndex: "2", position: "relative" }}
+		className="brain"
 	>
 		<path
 			fill="#E8EBEF"
