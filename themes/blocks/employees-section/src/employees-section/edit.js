@@ -224,7 +224,7 @@ export default function Edit({ attributes, setAttributes }) {
 							<img
 								src={employee}
 								key={index}
-								className="employee-image"
+								className={`employee-image-${index} employee-image`}
 								alt={`Employee ${index + 1}`}
 							/>
 						))}

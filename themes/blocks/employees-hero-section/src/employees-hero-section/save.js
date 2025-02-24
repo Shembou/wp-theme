@@ -4,7 +4,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps } from "@wordpress/block-editor";
 
 /**
  * The save function defines the way in which the different attributes should
@@ -16,35 +16,36 @@ import { useBlockProps } from '@wordpress/block-editor';
  * @return {Element} Element to render.
  */
 export default function save({ attributes }) {
-	const {
-		tag,
-		heading,
-		paragraph,
-		employees,
-		logo
-	} = attributes
+	const { tag, heading, paragraph, employees, logo } = attributes;
 
 	return (
 		<section {...useBlockProps.save()} id="employees-hero-section">
-			<div className='section-wrapper'>
-				<div className='wrapper'>
-					<p className='tag'>{tag}</p>
+			<div className="section-wrapper">
+				<div className="wrapper">
+					<p className="tag">{tag}</p>
 					<div>
 						<h2>{heading}</h2>
 						<p>{paragraph}</p>
 					</div>
 				</div>
 				<div className="elipses">
-					<span className='circle-left' />
-					<span className='circle-top' />
-					<span className='circle-right' />
-					<span className='circle-bottom' />
+					<span className="circle-left" />
+					<span className="circle-top" />
+					<span className="circle-right" />
+					<span className="circle-bottom" />
 					<img src={logo} className="logo" alt="Central Logo" />
-					{(employees || [])?.length > 0 && <div className="employee-container">
-						{employees.map((employee, index) => (
-							<img src={employee} key={index} className="employee-image" alt={`Employee ${index + 1}`} />
-						))}
-					</div>}
+					{(employees || [])?.length > 0 && (
+						<div className="employee-container">
+							{employees.map((employee, index) => (
+								<img
+									src={employee}
+									key={index}
+									className={`employee-image employee-image-${index}`}
+									alt={`Employee ${index + 1}`}
+								/>
+							))}
+						</div>
+					)}
 				</div>
 			</div>
 		</section>

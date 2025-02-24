@@ -49,7 +49,7 @@ export default function save({ attributes }) {
 						<img
 							src={employee}
 							key={index}
-							className="employee-image"
+							className={`employee-image-${index} employee-image`}
 							alt={`Employee ${index + 1}`}
 						/>
 					))}

@@ -252,6 +252,11 @@ section#blog-reference-section {
 			}
 		}
 	}
+
+	.categories-wrapper .tag.active {
+		background-color: #1A4553;
+		color: #F1FCFF;
+	}
 }
 
 .pagination {

@@ -199,6 +199,7 @@ function register_custom_blocks()
 	register_block_type( dirname(__FILE__) . '/blocks/privacy-policy-template/build/privacy-policy-template/block.json');
 	register_block_type( dirname(__FILE__) . '/blocks/contact-form-section/build/contact-form-section/block.json');
 	register_block_type( dirname(__FILE__) . '/blocks/common/copy-button/build/copy-button/block.json');
+	register_block_type( dirname(__FILE__) . '/blocks/related-articles-section/build/related-articles-section/block.json');
 }
 add_action('init', 'register_custom_blocks');
 

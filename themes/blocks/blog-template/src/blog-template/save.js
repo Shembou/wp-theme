@@ -71,7 +71,7 @@ export default function save({ attributes }) {
 						))}
 					</div>
 				) : (
-					<p>{__("Add headings to generate table of contents")}</p>
+					<p>Add headings to generate table of contents</p>
 				)}
 			</div>
 			<div className="post-content">

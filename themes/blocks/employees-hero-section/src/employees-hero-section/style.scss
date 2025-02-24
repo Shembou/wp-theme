@@ -138,37 +138,37 @@ section#employees-hero-section {
 		}
 
 		/* Positioning employee images around the central logo */
-		.employee-image:nth-child(1) {
+		.employee-image-0 {
 			top: 15%;
 			left: 50%;
 			transform: translate(-50%, -50%);
 		}
 
-		.employee-image:nth-child(2) {
+		.employee-image-1 {
 			top: 30%;
 			right: 15%;
 			transform: translate(50%, -50%);
 		}
 
-		.employee-image:nth-child(3) {
+		.employee-image-2 {
 			bottom: 30%;
 			right: 15%;
 			transform: translate(50%, 50%);
 		}
 
-		.employee-image:nth-child(4) {
+		.employee-image-3 {
 			bottom: 15%;
 			left: 50%;
 			transform: translate(-50%, 50%);
 		}
 
-		.employee-image:nth-child(5) {
+		.employee-image-4 {
 			bottom: 30%;
 			left: 15%;
 			transform: translate(-50%, 50%);
 		}
 
-		.employee-image:nth-child(6) {
+		.employee-image-5 {
 			top: 30%;
 			left: 15%;
 			transform: translate(-50%, -50%);

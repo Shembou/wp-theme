@@ -60,11 +60,20 @@ $current_page = max(1, get_query_var('paged') ?: (get_query_var('page') ?: 1));
 $categories = get_categories([
     'orderby' => 'name',
     'order' => 'ASC',
-    'hide_empty' => false,
+    'hide_empty' => true,
 ]);
 
 // Get the current category from the URL
-$category_name = isset($_GET['category_name']) ? sanitize_text_field($_GET['category_name']) : '';
+$category_name = isset($_GET['category_name']) ? sanitize_title($_GET['category_name']) : '';
+
+// Validate the category
+$category = get_category_by_slug( $category_name );
+if ( $category ) {
+    $args['cat'] = $category->term_id;
+} else {
+    // If the category doesn't exist, don't modify the query
+    $category_name = '';
+}
 
 // WP_Query arguments
 $args = [
@@ -81,6 +90,8 @@ if ($category_name) {
 }
 
 $query = new WP_Query($args);
+
+$current_category_slug = $category_name; // From the URL parameter
 ?>
 
 <header>
@@ -92,12 +103,23 @@ $query = new WP_Query($args);
 	<div class="categories">
 		<h3>Kategorie</h3>
 		<div class="categories-wrapper">
-			<?php foreach ($categories as $category) : ?>
-				<a href="<?php echo esc_url(add_query_arg('category_name', $category->slug, get_permalink())); ?>" class="tag">
-					<?php echo esc_html($category->name); ?>
-				</a>
-			<?php endforeach; ?>
-		</div>
+            <?php foreach ( $categories as $category ) :
+                $is_active = ( $category->slug === $current_category_slug ) ? 'active' : '';
+
+                // Determine the link URL
+                if ( $is_active ) {
+                    // If the category is active, clicking it should reset the filter
+                    $category_link = remove_query_arg( 'category_name', get_permalink( get_the_ID() ) );
+                } else {
+                    // If not active, clicking it should apply the category filter
+                    $category_link = add_query_arg( 'category_name', $category->slug, get_permalink( get_the_ID() ) );
+                }
+            ?>
+                <a href="<?php echo esc_url( $category_link ); ?>" class="tag <?php echo $is_active; ?>">
+                    <?php echo esc_html( $category->name ); ?>
+                </a>
+            <?php endforeach; ?>
+        </div>
 	</div>
 </header>
 
